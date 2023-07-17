@@ -5,15 +5,19 @@
 #include <set>
 #include <functional>
 #include <string>
+#include <filesystem>
 
 #include "framework.h"
 #include "CustomMath.h"
+
+#pragma comment(lib, "Msimg32.lib")
 
 namespace nto::enums
 {
 	enum class eLayerType
 	{
 		Background,
+		Floor,
 		Player,
 		Monster,
 		Effect,
@@ -25,6 +29,8 @@ namespace nto::enums
 	{
 		Transform,
 		SpriteRenderer,
+		Animation,
+		Animator,
 		End,
 	};
 }

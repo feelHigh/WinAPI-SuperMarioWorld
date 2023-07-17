@@ -43,9 +43,6 @@
     <Filter Include="Engine\Scene">
       <UniqueIdentifier>{af7267e9-a8af-4963-82ef-e08768fa4111}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Time">
-      <UniqueIdentifier>{655422eb-93c0-42d2-af29-e37f919604f6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Common\Time">
       <UniqueIdentifier>{791c20e6-ac3b-4a0d-b899-f03754cdfaf6}</UniqueIdentifier>
     </Filter>
@@ -57,6 +54,27 @@
     </Filter>
     <Filter Include="Windows\Resource">
       <UniqueIdentifier>{6cf3aa1c-1b98-4f41-8909-b5e73f119f3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Background">
+      <UniqueIdentifier>{35d665dd-b3ac-4f4e-b6a5-24c22e4ae209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource">
+      <UniqueIdentifier>{3cb9a5a7-5d60-4154-bd5c-195246db58bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource\Image">
+      <UniqueIdentifier>{2498c470-f0cc-4a76-8055-d4c6845c6fca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Camera">
+      <UniqueIdentifier>{097af26c-7347-483a-bc75-89993a0a5b52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Animator">
+      <UniqueIdentifier>{19697ab5-7492-4cbc-a635-74f020fc2836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource\Animation">
+      <UniqueIdentifier>{96dad298-559e-433b-955f-3bcc3d849646}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Monster">
+      <UniqueIdentifier>{822d391c-cdde-46c1-a084-881dac2cad19}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +138,45 @@
     <ClInclude Include="SceneManager.h">
       <Filter>Engine\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Contents\GameObject\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Engine\Resource\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoResource.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoResources.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Engine\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage1.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage2.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage3.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="StageBoss.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Engine\Resource\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="StageWorldMap.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoMonster.h">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
@@ -162,6 +219,48 @@
       <Filter>Engine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Background.cpp">
+      <Filter>Contents\GameObject\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Engine\Resource\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoResource.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomMath.cpp">
+      <Filter>Engine\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoResources.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Engine\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage1.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage2.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage3.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="StageBoss.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Engine\Resource\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="StageWorldMap.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoMonster.cpp">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Client.ico">

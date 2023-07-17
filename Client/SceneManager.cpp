@@ -1,5 +1,10 @@
 #include "SceneManager.h"
 #include "TitleScene.h"
+#include "StageWorldMap.h"
+#include "Stage1.h"
+#include "Stage2.h"
+#include "Stage3.h"
+#include "StageBoss.h"
 
 namespace nto
 {
@@ -9,8 +14,14 @@ namespace nto
 	void SceneManager::Initialize()
 	{
 		CreateScene<TitleScene>(L"TitleScene");
+		CreateScene<StageWorldMap>(L"StageWorldMap");
+		CreateScene<Stage1>(L"Stage1");
+		CreateScene<Stage2>(L"Stage2");
+		CreateScene<Stage3>(L"Stage3");
+		CreateScene<StageBoss>(L"StageBoss");
 
-		LoadScene(L"TitleScene");
+		//LoadScene(L"TitleScene");
+		LoadScene(L"Stage1");
 	}
 
 	void SceneManager::Update()

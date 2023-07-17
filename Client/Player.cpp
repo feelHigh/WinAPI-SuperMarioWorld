@@ -2,6 +2,7 @@
 #include "Transform.h"
 #include "Controller.h"
 #include "CustomTime.h"
+#include "Animator.h"
 
 namespace nto
 {
@@ -23,21 +24,26 @@ namespace nto
 
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
+		Animator* anim = GetComponent<Animator>();
 
 		if (Controller::GetKey(eKeyCode::W))
 		{
-			pos.y -= 300.0f * Time::DeltaTime();
+			//anim->PlayAnimation(L"JumpLeft", true);
+			//pos.y -= 300.0f * Time::DeltaTime();
 		}
 		if (Controller::GetKey(eKeyCode::A))
 		{
+			anim->PlayAnimation(L"SmallMario_RunLeft", true);
 			pos.x -= 300.0f * Time::DeltaTime();
 		}
 		if (Controller::GetKey(eKeyCode::S))
 		{
-			pos.y += 300.0f * Time::DeltaTime();
+			//anim->PlayAnimation(L"JumpRight", true);
+			//pos.y += 300.0f * Time::DeltaTime();
 		}
 		if (Controller::GetKey(eKeyCode::D))
 		{
+			anim->PlayAnimation(L"SmallMario_RunRight", true);
 			pos.x += 300.0f * Time::DeltaTime();
 		}
 		tr->SetPosition(pos);

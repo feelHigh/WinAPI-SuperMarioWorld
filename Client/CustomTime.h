@@ -19,4 +19,3 @@ namespace nto
 		static float mDeltaTime;
 	};
 }
-
