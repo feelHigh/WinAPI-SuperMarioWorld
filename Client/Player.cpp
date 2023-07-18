@@ -38,7 +38,7 @@ namespace nto
 		}
 		if (Controller::GetKey(eKeyCode::S))
 		{
-			//anim->PlayAnimation(L"JumpRight", true);
+			anim->PlayAnimation(L"SmallMario_DuckDown", true);
 			//pos.y += 300.0f * Time::DeltaTime();
 		}
 		if (Controller::GetKey(eKeyCode::D))

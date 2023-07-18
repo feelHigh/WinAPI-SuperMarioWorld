@@ -143,6 +143,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="ntoFloor.h" />
     <ClInclude Include="ntoMonster.h" />
     <ClInclude Include="ntoResource.h" />
     <ClInclude Include="ntoResources.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ntoFloor.cpp" />
     <ClCompile Include="ntoMonster.cpp" />
     <ClCompile Include="ntoResource.cpp" />
     <ClCompile Include="ntoResources.cpp" />
