@@ -6,6 +6,15 @@ namespace nto
 	class Player : public GameObject
 	{
 	public:
+		enum class eState
+		{
+			Direction,
+			Idle,
+			Move,
+			Jump,
+			Death,
+		};
+
 		Player();
 		virtual ~Player();
 
@@ -13,7 +22,13 @@ namespace nto
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-	private:
+		void Direction();
+		void Idle();
+		void Move();
+		void Jump();
+		void Dead();
 
+	private:
+		eState mState;
 	};
 }

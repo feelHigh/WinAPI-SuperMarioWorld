@@ -143,10 +143,13 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="ntoCollider.h" />
+    <ClInclude Include="ntoCollisionManager.h" />
     <ClInclude Include="ntoFloor.h" />
     <ClInclude Include="ntoMonster.h" />
     <ClInclude Include="ntoResource.h" />
     <ClInclude Include="ntoResources.h" />
+    <ClInclude Include="ntoRigidbody.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
@@ -177,10 +180,13 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ntoCollider.cpp" />
+    <ClCompile Include="ntoCollisionManager.cpp" />
     <ClCompile Include="ntoFloor.cpp" />
     <ClCompile Include="ntoMonster.cpp" />
     <ClCompile Include="ntoResource.cpp" />
     <ClCompile Include="ntoResources.cpp" />
+    <ClCompile Include="ntoRigidbody.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />

@@ -103,7 +103,8 @@ namespace nto
 		, Vector2 rightBottom
 		, Vector2 offset
 		, Vector2 scale
-		, float alpha)
+		, float alpha
+		, float rotate)
 	{
 		if (mBitmap == nullptr && mImage == nullptr)
 			return;
@@ -128,7 +129,6 @@ namespace nto
 			func.BlendFlags = 0;
 			func.AlphaFormat = AC_SRC_ALPHA;
 			// 0.0f ~ 1.0f -> 0 ~ 255
-			int alpha = 1.0f;
 			alpha = (int)(alpha * 255.0f);
 
 			if (alpha <= 0)
@@ -146,6 +146,21 @@ namespace nto
 		}
 		else if (mType == eTextureType::Png)
 		{
+			////create a new empty bitmap to hold rotated image
+			//Bitmap returnBitmap = new Bitmap(b.Width, b.Height);
+			////make a graphics object from the empty bitmap
+			//Graphics g = Graphics.FromImage(returnBitmap);
+			////move rotation point to center of image
+			//g.TranslateTransform((float)b.Width / 2, (float)b.Height / 2);
+			////rotate
+			//g.RotateTransform(angle);
+			////move image back
+			//g.TranslateTransform(-(float)b.Width / 2, -(float)b.Height / 2);
+			////draw passed in image onto graphics object
+			//g.DrawImage(b, new Point(0, 0));
+			//return returnBitmap;
+
+
 			//// 내가 원하는 픽셀을 투명화 시킬떄
 			Gdiplus::ImageAttributes imageAtt = {};
 			//// 투명화 시킬 픽셀 색 범위
@@ -153,6 +168,9 @@ namespace nto
 				, Gdiplus::Color(255, 255, 255));
 
 			Gdiplus::Graphics graphics(hdc);
+			graphics.TranslateTransform((float)pos.x, (float)pos.y);
+			graphics.RotateTransform(rotate);
+			graphics.TranslateTransform(-(float)pos.x, -(float)pos.y);
 			graphics.DrawImage(mImage
 				, Gdiplus::Rect
 				(
@@ -166,5 +184,9 @@ namespace nto
 				, Gdiplus::UnitPixel
 				, nullptr);
 		}
+
+		Rectangle(hdc
+			, pos.x, pos.y
+			, pos.x + 10, pos.y + 10);
 	}
 }

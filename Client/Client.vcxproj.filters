@@ -79,6 +79,15 @@
     <Filter Include="Contents\GameObject\Floor">
       <UniqueIdentifier>{68718814-c6b1-4a56-9e3c-4590bf7a74ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Component\Collider">
+      <UniqueIdentifier>{4d38b171-b279-40ad-9717-5597a6589b11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Collision">
+      <UniqueIdentifier>{21be45b3-6a6e-41ee-b60a-7aaab6fd8db7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Rigidbody">
+      <UniqueIdentifier>{83d1c054-a182-4461-833e-e3a387a7facf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -183,6 +192,15 @@
     <ClInclude Include="ntoFloor.h">
       <Filter>Contents\GameObject\Floor</Filter>
     </ClInclude>
+    <ClInclude Include="ntoCollider.h">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoCollisionManager.h">
+      <Filter>Engine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoRigidbody.h">
+      <Filter>Engine\Component\Rigidbody</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
@@ -269,6 +287,15 @@
     </ClCompile>
     <ClCompile Include="ntoFloor.cpp">
       <Filter>Contents\GameObject\Floor</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoCollider.cpp">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoCollisionManager.cpp">
+      <Filter>Engine\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoRigidbody.cpp">
+      <Filter>Engine\Component\Rigidbody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

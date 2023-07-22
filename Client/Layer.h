@@ -19,6 +19,7 @@ namespace nto
 		{
 			mGameObjects.push_back(gameObj);
 		}
+		std::vector<GameObject*>& GetGameObjects() { return mGameObjects; }
 
 	private:
 		std::vector<GameObject*> mGameObjects;

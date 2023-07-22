@@ -11,6 +11,7 @@
 #include "Background.h"
 #include "Camera.h"
 #include "Animator.h"
+#include "ntoCollider.h"
 
 namespace nto
 {
@@ -68,6 +69,10 @@ namespace nto
 		at->CreateAnimation(L"SmallMario_DuckDown", image3, Vector2(0.0f, 0.0f), Vector2(48.0f, 48.0f), 1);
 		at->SetScale(Vector2(2.0f, 2.0f));
 		at->SetAffectedCamera(true);
+
+		Collider* col = player->AddComponent<Collider>();
+		col->SetSize(Vector2(96.0f, 96.0f));
+		col->SetOffset(Vector2(0.0f, 0.0f));
 		#pragma endregion
 
 		#pragma region Monster Layer

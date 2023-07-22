@@ -4,6 +4,7 @@
 #include "TitleScene.h"
 #include "SceneManager.h"
 #include "Camera.h"
+#include "ntoCollisionManager.h"
 
 namespace nto
 {
@@ -39,9 +40,13 @@ namespace nto
 			, 0);
 		ShowWindow(mHwnd, true);
 
+		// 윈도우 해상도 동일한 비트맵 생성
 		mBackBuffer = CreateCompatibleBitmap(mHdc, mWidth, mHeight);
+
+		// 새로 생성한 비트맵을 가리키는 DC 생성
 		mBackHdc = CreateCompatibleDC(mHdc);
 
+		// 새로 생성한 비트맵과 DC를 서로 연결
 		HBITMAP defaultBitmap
 			= (HBITMAP)SelectObject(mBackHdc, mBackBuffer);
 		DeleteObject(defaultBitmap);
@@ -49,6 +54,7 @@ namespace nto
 		Time::Initailize();
 		Controller::Initailize();
 		Camera::Initalize();
+		CollisionManager::Initialize();
 		SceneManager::Initialize();
 	}
 

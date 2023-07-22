@@ -20,6 +20,8 @@ namespace nto
 			T* comp = nullptr;
 			for (Component* c : mComponents)
 			{
+				// 자식타입과 T타입이 일치한다면
+				// 주소를 반환 그렇지않다면 nullptr 반환
 				comp = dynamic_cast<T*>(c);
 				if (comp != nullptr)
 					return comp;
@@ -37,6 +39,10 @@ namespace nto
 
 			return comp;
 		}
+
+		virtual void OnCollisionEnter(class Collider* other);
+		virtual void OnCollisionStay(class Collider* other);
+		virtual void OnCollisionExit(class Collider* other);
 
 	private:
 		std::vector<Component*> mComponents;

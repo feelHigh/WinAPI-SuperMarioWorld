@@ -15,10 +15,11 @@ namespace nto
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		void CreateAnimation(const std::wstring& name
+		Animation* CreateAnimation(const std::wstring& name
 			, class Texture* texture
 			, Vector2 leftTop, Vector2 size, UINT spriteLength
 			, Vector2 offset = Vector2::Zero, float duration = 0.1f);
+
 		void CreateAnimationFolder(const std::wstring& name
 			, const std::wstring& path
 			, Vector2 offset = Vector2::Zero, float duration = 0.1f);
@@ -26,6 +27,7 @@ namespace nto
 		Animation* FindAnimation(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop = false);
 
+		bool IsActiveAnimationComplete() { return mActiveAnimation->IsComplete(); }
 		bool GetAffectedCamera() { return mbAffectedCamera; }
 		void SetAffectedCamera(bool enable) { mbAffectedCamera = enable; }
 		float GetAlpha() { return mAlpha; }

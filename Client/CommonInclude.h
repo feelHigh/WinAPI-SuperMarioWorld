@@ -6,6 +6,7 @@
 #include <functional>
 #include <string>
 #include <filesystem>
+#include <bitset>
 
 #include "framework.h"
 #include "CustomMath.h"
@@ -31,6 +32,8 @@ namespace nto::enums
 		SpriteRenderer,
 		Animation,
 		Animator,
+		Collider,
+		Rigidbody,
 		End,
 	};
 }
