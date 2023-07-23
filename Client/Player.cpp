@@ -4,11 +4,13 @@
 #include "CustomTime.h"
 #include "Animator.h"
 #include "ntoRigidbody.h"
+#include "ntoCollisionManager.h"
 
 namespace nto
 {
 	Player::Player()
 		: mState(eState::Idle)
+		, mDir(eMarioDirection::Right)
 	{
 	}
 
@@ -26,19 +28,25 @@ namespace nto
 
 		switch (mState)
 		{
-		case nto::Player::eState::Direction:
-			Direction();
-			break;
 		case nto::Player::eState::Idle:
 			Idle();
 			break;
-		case nto::Player::eState::Move:
-			Move();
+		case nto::Player::eState::Run:
+			Run();
+			break;
+		case nto::Player::eState::Duck:
+			Duck();
 			break;
 		case nto::Player::eState::Jump:
 			Jump();
 			break;
-		case nto::Player::eState::Death:
+		case nto::Player::eState::Fall:
+			Fall();
+			break;
+		case nto::Player::eState::Kick:
+			Kick();
+			break;
+		case nto::Player::eState::Dead:
 			Dead();
 			break;
 		default:
@@ -51,7 +59,15 @@ namespace nto
 		GameObject::Render(hdc);
 	}
 
-	void Player::Direction()
+	void Player::OnCollisionEnter(Collider* other)
+	{
+	}
+
+	void Player::OnCollisionStay(Collider* other)
+	{
+	}
+
+	void Player::OnCollisionExit(Collider* other)
 	{
 	}
 
@@ -59,53 +75,74 @@ namespace nto
 	{
 		Animator* animator = GetComponent<Animator>();
 
-		if (Controller::GetKey(eKeyCode::W))
+		if (Controller::GetKeyDown(eKeyCode::W))
 		{
-			//animator->PlayAnimation(L"PlayerUpMove", true);
-			//mState = eState::Move;
+			if (mDir == eMarioDirection::Left)
+			{
+				animator->PlayAnimation(L"Small_Jump_Left", true);
+			}
+			else
+			{
+				animator->PlayAnimation(L"Small_Jump_Right", true);
+			}
+			mState = eState::Jump;
 		}
 		if (Controller::GetKey(eKeyCode::A))
 		{
-			animator->PlayAnimation(L"SmallMario_RunLeft", true);
-			mState = eState::Move;
+			mDir = eMarioDirection::Left;
+			animator->PlayAnimation(L"Small_Run_Left", true);
+			mState = eState::Run;
 		}
 		if (Controller::GetKey(eKeyCode::S))
 		{
-			animator->PlayAnimation(L"SmallMario_DuckDown", true);
-			mState = eState::Move;
+			if (mDir == eMarioDirection::Left)
+			{
+				animator->PlayAnimation(L"Small_Duck_Left", true);
+			}
+			else
+			{
+				animator->PlayAnimation(L"Small_Duck_Right", true);
+			}
+
+			mState = eState::Duck;
 		}
 		if (Controller::GetKey(eKeyCode::D))
 		{
-			animator->PlayAnimation(L"SmallMario_RunRight", true);
-			mState = eState::Move;
+			mDir = eMarioDirection::Right;
+			animator->PlayAnimation(L"Small_Run_Right", true);
+			mState = eState::Run;
+		}
+		if (Controller::GetKeyDown(eKeyCode::Z))
+		{
+			mState = eState::Kick;
+		}
+		if (Controller::GetKeyDown(eKeyCode::X))
+		{
+			mState = eState::Dead;
 		}
 	}
 
-	void Player::Move()
+	void Player::Run()
 	{
 		Transform* tr = GetComponent<Transform>();
-		//Vector2 pos = tr->GetPosition();
+		Vector2 pos = tr->GetPosition();
+
 		if (Controller::GetKey(eKeyCode::W))
 		{
-			GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, -200.0f));
-			//pos.y -= 100.0f * Time::DeltaTime();
+			mState = eState::Jump;
 		}
 		if (Controller::GetKey(eKeyCode::A))
 		{
-			//pos.x -= 100.0f * Time::DeltaTime();
-			GetComponent<Rigidbody>()->AddForce(Vector2(-200.0f, 0.0f));
+			pos.x -= 250.0f * Time::DeltaTime();
 		}
 		if (Controller::GetKey(eKeyCode::S))
 		{
-			//pos.y += 100.0f * Time::DeltaTime();
-			GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, 200.0f));
+			mState = eState::Duck;
 		}
 		if (Controller::GetKey(eKeyCode::D))
 		{
-			//pos.x += 100.0f * Time::DeltaTime();
-			GetComponent<Rigidbody>()->AddForce(Vector2(200.0f, 0.0f));
+			pos.x += 250.0f * Time::DeltaTime();
 		}
-		//tr->SetPosition(pos);
 
 		if (Controller::GetKeyUp(eKeyCode::W)
 			|| Controller::GetKeyUp(eKeyCode::A)
@@ -113,16 +150,154 @@ namespace nto
 			|| Controller::GetKeyUp(eKeyCode::D))
 		{
 			Animator* animator = GetComponent<Animator>();
-			//animator->PlayAnimation(L"PlayerIdle", true);
+
+			if (mDir == eMarioDirection::Left)
+			{
+				animator->PlayAnimation(L"Small_Idle_Left", true);
+			}
+			else
+			{
+				animator->PlayAnimation(L"Small_Idle_Right", true);
+			}
+			mState = eState::Idle;
+		}
+
+		tr->SetPosition(pos);
+	}
+
+	void Player::Duck()
+	{
+		Transform* tr = GetComponent<Transform>();
+		Animator* animator = GetComponent<Animator>();
+
+		if (Controller::GetKey(eKeyCode::A))
+		{
+			mDir = eMarioDirection::Left;
+			animator->PlayAnimation(L"Small_Duck_Left", true);
+		}
+		if (Controller::GetKey(eKeyCode::S))
+		{
+		}
+		if (Controller::GetKey(eKeyCode::D))
+		{
+			mDir = eMarioDirection::Right;
+			animator->PlayAnimation(L"Small_Duck_Right", true);
+		}
+
+		if (Controller::GetKeyUp(eKeyCode::S))
+		{
+			if (mDir == eMarioDirection::Left)
+			{
+				animator->PlayAnimation(L"Small_Idle_Left", true);
+			}
+			else
+			{
+				animator->PlayAnimation(L"Small_Idle_Right", true);
+			}
 			mState = eState::Idle;
 		}
 	}
 
 	void Player::Jump()
 	{
+		Transform* tr = GetComponent<Transform>();
+		Animator* animator = GetComponent<Animator>();
+		Vector2 pos = tr->GetPosition();
+
+		if (Controller::GetKey(eKeyCode::W))
+		{
+			//pos.y -= 2000.0f * Time::DeltaTime();
+			GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, -2000.0f));
+		}
+
+		if (Controller::GetKeyUp(eKeyCode::W))
+		{
+
+			if (mDir == eMarioDirection::Left)
+			{
+				animator->PlayAnimation(L"Small_Fall_Left", true);
+			}
+			else
+			{
+				animator->PlayAnimation(L"Small_Fall_Right", true);
+			}
+			mState = eState::Fall;
+		}
+
+		tr->SetPosition(pos);
+	}
+
+	void Player::Fall()
+	{
+		Transform* tr = GetComponent<Transform>();
+		Animator* animator = GetComponent<Animator>();
+		Vector2 pos = tr->GetPosition();
+
+		if (Controller::GetKey(eKeyCode::A))
+		{
+			pos.x -= 250.0f * Time::DeltaTime();
+		}
+		if (Controller::GetKey(eKeyCode::S))
+		{
+			GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, +2000.0f));
+		}
+		if (Controller::GetKey(eKeyCode::D))
+		{
+			pos.x += 250.0f * Time::DeltaTime();
+		}
+
+		// Fall 즉시 Idle상태로
+		mState = eState::Idle;
+	}
+
+	void Player::Kick()
+	{
+		Animator* animator = GetComponent<Animator>();
+
+		if (mDir == eMarioDirection::Left)
+		{
+			animator->PlayAnimation(L"Small_Kick_Left", false);
+		}
+		else
+		{
+			animator->PlayAnimation(L"Small_Kick_Right", false);
+		}
+
+		if (Controller::GetKeyUp(eKeyCode::Z))
+		{
+			if (mDir == eMarioDirection::Left)
+			{
+				animator->PlayAnimation(L"Small_Idle_Left", false);
+				mState = eState::Idle;
+			}
+			else
+			{
+				animator->PlayAnimation(L"Small_Idle_Right", false);
+				mState = eState::Idle;
+			}
+		}
 	}
 
 	void Player::Dead()
 	{
+		Transform* tr = GetComponent<Transform>();
+		Animator* animator = GetComponent<Animator>();
+		Vector2 pos = tr->GetPosition();
+
+		if (Controller::GetKeyUp(eKeyCode::X))
+		{
+			//GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, -1000.0f));
+			if (mDir == eMarioDirection::Left)
+			{
+				animator->PlayAnimation(L"Small_Swim_Left", true);
+				mState = eState::Idle;
+			}
+			else
+			{
+				animator->PlayAnimation(L"Small_Swim_Right", true);
+				mState = eState::Idle;
+			}
+		}
+		tr->SetPosition(pos);
 	}
 }

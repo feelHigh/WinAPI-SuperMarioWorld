@@ -8,11 +8,19 @@ namespace nto
 	public:
 		enum class eState
 		{
-			Direction,
 			Idle,
-			Move,
+			Run,
+			Duck,
 			Jump,
-			Death,
+			Fall,
+			Kick,
+			Dead,
+		};
+
+		enum class eMarioDirection
+		{
+			Left = 0,
+			Right = 1,
 		};
 
 		Player();
@@ -22,13 +30,20 @@ namespace nto
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		void Direction();
+		virtual void OnCollisionEnter(class Collider* other) override;
+		virtual void OnCollisionStay(class Collider* other) override;
+		virtual void OnCollisionExit(class Collider* other) override;
+
 		void Idle();
-		void Move();
+		void Run();
+		void Duck();
 		void Jump();
+		void Fall();
+		void Kick();
 		void Dead();
 
 	private:
 		eState mState;
+		eMarioDirection mDir;
 	};
 }

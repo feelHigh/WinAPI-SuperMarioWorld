@@ -25,6 +25,8 @@ namespace nto
 		float mKineticFrction;
 		float mCoefficentFrction;
 
+		float GRAVITY;
+
 		Vector2 mForce;
 		Vector2 mAccelation;
 		Vector2 mVelocity;

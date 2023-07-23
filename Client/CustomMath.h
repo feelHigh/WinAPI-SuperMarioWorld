@@ -94,7 +94,7 @@ namespace nto::math
             return *this;
         }
 
-        bool operator ==(const Vector2& other)
+        bool operator ==(const Vector2& other) const
         {
             return (x == other.x && y == other.y);
         }

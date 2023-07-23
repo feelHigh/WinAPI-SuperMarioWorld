@@ -36,4 +36,17 @@ namespace nto::enums
 		Rigidbody,
 		End,
 	};
+
+	enum class eMarioClass
+	{
+		Small,
+		Super,
+		Fire,
+	};
+
+	enum class ePlayerDirection
+	{
+		Left = 0,
+		Right = 1,
+	};
 }

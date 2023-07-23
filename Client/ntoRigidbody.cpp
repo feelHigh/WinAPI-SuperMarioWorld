@@ -8,7 +8,8 @@ namespace nto
 	Rigidbody::Rigidbody()
 		: Component(eComponentType::Rigidbody)
 		, mMass(1.0f)
-		, mFriction(10.0f)
+		, mFriction(100.0f)
+		, GRAVITY(9.8f)
 	{
 	}
 
@@ -22,9 +23,7 @@ namespace nto
 
 	void Rigidbody::Update()
 	{
-
 		//f(힘) = m(질량)a 가속도
-		//
 		mAccelation = mForce / mMass;
 
 		// 속도에 가속도를 더해줘야 총 속도가 나온다
@@ -38,7 +37,6 @@ namespace nto
 			friction = friction.normalize() * mFriction * mMass * Time::DeltaTime();
 
 			// 마찰력으로 의한 속도 감소량이 현재 속도보다 큰 경우
-
 			if (mVelocity.length() < friction.length())
 			{
 				// 멈춰
@@ -49,7 +47,6 @@ namespace nto
 				mVelocity += friction;
 			}
 		}
-
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();

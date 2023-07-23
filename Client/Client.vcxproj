@@ -150,6 +150,7 @@
     <ClInclude Include="ntoResource.h" />
     <ClInclude Include="ntoResources.h" />
     <ClInclude Include="ntoRigidbody.h" />
+    <ClInclude Include="ntoSmallMario.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="ntoResource.cpp" />
     <ClCompile Include="ntoResources.cpp" />
     <ClCompile Include="ntoRigidbody.cpp" />
+    <ClCompile Include="ntoSmallMario.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />

@@ -16,6 +16,7 @@ namespace nto
 		, mBackBuffer(NULL)
 		, mBackHdc(NULL)
 	{
+
 	}
 
 	Application::~Application()
@@ -29,6 +30,7 @@ namespace nto
 
 		mWidth = 1024;
 		mHeight = 896;
+
 
 		RECT rect = { 0, 0, mWidth, mHeight };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
@@ -56,6 +58,7 @@ namespace nto
 		Camera::Initalize();
 		CollisionManager::Initialize();
 		SceneManager::Initialize();
+
 	}
 
 	void Application::Run()
@@ -69,7 +72,9 @@ namespace nto
 		Time::Update();
 		Controller::Update();
 		Camera::Update();
+		CollisionManager::Update();
 		SceneManager::Update();
+
 	}
 
 	void Application::Render()
@@ -82,6 +87,7 @@ namespace nto
 
 		Time::Render(mBackHdc);
 
+		CollisionManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 
 		BitBlt(mHdc, 0, 0, mWidth, mHeight

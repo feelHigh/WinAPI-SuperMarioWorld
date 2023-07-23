@@ -88,6 +88,9 @@
     <Filter Include="Engine\Component\Rigidbody">
       <UniqueIdentifier>{83d1c054-a182-4461-833e-e3a387a7facf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Player\Class">
+      <UniqueIdentifier>{fd351b42-9fb5-4643-a602-6b9ed0cea04f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -201,6 +204,9 @@
     <ClInclude Include="ntoRigidbody.h">
       <Filter>Engine\Component\Rigidbody</Filter>
     </ClInclude>
+    <ClInclude Include="ntoSmallMario.h">
+      <Filter>Contents\GameObject\Player\Class</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
@@ -296,6 +302,9 @@
     </ClCompile>
     <ClCompile Include="ntoRigidbody.cpp">
       <Filter>Engine\Component\Rigidbody</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoSmallMario.cpp">
+      <Filter>Contents\GameObject\Player\Class</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

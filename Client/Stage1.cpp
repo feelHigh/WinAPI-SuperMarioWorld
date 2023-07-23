@@ -12,6 +12,8 @@
 #include "Camera.h"
 #include "Animator.h"
 #include "ntoCollider.h"
+#include "ntoCollisionManager.h"
+#include "ntoRigidbody.h"
 
 namespace nto
 {
@@ -38,7 +40,6 @@ namespace nto
 		#pragma endregion
 
 		#pragma region Floor Layer
-		// 바닥 만들 예정
 		Texture* floorImage = Resources::Load<Texture>(L"Stage1_FloorImage"
 			, L"..\\Assets\\Image\\Floor-Tiles\\ground_Middle.bmp");
 
@@ -48,31 +49,50 @@ namespace nto
 		flsr->SetScale(Vector2(2.0f, 2.0f));
 		flsr->SetAffectCamera(false);
 		fl->GetComponent<Transform>()->SetPosition(Vector2(500.0f, 850.0f));
+		
+		Collider* groundCol = fl->AddComponent<Collider>();
+		groundCol->SetSize(Vector2(2560.0f, 224.0f));
 		#pragma endregion
 
 		#pragma region Player Layer
-		Texture* image = Resources::Load<Texture>(L"SmallMario_RunLeft"
-			, L"..\\Assets\\Image\\Mario\\SmallMario\\RunLeft.bmp");
-		Texture* image2 = Resources::Load<Texture>(L"SmallMario_RunRight"
-			, L"..\\Assets\\Image\\Mario\\SmallMario\\RunRight.bmp");
-		Texture* image3 = Resources::Load<Texture>(L"SmallMario_DuckDown"
-			, L"..\\Assets\\Image\\Mario\\SmallMario\\DuckDown_Right.bmp");
+		Texture* mario_Left = Resources::Load<Texture>(L"Direction_Left"
+			, L"..\\Assets\\Mario\\Mario_Left.bmp");
+		Texture* mario_Right = Resources::Load<Texture>(L"Direction_Right"
+			, L"..\\Assets\\Mario\\Mario_Right.bmp");
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
 		Transform* tr = player->GetComponent<Transform>();
 
-		tr->SetPosition(Vector2(400.0f, 710.0f));
+		tr->SetPosition(Vector2(400.0f, 690.0f));
 
 		Animator* at = player->AddComponent<Animator>();
-		at->CreateAnimation(L"SmallMario_RunLeft", image, Vector2(0.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, 0.0f), 0.2f);
-		at->CreateAnimation(L"SmallMario_RunRight", image2, Vector2(0.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, 0.0f), 0.2f);
-		at->CreateAnimation(L"SmallMario_DuckDown", image3, Vector2(0.0f, 0.0f), Vector2(48.0f, 48.0f), 1);
+		// Dir = Left
+		at->CreateAnimation(L"Small_Idle_Left", mario_Left, Vector2(0.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_Run_Left", mario_Left, Vector2(48.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_Jump_Left", mario_Left, Vector2(192.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_Fall_Left", mario_Left, Vector2(240.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_LookUp_Left", mario_Left, Vector2(288.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_Duck_Left", mario_Left, Vector2(336.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_Kick_Left", mario_Left, Vector2(384.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_Swim_Left", mario_Left, Vector2(432.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, 0.0f), 0.2f);
+		// Dir = Right
+		at->CreateAnimation(L"Small_Idle_Right", mario_Right, Vector2(0.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_Run_Right", mario_Right, Vector2(48.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_Jump_Right", mario_Right, Vector2(192.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_Fall_Right", mario_Right, Vector2(240.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_LookUp_Right", mario_Right, Vector2(288.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_Duck_Right", mario_Right, Vector2(336.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_Kick_Right", mario_Right, Vector2(384.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"Small_Swim_Right", mario_Right, Vector2(432.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, 0.0f), 0.2f);
+
 		at->SetScale(Vector2(2.0f, 2.0f));
+		at->PlayAnimation(L"Small_Idle_Right", true);
 		at->SetAffectedCamera(true);
 
 		Collider* col = player->AddComponent<Collider>();
 		col->SetSize(Vector2(96.0f, 96.0f));
-		col->SetOffset(Vector2(0.0f, 0.0f));
+		//col->SetOffset(Vector2(0.0f, 0.0f));
+		player->AddComponent<Rigidbody>();
 		#pragma endregion
 
 		#pragma region Monster Layer
@@ -127,6 +147,10 @@ namespace nto
 		pirAni->PlayAnimation(L"piranha_Jump", true);
 		ibossAni->PlayAnimation(L"iggy_Right", true);
 		#pragma endregion
+
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
+
+		//Camera::SetTarget(player);
 	}
 
 	void Stage1::Update()
