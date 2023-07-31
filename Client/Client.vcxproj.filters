@@ -91,6 +91,15 @@
     <Filter Include="Contents\GameObject\Player\Class">
       <UniqueIdentifier>{fd351b42-9fb5-4643-a602-6b9ed0cea04f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Effect">
+      <UniqueIdentifier>{31c34194-5d03-4eeb-a3ce-536143df0f87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\UI">
+      <UniqueIdentifier>{00c7c9e4-7aef-4681-93cb-befe3144886d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Monster\Class">
+      <UniqueIdentifier>{c1318407-fd71-446f-9982-0a8c65b687c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -207,6 +216,21 @@
     <ClInclude Include="ntoSmallMario.h">
       <Filter>Contents\GameObject\Player\Class</Filter>
     </ClInclude>
+    <ClInclude Include="ntoSuperMario.h">
+      <Filter>Contents\GameObject\Player\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoFireMario.h">
+      <Filter>Contents\GameObject\Player\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoRedKoopa.h">
+      <Filter>Contents\GameObject\Monster\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoCharginChuck.h">
+      <Filter>Contents\GameObject\Monster\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoMontyMole.h">
+      <Filter>Contents\GameObject\Monster\Class</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
@@ -305,6 +329,21 @@
     </ClCompile>
     <ClCompile Include="ntoSmallMario.cpp">
       <Filter>Contents\GameObject\Player\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoSuperMario.cpp">
+      <Filter>Contents\GameObject\Player\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoFireMario.cpp">
+      <Filter>Contents\GameObject\Player\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoRedKoopa.cpp">
+      <Filter>Contents\GameObject\Monster\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoCharginChuck.cpp">
+      <Filter>Contents\GameObject\Monster\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoMontyMole.cpp">
+      <Filter>Contents\GameObject\Monster\Class</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

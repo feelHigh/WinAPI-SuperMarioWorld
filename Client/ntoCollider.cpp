@@ -42,10 +42,10 @@ namespace nto
 		pos.y += mOffset.y;
 
 		pos = Camera::CalculatePosition(pos);
-
+		
 		HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, transparentBrush);
-
+		
 		HPEN pen = NULL;
 		if (mbIsCollision)
 		{
@@ -67,6 +67,7 @@ namespace nto
 
 		SelectObject(hdc, oldPen);
 		DeleteObject(pen);
+		
 	}
 	void Collider::OnCollisionEnter(Collider* other)
 	{

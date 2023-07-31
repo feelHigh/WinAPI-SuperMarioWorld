@@ -40,18 +40,84 @@ namespace nto
 		#pragma endregion
 
 		#pragma region Floor Layer
-		Texture* floorImage = Resources::Load<Texture>(L"Stage1_FloorImage"
-			, L"..\\Assets\\Image\\Floor-Tiles\\ground_Middle.bmp");
+		Texture* Stage1_Floor_FrontHalf_Image = Resources::Load<Texture>(L"Stage1_Floor_FrontHalf"
+			, L"..\\Assets\\Image\\Floor\\Stage1_FrontHalf.bmp");
+		Texture* Stage1_Floor_Stair1_1_Image = Resources::Load<Texture>(L"Stage1_Floor_Stair1_1"
+			, L"..\\Assets\\Image\\Floor\\Stage1_Stair1_1_4.bmp");
+		Texture* Stage1_Floor_Stair1_2_Image = Resources::Load<Texture>(L"Stage1_Floor_Stair1_2"
+			, L"..\\Assets\\Image\\Floor\\Stage1_Stair1_2_4.bmp");
+		Texture* Stage1_Floor_Stair1_3_Image = Resources::Load<Texture>(L"Stage1_Floor_Stair1_3"
+			, L"..\\Assets\\Image\\Floor\\Stage1_Stair1_3_4.bmp");
+		Texture* Stage1_Floor_Stair1_4_Image = Resources::Load<Texture>(L"Stage1_Floor_Stair1_4"
+			, L"..\\Assets\\Image\\Floor\\Stage1_Stair1_4_4.bmp");
+		Texture* Stage1_Floor_Stair2_1_Image = Resources::Load<Texture>(L"Stage1_Floor_Stair2_1"
+			, L"..\\Assets\\Image\\Floor\\Stage1_Stair2_1_2.bmp");
+		Texture* Stage1_Floor_Stair2_2_Image = Resources::Load<Texture>(L"Stage1_Floor_Stair2_2"
+			, L"..\\Assets\\Image\\Floor\\Stage1_Stair2_2_2.bmp");
 
-		Floor* fl = object::Instantiate<Floor>(eLayerType::Floor);
-		SpriteRenderer* flsr = fl->AddComponent<SpriteRenderer>();
-		flsr->SetImage(floorImage);
-		flsr->SetScale(Vector2(2.0f, 2.0f));
-		flsr->SetAffectCamera(false);
-		fl->GetComponent<Transform>()->SetPosition(Vector2(500.0f, 850.0f));
-		
-		Collider* groundCol = fl->AddComponent<Collider>();
-		groundCol->SetSize(Vector2(2560.0f, 224.0f));
+		Floor* Stage1_Floor_FrontHalf_Entity = object::Instantiate<Floor>(eLayerType::Floor);
+		Floor* Stage1_Floor_Stair1_1_Entity = object::Instantiate<Floor>(eLayerType::Floor);
+		Floor* Stage1_Floor_Stair1_2_Entity = object::Instantiate<Floor>(eLayerType::Floor);
+		Floor* Stage1_Floor_Stair1_3_Entity = object::Instantiate<Floor>(eLayerType::Floor);
+		Floor* Stage1_Floor_Stair1_4_Entity = object::Instantiate<Floor>(eLayerType::Floor);
+		Floor* Stage1_Floor_Stair2_1_Entity = object::Instantiate<Floor>(eLayerType::Floor);
+		Floor* Stage1_Floor_Stair2_2_Entity = object::Instantiate<Floor>(eLayerType::Floor);
+
+		SpriteRenderer* FrontHalf_Renderer = Stage1_Floor_FrontHalf_Entity->AddComponent<SpriteRenderer>();
+		SpriteRenderer* Stair1_1_Renderer = Stage1_Floor_Stair1_1_Entity->AddComponent<SpriteRenderer>();
+		SpriteRenderer* Stair1_2_Renderer = Stage1_Floor_Stair1_2_Entity->AddComponent<SpriteRenderer>();
+		SpriteRenderer* Stair1_3_Renderer = Stage1_Floor_Stair1_3_Entity->AddComponent<SpriteRenderer>();
+		SpriteRenderer* Stair1_4_Renderer = Stage1_Floor_Stair1_4_Entity->AddComponent<SpriteRenderer>();
+		SpriteRenderer* Stair2_1_Renderer = Stage1_Floor_Stair2_1_Entity->AddComponent<SpriteRenderer>();
+		SpriteRenderer* Stair2_2_Renderer = Stage1_Floor_Stair2_2_Entity->AddComponent<SpriteRenderer>();
+
+		FrontHalf_Renderer->SetImage(Stage1_Floor_FrontHalf_Image);
+		Stair1_1_Renderer->SetImage(Stage1_Floor_Stair1_1_Image);
+		Stair1_2_Renderer->SetImage(Stage1_Floor_Stair1_2_Image);
+		Stair1_3_Renderer->SetImage(Stage1_Floor_Stair1_3_Image);
+		Stair1_4_Renderer->SetImage(Stage1_Floor_Stair1_4_Image);
+		Stair2_1_Renderer->SetImage(Stage1_Floor_Stair2_1_Image);
+		Stair2_2_Renderer->SetImage(Stage1_Floor_Stair2_2_Image);
+
+		FrontHalf_Renderer->SetScale(Vector2(4.0f, 4.0f));
+		Stair1_1_Renderer->SetScale(Vector2(4.0f, 4.0f));
+		Stair1_2_Renderer->SetScale(Vector2(4.0f, 4.0f));
+		Stair1_3_Renderer->SetScale(Vector2(4.0f, 4.0f));
+		Stair1_4_Renderer->SetScale(Vector2(4.0f, 4.0f));
+		Stair2_1_Renderer->SetScale(Vector2(4.0f, 4.0f));
+		Stair2_2_Renderer->SetScale(Vector2(4.0f, 4.0f));
+
+		FrontHalf_Renderer->SetAffectCamera(false);
+		Stair1_1_Renderer->SetAffectCamera(false);
+		Stair1_2_Renderer->SetAffectCamera(false);
+		Stair1_3_Renderer->SetAffectCamera(false);
+		Stair1_4_Renderer->SetAffectCamera(false);
+		Stair2_1_Renderer->SetAffectCamera(false);
+		Stair2_2_Renderer->SetAffectCamera(false);
+
+		Stage1_Floor_FrontHalf_Entity->GetComponent<Transform>()->SetPosition(Vector2(7296.0f, 824.0f));
+		Stage1_Floor_Stair1_1_Entity->GetComponent<Transform>()->SetPosition(Vector2(8320.0f, 696.0f));
+		Stage1_Floor_Stair1_2_Entity->GetComponent<Transform>()->SetPosition(Vector2(8480.0f, 632.0f));
+		Stage1_Floor_Stair1_3_Entity->GetComponent<Transform>()->SetPosition(Vector2(8608.0f, 568.0f));
+		Stage1_Floor_Stair1_4_Entity->GetComponent<Transform>()->SetPosition(Vector2(8704.0f, 504.0f));
+		Stage1_Floor_Stair2_1_Entity->GetComponent<Transform>()->SetPosition(Vector2(14272.0f, 696.0f));
+		Stage1_Floor_Stair2_2_Entity->GetComponent<Transform>()->SetPosition(Vector2(14272.0f, 632.0f));
+
+		Collider* FrontHalf_Collider = Stage1_Floor_FrontHalf_Entity->AddComponent<Collider>();
+		Collider* Stair1_1_Collider = Stage1_Floor_Stair1_1_Entity->AddComponent<Collider>();
+		Collider* Stair1_2_Collider = Stage1_Floor_Stair1_2_Entity->AddComponent<Collider>();
+		Collider* Stair1_3_Collider = Stage1_Floor_Stair1_3_Entity->AddComponent<Collider>();
+		Collider* Stair1_4_Collider = Stage1_Floor_Stair1_4_Entity->AddComponent<Collider>();
+		Collider* Stair2_1_Collider = Stage1_Floor_Stair2_1_Entity->AddComponent<Collider>();
+		Collider* Stair2_2_Collider = Stage1_Floor_Stair2_2_Entity->AddComponent<Collider>();
+
+		FrontHalf_Collider->SetSize(Vector2(14592.0f, 192.0f));
+		Stair1_1_Collider->SetSize(Vector2(1664.0f, 64.0f));
+		Stair1_2_Collider->SetSize(Vector2(1344.0f, 64.0f));
+		Stair1_3_Collider->SetSize(Vector2(1088.0f, 64.0f));
+		Stair1_4_Collider->SetSize(Vector2(896.0f, 64.0f));
+		Stair2_1_Collider->SetSize(Vector2(640.0f, 64.0f));
+		Stair2_2_Collider->SetSize(Vector2(640.0f, 64.0f));
 		#pragma endregion
 
 		#pragma region Player Layer
@@ -95,62 +161,9 @@ namespace nto
 		player->AddComponent<Rigidbody>();
 		#pragma endregion
 
-		#pragma region Monster Layer
-		Texture* koopaGreen_Right = Resources::Load<Texture>(L"koopaGreen_Right"
-			, L"..\\Assets\\Image\\Enemies\\KoopaTroopa_Green_Right.bmp");
-		Texture* paraGreen_Right = Resources::Load<Texture>(L"paraGreen_Right"
-			, L"..\\Assets\\Image\\Enemies\\ParaTroopa_Green_Right.bmp");
-		Texture* charginChuck_Right = Resources::Load<Texture>(L"charginChuck_Right"
-			, L"..\\Assets\\Image\\Enemies\\Chargin_Chuck_Right.bmp");
-		Texture* piranhaPlant_Jump = Resources::Load<Texture>(L"piranha_Jump"
-			, L"..\\Assets\\Image\\Enemies\\Jumping_Piranha_Plant.bmp");
-		Texture* iggyBoss_Right = Resources::Load<Texture>(L"iggy_Right"
-			, L"..\\Assets\\Image\\Enemies\\Iggy_Base.bmp");
-
-		Monster* koopaGreen = object::Instantiate<Monster>(eLayerType::Monster);
-		Monster* paraGreen = object::Instantiate<Monster>(eLayerType::Monster);
-		Monster* charginChuck = object::Instantiate<Monster>(eLayerType::Monster);
-		Monster* piranhaPlant = object::Instantiate<Monster>(eLayerType::Monster);
-		Monster* iggyBoss = object::Instantiate<Monster>(eLayerType::Monster);
-		Transform* kgTr = koopaGreen->GetComponent<Transform>();
-		Transform* pgTr = paraGreen->GetComponent<Transform>();
-		Transform* ccTr = charginChuck->GetComponent<Transform>();
-		Transform* pirTr = piranhaPlant->GetComponent<Transform>();
-		Transform* ibossTr = iggyBoss->GetComponent<Transform>();
-
-		kgTr->SetPosition(Vector2(500.0f, 100.0f));
-		pgTr->SetPosition(Vector2(500.0f, 200.0f));
-		ccTr->SetPosition(Vector2(500.0f, 300.0f));
-		pirTr->SetPosition(Vector2(500.0f, 400.0f));
-		ibossTr->SetPosition(Vector2(500.0f, 500.0f));
-
-		Animator* kgAni = koopaGreen->AddComponent<Animator>();
-		Animator* pgAni = paraGreen->AddComponent<Animator>();
-		Animator* ccAni = charginChuck->AddComponent<Animator>();
-		Animator* pirAni = piranhaPlant->AddComponent<Animator>();
-		Animator* ibossAni = iggyBoss->AddComponent<Animator>();
-		kgAni->CreateAnimation(L"koopaGreen_Right", koopaGreen_Right, Vector2(0.0f, 0.0f), Vector2(16.0f, 27.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
-		pgAni->CreateAnimation(L"paraGreen_Right", paraGreen_Right, Vector2(0.0f, 0.0f), Vector2(22.0f, 28.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
-		ccAni->CreateAnimation(L"charginChuck_Right", charginChuck_Right, Vector2(0.0f, 0.0f), Vector2(26.0f, 26.0f), 6, Vector2(0.0f, 0.0f), 0.2f);
-		pirAni->CreateAnimation(L"piranha_Jump", piranhaPlant_Jump, Vector2(0.0f, 0.0f), Vector2(16.0f, 21.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
-		ibossAni->CreateAnimation(L"iggy_Right", iggyBoss_Right, Vector2(0.0f, 0.0f), Vector2(25.0f, 30.0f), 3, Vector2(0.0f, 0.0f), 0.1f);
-
-		kgAni->SetScale(Vector2(2.0f, 2.0f));
-		pgAni->SetScale(Vector2(2.0f, 2.0f));
-		ccAni->SetScale(Vector2(2.0f, 2.0f));
-		pirAni->SetScale(Vector2(2.0f, 2.0f));
-		ibossAni->SetScale(Vector2(2.0f, 2.0f));
-
-		kgAni->PlayAnimation(L"koopaGreen_Right", true);
-		pgAni->PlayAnimation(L"paraGreen_Right", true);
-		ccAni->PlayAnimation(L"charginChuck_Right", true);
-		pirAni->PlayAnimation(L"piranha_Jump", true);
-		ibossAni->PlayAnimation(L"iggy_Right", true);
-		#pragma endregion
-
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
 
-		//Camera::SetTarget(player);
+		Camera::SetTarget(player);
 	}
 
 	void Stage1::Update()

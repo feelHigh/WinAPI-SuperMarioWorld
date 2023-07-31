@@ -6,6 +6,7 @@
 namespace nto
 {
 	Monster::Monster()
+		: mDeathTime(1.0f)
 	{
 	}
 
@@ -23,13 +24,30 @@ namespace nto
 
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* anim = GetComponent<Animator>();
-
+		//pos.x += 300.0f * Time::DeltaTime();
 		tr->SetPosition(pos);
+
+		//mDeathTime -= Time::DeltaTime();
+		//if (mDeathTime < 0.0f)
+		//{
+		//	Destroy(this);
+		//}
 	}
 
 	void Monster::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
+	}
+
+	void Monster::OnCollisionEnter(Collider* other)
+	{
+	}
+
+	void Monster::OnCollisionStay(Collider* other)
+	{
+	}
+
+	void Monster::OnCollisionExit(Collider* other)
+	{
 	}
 }

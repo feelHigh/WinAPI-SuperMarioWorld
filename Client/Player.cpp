@@ -1,10 +1,14 @@
 #include "Player.h"
 #include "Transform.h"
 #include "Controller.h"
+#include "ntoCollider.h"
 #include "CustomTime.h"
 #include "Animator.h"
 #include "ntoRigidbody.h"
 #include "ntoCollisionManager.h"
+#include "Object.h"
+#include "Texture.h"
+#include "ntoResources.h"
 
 namespace nto
 {
@@ -77,6 +81,12 @@ namespace nto
 
 		if (Controller::GetKeyDown(eKeyCode::W))
 		{
+			Rigidbody* rb = GetComponent<Rigidbody>();
+			Vector2 velocity = rb->GetVelocity();
+			velocity.y = -500.0f;
+			rb->SetVelocity(velocity);
+			rb->SetGround(false);
+
 			if (mDir == eMarioDirection::Left)
 			{
 				animator->PlayAnimation(L"Small_Jump_Left", true);
@@ -112,14 +122,6 @@ namespace nto
 			animator->PlayAnimation(L"Small_Run_Right", true);
 			mState = eState::Run;
 		}
-		if (Controller::GetKeyDown(eKeyCode::Z))
-		{
-			mState = eState::Kick;
-		}
-		if (Controller::GetKeyDown(eKeyCode::X))
-		{
-			mState = eState::Dead;
-		}
 	}
 
 	void Player::Run()
@@ -133,7 +135,7 @@ namespace nto
 		}
 		if (Controller::GetKey(eKeyCode::A))
 		{
-			pos.x -= 250.0f * Time::DeltaTime();
+			pos.x -= 1000.0f * Time::DeltaTime();
 		}
 		if (Controller::GetKey(eKeyCode::S))
 		{
@@ -141,7 +143,7 @@ namespace nto
 		}
 		if (Controller::GetKey(eKeyCode::D))
 		{
-			pos.x += 250.0f * Time::DeltaTime();
+			pos.x += 1000.0f * Time::DeltaTime();
 		}
 
 		if (Controller::GetKeyUp(eKeyCode::W)
@@ -252,52 +254,9 @@ namespace nto
 
 	void Player::Kick()
 	{
-		Animator* animator = GetComponent<Animator>();
-
-		if (mDir == eMarioDirection::Left)
-		{
-			animator->PlayAnimation(L"Small_Kick_Left", false);
-		}
-		else
-		{
-			animator->PlayAnimation(L"Small_Kick_Right", false);
-		}
-
-		if (Controller::GetKeyUp(eKeyCode::Z))
-		{
-			if (mDir == eMarioDirection::Left)
-			{
-				animator->PlayAnimation(L"Small_Idle_Left", false);
-				mState = eState::Idle;
-			}
-			else
-			{
-				animator->PlayAnimation(L"Small_Idle_Right", false);
-				mState = eState::Idle;
-			}
-		}
 	}
 
 	void Player::Dead()
 	{
-		Transform* tr = GetComponent<Transform>();
-		Animator* animator = GetComponent<Animator>();
-		Vector2 pos = tr->GetPosition();
-
-		if (Controller::GetKeyUp(eKeyCode::X))
-		{
-			//GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, -1000.0f));
-			if (mDir == eMarioDirection::Left)
-			{
-				animator->PlayAnimation(L"Small_Swim_Left", true);
-				mState = eState::Idle;
-			}
-			else
-			{
-				animator->PlayAnimation(L"Small_Swim_Right", true);
-				mState = eState::Idle;
-			}
-		}
-		tr->SetPosition(pos);
 	}
 }

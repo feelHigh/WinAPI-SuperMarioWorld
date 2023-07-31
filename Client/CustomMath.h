@@ -3,6 +3,8 @@
 
 namespace nto::math
 {
+#define PI 3.141592f
+
     struct Vector2
     {
         static Vector2 Zero;
@@ -94,11 +96,18 @@ namespace nto::math
             return *this;
         }
 
+        Vector2& operator *=(const float& value)
+        {
+            x *= value;
+            y *= value;
+
+            return *this;
+        }
+
         bool operator ==(const Vector2& other) const
         {
             return (x == other.x && y == other.y);
         }
-
 
         void clear()
         {
@@ -120,4 +129,24 @@ namespace nto::math
             return *this;
         }
     };
+
+    inline Vector2 Rotate(Vector2 vector, float degree)
+    {
+        float radian = (degree / 180.f) * PI;
+        vector.normalize();
+        float x = cosf(radian) * vector.x - sinf(radian) * vector.y;
+        float y = sinf(radian) * vector.x + cosf(radian) * vector.y;
+
+        return Vector2(x, y);
+    }
+
+    inline float Dot(Vector2& v1, Vector2& v2)
+    {
+        return v1.x * v2.x + v1.y * v2.y;
+    }
+
+    inline float Cross(Vector2 v1, Vector2 v2)
+    {
+        return v1.x * v2.y - v1.y * v2.x;
+    }
 }
