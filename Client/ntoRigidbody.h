@@ -16,6 +16,7 @@ namespace nto
 
 		void AddForce(Vector2 force) { mForce += force; }
 		void SetMass(float mass) { mMass = mass; }
+		bool GetGround() { return mbGround; }
 		void SetGround(bool ground) { mbGround = ground; }
 		Vector2 GetVelocity() { return mVelocity; }
 		void SetVelocity(Vector2 velocity) { mVelocity = velocity; }

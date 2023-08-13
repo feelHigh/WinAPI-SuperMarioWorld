@@ -13,6 +13,7 @@ namespace nto
 		, mOffset(Vector2::Zero)
 		, mCollisionNumber(-1)
 		, mbIsCollision(false)
+		, mIsActive(true)
 	{
 		mCollisionNumber = mCollisionCount;
 		mCollisionCount++;
@@ -28,10 +29,13 @@ namespace nto
 
 	void Collider::Update()
 	{
+		if (!mIsActive) return;
 	}
 
 	void Collider::Render(HDC hdc)
 	{
+		if (!mIsActive) return;
+
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		mPosition = pos + mOffset;

@@ -100,6 +100,15 @@
     <Filter Include="Contents\GameObject\Monster\Class">
       <UniqueIdentifier>{c1318407-fd71-446f-9982-0a8c65b687c3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Environment">
+      <UniqueIdentifier>{691b575d-e3d6-4a0a-ae8c-a8a617bbed48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Foreground">
+      <UniqueIdentifier>{b05bb583-df26-41d7-81ce-9ca39225bb9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Item">
+      <UniqueIdentifier>{353f81aa-b913-492d-bf18-568cf7ec6900}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -222,13 +231,49 @@
     <ClInclude Include="ntoFireMario.h">
       <Filter>Contents\GameObject\Player\Class</Filter>
     </ClInclude>
+    <ClInclude Include="ntoEnvironment.h">
+      <Filter>Contents\GameObject\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoForegroundCoin.h">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoLayerHeaders.h">
+      <Filter>Contents\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoForegroundRandomBox.h">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoForegroundUpgradeBox.h">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoForegroundYoshiCoin.h">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoForegroundRedApple.h">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClInclude>
     <ClInclude Include="ntoRedKoopa.h">
+      <Filter>Contents\GameObject\Monster\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoMontyMole.h">
       <Filter>Contents\GameObject\Monster\Class</Filter>
     </ClInclude>
     <ClInclude Include="ntoCharginChuck.h">
       <Filter>Contents\GameObject\Monster\Class</Filter>
     </ClInclude>
-    <ClInclude Include="ntoMontyMole.h">
+    <ClInclude Include="ntoRedShell.h">
+      <Filter>Contents\GameObject\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoForegroundSpinBox.h">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoForegroundFinishFlag.h">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoItemPSwitch.h">
+      <Filter>Contents\GameObject\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoPiranha.h">
       <Filter>Contents\GameObject\Monster\Class</Filter>
     </ClInclude>
   </ItemGroup>
@@ -336,13 +381,46 @@
     <ClCompile Include="ntoFireMario.cpp">
       <Filter>Contents\GameObject\Player\Class</Filter>
     </ClCompile>
+    <ClCompile Include="ntoEnvironment.cpp">
+      <Filter>Contents\GameObject\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoForegroundCoin.cpp">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoForegroundRandomBox.cpp">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoForegroundUpgradeBox.cpp">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoForegroundYoshiCoin.cpp">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoForegroundRedApple.cpp">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoMontyMole.cpp">
+      <Filter>Contents\GameObject\Monster\Class</Filter>
+    </ClCompile>
     <ClCompile Include="ntoRedKoopa.cpp">
       <Filter>Contents\GameObject\Monster\Class</Filter>
     </ClCompile>
     <ClCompile Include="ntoCharginChuck.cpp">
       <Filter>Contents\GameObject\Monster\Class</Filter>
     </ClCompile>
-    <ClCompile Include="ntoMontyMole.cpp">
+    <ClCompile Include="ntoRedShell.cpp">
+      <Filter>Contents\GameObject\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoForegroundSpinBox.cpp">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoForegroundFinishFlag.cpp">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoItemPSwitch.cpp">
+      <Filter>Contents\GameObject\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoPiranha.cpp">
       <Filter>Contents\GameObject\Monster\Class</Filter>
     </ClCompile>
   </ItemGroup>

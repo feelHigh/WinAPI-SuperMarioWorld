@@ -8,7 +8,7 @@ namespace nto
 	Rigidbody::Rigidbody()
 		: Component(eComponentType::Rigidbody)
 		, mMass(1.0f)
-		, mFriction(100.0f)
+		, mFriction(200.0f)
 		, mbGround(false)
 	{
 		mLimitedVelocty.x = 200.0f;

@@ -18,9 +18,12 @@ namespace nto::enums
 	enum class eLayerType
 	{
 		Background,
+		Environment,
 		Floor,
+		Foreground,
 		Player,
 		Monster,
+		Item,
 		Effect,
 		UI,
 		End,
@@ -35,18 +38,5 @@ namespace nto::enums
 		Collider,
 		Rigidbody,
 		End,
-	};
-
-	enum class eMarioClass
-	{
-		Small,
-		Super,
-		Fire,
-	};
-
-	enum class ePlayerDirection
-	{
-		Left = 0,
-		Right = 1,
 	};
 }

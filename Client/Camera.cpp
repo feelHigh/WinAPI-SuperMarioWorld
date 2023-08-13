@@ -12,6 +12,7 @@ namespace nto
 	Vector2 Camera::mLookPosition = Vector2::Zero;
 	Vector2 Camera::mDistance = Vector2::Zero;
 	GameObject* Camera::mTarget = nullptr;
+	Vector2 Camera::mOffset = Vector2::Zero;
 
 	void Camera::Initalize()
 	{
@@ -22,6 +23,7 @@ namespace nto
 
 	void Camera::Update()
 	{
+		/*
 		if (Controller::GetKey(eKeyCode::Up))
 		{
 			mLookPosition.y -= 300.0f * Time::DeltaTime();
@@ -37,12 +39,13 @@ namespace nto
 		if (Controller::GetKey(eKeyCode::Right))
 		{
 			mLookPosition.x += 300.0f * Time::DeltaTime();
-		}
+		}*/
 		
 		if (mTarget)
 		{
 			Transform* tr = mTarget->GetComponent<Transform>();
-			mLookPosition = tr->GetPosition();
+
+			mLookPosition = tr->GetPosition() + mOffset;
 		}
 		
 		mDistance = mLookPosition - (mResolution / 2.0f);
