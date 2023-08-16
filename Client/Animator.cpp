@@ -8,6 +8,7 @@ namespace nto
 		: Component(eComponentType::Animator)
 		, mAlpha(1.0f)
 		, mScale(Vector2::One)
+		, mbAffectedCamera(false)
 	{
 	}
 	Animator::~Animator()

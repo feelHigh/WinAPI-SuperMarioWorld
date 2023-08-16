@@ -1,6 +1,7 @@
 #include "Camera.h"
 #include "Application.h"
 #include "Transform.h"
+#include "ntoRigidbody.h"
 #include "Controller.h"
 #include "CustomTime.h"
 
@@ -23,24 +24,6 @@ namespace nto
 
 	void Camera::Update()
 	{
-		/*
-		if (Controller::GetKey(eKeyCode::Up))
-		{
-			mLookPosition.y -= 300.0f * Time::DeltaTime();
-		}
-		if (Controller::GetKey(eKeyCode::Left))
-		{
-			mLookPosition.x -= 300.0f * Time::DeltaTime();
-		}
-		if (Controller::GetKey(eKeyCode::Down))
-		{
-			mLookPosition.y += 300.0f * Time::DeltaTime();
-		}
-		if (Controller::GetKey(eKeyCode::Right))
-		{
-			mLookPosition.x += 300.0f * Time::DeltaTime();
-		}*/
-		
 		if (mTarget)
 		{
 			Transform* tr = mTarget->GetComponent<Transform>();
@@ -49,6 +32,5 @@ namespace nto
 		}
 		
 		mDistance = mLookPosition - (mResolution / 2.0f);
-		
 	}
 }

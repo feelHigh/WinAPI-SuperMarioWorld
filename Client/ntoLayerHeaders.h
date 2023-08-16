@@ -1,6 +1,9 @@
 #pragma once
 #include "Background.h"
 #include "ntoEnvironment.h"
+#include "ntoEnvironmentWoodBall.h"
+#include "ntoEnvironmentWoodPlank.h"
+#include "ntoEnvironmentGrayPlank.h"
 #include "ntoFloor.h"
 #include "ntoForegroundRandomBox.h"
 #include "ntoForegroundCoin.h"
@@ -9,6 +12,7 @@
 #include "ntoForegroundUpgradeBox.h"
 #include "ntoForegroundSpinBox.h"
 #include "ntoForegroundFinishFlag.h"
+#include "ntoForegroundFloorBox.h"
 #include "ntoItemPSwitch.h"
 #include "Player.h"
 #include "ntoRedKoopa.h"

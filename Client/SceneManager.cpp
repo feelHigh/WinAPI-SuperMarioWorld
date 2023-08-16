@@ -15,13 +15,13 @@ namespace nto
 	{
 		CreateScene<TitleScene>(L"TitleScene");
 		CreateScene<StageWorldMap>(L"StageWorldMap");
-		CreateScene<Stage1>(L"Stage1");
-		CreateScene<Stage2>(L"Stage2");
+		//CreateScene<Stage1>(L"Stage1");
+		//CreateScene<Stage2>(L"Stage2");
 		CreateScene<Stage3>(L"Stage3");
 		CreateScene<StageBoss>(L"StageBoss");
 
-		//LoadScene(L"TitleScene");
-		LoadScene(L"Stage1");
+		LoadScene(L"StageWorldMap");
+		//LoadScene(L"Stage2");
 	}
 
 	void SceneManager::Update()

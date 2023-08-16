@@ -7,7 +7,7 @@ namespace nto
 	{
 	public:
 #define RUNSPEED 1000.0f // 600 Àû±â
-#define JUMPFORCE -780.f
+#define JUMPFORCE -1200.f
 
 		enum class eState
 		{

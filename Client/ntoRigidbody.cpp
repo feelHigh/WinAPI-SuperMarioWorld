@@ -13,7 +13,7 @@ namespace nto
 	{
 		mLimitedVelocty.x = 200.0f;
 		mLimitedVelocty.y = 1000.0f;
-		mGravity = Vector2(0.0f, 800.0f);
+		mGravity = Vector2(0.0f, 1800.0f);
 	}
 
 	Rigidbody::~Rigidbody()

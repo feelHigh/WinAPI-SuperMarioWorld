@@ -18,7 +18,6 @@ namespace nto
 		static Vector2 GetOffset() { return mOffset; }
 		static void SetOffset(Vector2 offset) { mOffset = offset; }
 
-
 	private:
 		static Vector2 mResolution;		// 화면 해상도
 		static Vector2 mLookPosition;	// 카메라가 바라보고 있는 위치

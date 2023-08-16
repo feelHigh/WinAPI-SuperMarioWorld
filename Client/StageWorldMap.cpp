@@ -37,30 +37,6 @@ namespace nto
 		Scene::Update();
 
 
-		if (Controller::GetKeyDown(eKeyCode::Q))
-		{
-			SceneManager::LoadScene(L"TitleScene");
-		}
-		if (Controller::GetKeyDown(eKeyCode::W))
-		{
-			SceneManager::LoadScene(L"StageWorldMap");
-		}
-		if (Controller::GetKeyDown(eKeyCode::E))
-		{
-			SceneManager::LoadScene(L"Stage1");
-		}
-		if (Controller::GetKeyDown(eKeyCode::R))
-		{
-			SceneManager::LoadScene(L"Stage2");
-		}
-		if (Controller::GetKeyDown(eKeyCode::T))
-		{
-			SceneManager::LoadScene(L"Stage3");
-		}
-		if (Controller::GetKeyDown(eKeyCode::Y))
-		{
-			SceneManager::LoadScene(L"StageBoss");
-		}
 	}
 
 	void StageWorldMap::Render(HDC hdc)

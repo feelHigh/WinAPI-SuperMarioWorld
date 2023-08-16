@@ -276,6 +276,18 @@
     <ClInclude Include="ntoPiranha.h">
       <Filter>Contents\GameObject\Monster\Class</Filter>
     </ClInclude>
+    <ClInclude Include="ntoForegroundFloorBox.h">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoEnvironmentWoodPlank.h">
+      <Filter>Contents\GameObject\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoEnvironmentWoodBall.h">
+      <Filter>Contents\GameObject\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoEnvironmentGrayPlank.h">
+      <Filter>Contents\GameObject\Environment</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
@@ -422,6 +434,18 @@
     </ClCompile>
     <ClCompile Include="ntoPiranha.cpp">
       <Filter>Contents\GameObject\Monster\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoForegroundFloorBox.cpp">
+      <Filter>Contents\GameObject\Foreground</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoEnvironmentWoodPlank.cpp">
+      <Filter>Contents\GameObject\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoEnvironmentWoodBall.cpp">
+      <Filter>Contents\GameObject\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoEnvironmentGrayPlank.cpp">
+      <Filter>Contents\GameObject\Environment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

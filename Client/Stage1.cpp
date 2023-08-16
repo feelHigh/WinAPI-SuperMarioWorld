@@ -237,46 +237,6 @@ namespace nto
 		Hill_5_Renderer->SetScale(Vector2(4.0f, 4.0f));
 		Hill_6_Renderer->SetScale(Vector2(4.0f, 4.0f));
 
-		Bush_Small_Renderer1->SetAffectCamera(false);
-		Bush_Big_Renderer1->SetAffectCamera(false);
-		Bush_Small_Renderer2->SetAffectCamera(false);
-		Bush_Big_Renderer2->SetAffectCamera(false);
-		Bush_Big_Renderer4->SetAffectCamera(false);
-		Bush_Big_Renderer3->SetAffectCamera(false);
-		Bush_Small_Renderer3->SetAffectCamera(false);
-		Bush_Small_Renderer4->SetAffectCamera(false);
-		Bush_Big_Renderer5->SetAffectCamera(false);
-		Bush_Small_Renderer5->SetAffectCamera(false);
-		Bush_Big_Renderer6->SetAffectCamera(false);
-		Bush_Small_Renderer6->SetAffectCamera(false);
-		Bush_Small_Renderer7->SetAffectCamera(false);
-		Bush_Big_Renderer7->SetAffectCamera(false);
-		Bush_Small_Renderer8->SetAffectCamera(false);
-		Bush_Big_Renderer8->SetAffectCamera(false);
-		Bush_Big_Renderer9->SetAffectCamera(false);
-		Bush_Small_Renderer9->SetAffectCamera(false);
-		Bush_Small_Renderer10->SetAffectCamera(false);
-		Bush_Small_Renderer11->SetAffectCamera(false);
-		Bush_Big_Renderer10->SetAffectCamera(false);
-		Brush_Small_Renderer1->SetAffectCamera(false);
-		Brush_Big_Renderer1->SetAffectCamera(false);
-		Brush_Small_Renderer2->SetAffectCamera(false);
-		Brush_Big_Renderer2->SetAffectCamera(false);
-		Brush_Small_Renderer3->SetAffectCamera(false);
-		Pipe_Yellow_1_Renderer->SetAffectCamera(false);
-		Pipe_Yellow_2_Renderer->SetAffectCamera(false);
-		Pipe_Blue_1_Renderer->SetAffectCamera(false);
-		Pipe_Blue_2_Renderer->SetAffectCamera(false);
-		Pipe_Gray_1_Renderer->SetAffectCamera(false);
-		Pipe_Green_1_Renderer->SetAffectCamera(false);
-		Sign_Finish_Renderer->SetAffectCamera(false);
-		Hill_1_Renderer->SetAffectCamera(false);
-		Hill_2_Renderer->SetAffectCamera(false);
-		Hill_4_Renderer->SetAffectCamera(false);
-		Hill_3_Renderer->SetAffectCamera(false);
-		Hill_5_Renderer->SetAffectCamera(false);
-		Hill_6_Renderer->SetAffectCamera(false);
-
 		Stage1_Environment_Bush_Small_Entity1->GetComponent<Transform>()->SetPosition(Vector2(192.0f, 600.0f));
 		Stage1_Environment_Bush_Big_Entity1->GetComponent<Transform>()->SetPosition(Vector2(840.0f, 570.0f));
 		Stage1_Environment_Bush_Small_Entity2->GetComponent<Transform>()->SetPosition(Vector2(4800.0f, 600.0f));
@@ -893,59 +853,6 @@ namespace nto
 		atCheckpoint_Finish_Pole->PlayAnimation(L"Foreground_Animation_Checkpoint_Finish_Pole", true);
 		atCheckpoint_Finish_Flag->PlayAnimation(L"Foreground_Animation_Checkpoint_Finish_Flag", true);
 
-		atRandomBox_1->SetAffectedCamera(false);
-		atRandomBox_2->SetAffectedCamera(false);
-		atRandomBox_3->SetAffectedCamera(false);
-		atRandomBox_4->SetAffectedCamera(false);
-		atRandomBox_5->SetAffectedCamera(false);
-		atRandomBox_6->SetAffectedCamera(false);
-		atRandomBox_7->SetAffectedCamera(false);
-		atSpinBox_1->SetAffectedCamera(false);
-		atSpinBox_2->SetAffectedCamera(false);
-		atSpinBox_3->SetAffectedCamera(false);
-		atSpinBox_4->SetAffectedCamera(false);
-		atSpinBox_5->SetAffectedCamera(false);
-		atSpinBox_6->SetAffectedCamera(false);
-		atSpinBox_7->SetAffectedCamera(false);
-		atSpinBox_8->SetAffectedCamera(false);
-		atSpinBox_9->SetAffectedCamera(false);
-		atSpinBox_10->SetAffectedCamera(false);
-		atCoin_1_1->SetAffectedCamera(false);
-		atCoin_1_2->SetAffectedCamera(false);
-		atCoin_1_3->SetAffectedCamera(false);
-		atCoin_1_4->SetAffectedCamera(false);
-		atCoin_2_1->SetAffectedCamera(false);
-		atCoin_2_2->SetAffectedCamera(false);
-		atCoin_2_3->SetAffectedCamera(false);
-		atCoin_3_1->SetAffectedCamera(false);
-		atCoin_3_2->SetAffectedCamera(false);
-		atCoin_3_3->SetAffectedCamera(false);
-		atCoin_4_1->SetAffectedCamera(false);
-		atCoin_4_2->SetAffectedCamera(false);
-		atCoin_4_3->SetAffectedCamera(false);
-		atCoin_4_4->SetAffectedCamera(false);
-		atCoin_4_5->SetAffectedCamera(false);
-		atCoin_4_6->SetAffectedCamera(false);
-		atCoin_4_7->SetAffectedCamera(false);
-		atCoin_4_8->SetAffectedCamera(false);
-		atCoin_4_9->SetAffectedCamera(false);
-		atCoin_4_10->SetAffectedCamera(false);
-		atCoin_4_11->SetAffectedCamera(false);
-		atCoin_4_12->SetAffectedCamera(false);
-		atCoin_4_13->SetAffectedCamera(false);
-		atYoshiCoin_1->SetAffectedCamera(false);
-		atYoshiCoin_2->SetAffectedCamera(false);
-		atYoshiCoin_3->SetAffectedCamera(false);
-		atYoshiCoin_4->SetAffectedCamera(false);
-		atUpgradeBox_1->SetAffectedCamera(false);
-		atUpgradeBox_2->SetAffectedCamera(false);
-		atUpgradeBox_3->SetAffectedCamera(false);
-		atUpgradeBox_4->SetAffectedCamera(false);
-		atCheckpoint_Pole->SetAffectedCamera(false);
-		atCheckpoint_Flag->SetAffectedCamera(false);
-		atCheckpoint_Finish_Pole->SetAffectedCamera(false);
-		atCheckpoint_Finish_Flag->SetAffectedCamera(false);
-
 		Collider* colRandomBox_1 = Stage1_Foreground_RandomBox_Entity1->AddComponent<Collider>();
 		Collider* colRandomBox_2 = Stage1_Foreground_RandomBox_Entity2->AddComponent<Collider>();
 		Collider* colRandomBox_3 = Stage1_Foreground_RandomBox_Entity3->AddComponent<Collider>();
@@ -1317,6 +1224,7 @@ namespace nto
 		//Stage1_Item_PSwitch_Entity->AddComponent<Rigidbody>();
 		#pragma endregion
 
+		#pragma region Collision Manager
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Environment, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Foreground, true);
@@ -1324,6 +1232,7 @@ namespace nto
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Monster, true);
 		//CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Floor, true);
+		#pragma endregion
 
 		Camera::SetTarget(player);
 		Camera::SetOffset(Vector2(0.0f, -218.0f));
