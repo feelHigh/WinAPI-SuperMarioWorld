@@ -5,6 +5,8 @@
 #include "SpriteRenderer.h"
 #include "ntoCollider.h"
 #include "ntoRigidbody.h"
+#include "ntoResources.h"
+#include "ntoSound.h"
 
 namespace nto
 {
@@ -46,6 +48,8 @@ namespace nto
 		Player* player = dynamic_cast<Player*>(other->GetOwner());
 		if (player)
 		{
+			Sound* sound = Resources::Load<Sound>(L"sfxYoshiCoin", L"..\\Assets\\Sound\\SFX\\WAV\\coin-special.wav");
+			sound->Play(false);
 			Destroy(this);
 		}
 	}

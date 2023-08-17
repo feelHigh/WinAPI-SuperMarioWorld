@@ -51,10 +51,10 @@ namespace nto
             Collider* colPlayer = other;
 
             float lenX = fabs(trPlayer->GetPosition().x - trBox->GetPosition().x);
-            float scaleX = (colPlayer->GetSize().x / 2.0f) + (GetComponent<Collider>()->GetSize().x / 2.0f);
+            float scaleX = (colPlayer->GetSize().x / 2.0f) + (GetComponent<Collider>()->GetSize().x / 2.0f) + trBox->GetScale().x;
 
             float lenY = fabs(trPlayer->GetPosition().y - trBox->GetPosition().y);
-            float scaleY = (colPlayer->GetSize().y / 2.0f) + (GetComponent<Collider>()->GetSize().y / 2.0f);
+            float scaleY = (colPlayer->GetSize().y / 2.0f) + (GetComponent<Collider>()->GetSize().y / 2.0f) + trBox->GetScale().y;
 
             if (lenX < scaleX && lenY < scaleY)
             {

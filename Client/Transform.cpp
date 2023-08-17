@@ -7,6 +7,7 @@ namespace nto
 	Transform::Transform()
 		: Component(eComponentType::Transform)
 		, mRotation(0.0f)
+		, mScale(4.0f, 4.0f) // Initialize scale to (1, 1)
 	{
 	}
 

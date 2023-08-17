@@ -14,6 +14,6 @@ namespace nto
 		virtual void Render(HDC hdc) override;
 
 	private:
-
+		bool pSwitchState;
 	};
 }

@@ -6,6 +6,8 @@
 #include "ntoCollider.h"
 #include "ntoRigidbody.h"
 #include "CustomTime.h"
+#include "ntoResources.h"
+#include "ntoSound.h"
 
 namespace nto
 {
@@ -13,6 +15,7 @@ namespace nto
         : pStatus(false)
         , pOnGround(false)
         , pTimer(2.0f)
+        , pDeathTime(1.0f)
 	{
 	}
 
@@ -33,6 +36,15 @@ namespace nto
 		tr->SetPosition(pos);
 
 		SpriteRenderer* sr = GetComponent<SpriteRenderer>();
+
+        if (pStatus)
+        {
+            pDeathTime -= Time::DeltaTime();
+            if (pDeathTime < 0.0f)
+            {
+                Destroy(this);
+            }
+        }
 	}
 
 	void ItemPSwitch::Render(HDC hdc)
@@ -80,8 +92,14 @@ namespace nto
                         playerPos.y += overlapY;
                         Rigidbody* rb = player->GetComponent<Rigidbody>();
                         rb->SetGround(false);
-                        rb->SetVelocity(Vector2(0.0f, -300.0f));
-                        this->GetComponent<Animator>()->PlayAnimation(L"Foreground_Animation_PSwitch_On", true);
+                        rb->SetVelocity(Vector2(0.0f, -600.0f));
+
+                        pStatus = true;
+                        Sound* sound = Resources::Load<Sound>(L"sfxCoin", L"..\\Assets\\Sound\\SFX\\WAV\\smw_switch_activated.wav");
+                        sound->Play(false);
+                        this->GetComponent<Animator>()->PlayAnimation(L"Item_Animation_PSwitch_On", true);
+                        Collider* boxCollider = GetComponent<Collider>();
+                        boxCollider->SetActive(false);
                     }
                     else
                     {

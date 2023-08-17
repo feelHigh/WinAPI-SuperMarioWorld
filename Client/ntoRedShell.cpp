@@ -11,7 +11,7 @@
 namespace nto
 {
     RedShell::RedShell()
-        : mDeathTime(4.0f)
+        : mDeathTime(1.5f)
         , mCaught(false)
         , mThrow(false)
     {

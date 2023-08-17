@@ -1,5 +1,4 @@
 #include "ntoFloor.h"
-#include "ntoItemPSwitch.h"
 #include "Player.h"
 #include "Transform.h"
 #include "Animator.h"
@@ -36,36 +35,49 @@ namespace nto
 	void Floor::OnCollisionEnter(Collider* other)
 	{
 		Player* player = dynamic_cast<Player*>(other->GetOwner());
-		Transform* tr = player->GetComponent<Transform>();
-		Rigidbody* rb = player->GetComponent<Rigidbody>();
 
-		float lenY = fabs(other->GetPosition().y - this->GetComponent<Collider>()->GetPosition().y);
-		float scaleY = fabs(other->GetSize().y / 2.0f + this->GetComponent<Collider>()->GetSize().y / 2.0f);
-
-		if (lenY < scaleY)
+		if (player)
 		{
-			Vector2 playerPos = tr->GetPosition();
-			playerPos.y -= (scaleY - lenY) - 1.0f;
-			tr->SetPosition(playerPos);
+			Transform* trPlayer = player->GetComponent<Transform>();
+			Transform* trBox = GetComponent<Transform>();
+			Collider* colPlayer = other;
+
+			float lenX = fabs(trPlayer->GetPosition().x - trBox->GetPosition().x);
+			float scaleX = (colPlayer->GetSize().x / 2.0f) + (GetComponent<Collider>()->GetSize().x / 2.0f) + trBox->GetScale().x;
+
+			float lenY = fabs(trPlayer->GetPosition().y - trBox->GetPosition().y);
+			float scaleY = (colPlayer->GetSize().y / 2.0f) + (GetComponent<Collider>()->GetSize().y / 2.0f) + trBox->GetScale().y;
+
+			if (lenX < scaleX && lenY < scaleY)
+			{
+				float overlapX = scaleX - lenX;
+				float overlapY = scaleY - lenY;
+
+				if (overlapX < overlapY)
+				{
+					Vector2 playerPos = trPlayer->GetPosition();
+					if (trPlayer->GetPosition().x < trBox->GetPosition().x)
+						playerPos.x -= overlapX;
+					else
+						playerPos.x += overlapX;
+					trPlayer->SetPosition(playerPos);
+				}
+				else
+				{
+					Vector2 playerPos = trPlayer->GetPosition();
+					if (trPlayer->GetPosition().y < trBox->GetPosition().y)
+					{
+						Rigidbody* rb = player->GetComponent<Rigidbody>();
+						rb->SetGround(true);
+					}
+					else
+					{
+					}
+
+					trPlayer->SetPosition(playerPos);
+				}
+			}
 		}
-
-		rb->SetGround(true);
-		////
-		//ItemPSwitch* PSwitch = dynamic_cast<ItemPSwitch*>(other->GetOwner());
-		//Transform* trPSwitch = PSwitch->GetComponent<Transform>();
-		//Rigidbody* rbPSwitch = PSwitch->GetComponent<Rigidbody>();
-
-		//float lenYPSwitch = fabs(other->GetPosition().y - this->GetComponent<Collider>()->GetPosition().y);
-		//float scaleYPSwitch = fabs(other->GetSize().y / 2.0f + this->GetComponent<Collider>()->GetSize().y / 2.0f);
-
-		//if (lenYPSwitch < scaleYPSwitch)
-		//{
-		//	Vector2 PSwitchPos = tr->GetPosition();
-		//	PSwitchPos.y -= (scaleYPSwitch - lenYPSwitch) - 1.0f;
-		//	trPSwitch->SetPosition(PSwitchPos);
-		//}
-
-		//rbPSwitch->SetGround(true);
 	}
 
 	void Floor::OnCollisionStay(Collider* other)

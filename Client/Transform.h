@@ -21,9 +21,12 @@ namespace nto
 		float GetRotation() { return mRotation; }
 		void SetType(int type) { mType = type; }
 		int GetType() { return mType; }
+		void SetScale(Vector2 scale) { mScale = scale; } // Add setter for scale
+		Vector2 GetScale() { return mScale; } // Add getter for scale
 
 	private:
 		Vector2 mPosition;
+		Vector2 mScale; // Add scale member variable
 		float mRotation;
 		int mType;
 	};

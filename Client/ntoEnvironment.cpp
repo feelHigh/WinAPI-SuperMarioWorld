@@ -19,17 +19,17 @@ namespace nto
 
 	void Environment::Initialize()
 	{
-		GameObject::Update();
+	}
+
+	void Environment::Update()
+	{
+        GameObject::Update();
 
         Transform* tr = GetComponent<Transform>();
         Vector2 pos = tr->GetPosition();
         tr->SetPosition(pos);
 
         SpriteRenderer* sr = GetComponent<SpriteRenderer>();
-	}
-
-	void Environment::Update()
-	{
 	}
 
 	void Environment::Render(HDC hdc)
@@ -48,10 +48,10 @@ namespace nto
             Collider* colPlayer = other;
 
             float lenX = fabs(trPlayer->GetPosition().x - trBox->GetPosition().x);
-            float scaleX = (colPlayer->GetSize().x / 2.0f) + (GetComponent<Collider>()->GetSize().x / 2.0f);
+            float scaleX = (colPlayer->GetSize().x / 2.0f) + (GetComponent<Collider>()->GetSize().x / 2.0f) + trBox->GetScale().x;
 
             float lenY = fabs(trPlayer->GetPosition().y - trBox->GetPosition().y);
-            float scaleY = (colPlayer->GetSize().y / 2.0f) + (GetComponent<Collider>()->GetSize().y / 2.0f);
+            float scaleY = (colPlayer->GetSize().y / 2.0f) + (GetComponent<Collider>()->GetSize().y / 2.0f) + trBox->GetScale().y;
 
             if (lenX < scaleX || lenY < scaleY)
             {
@@ -93,6 +93,9 @@ namespace nto
 	void Environment::OnCollisionExit(Collider* other)
 	{
         Player* player = dynamic_cast<Player*>(other->GetOwner());
-        player->GetComponent<Rigidbody>()->SetGround(false);
+        if (player)
+        {
+            player->GetComponent<Rigidbody>()->SetGround(false);
+        }
 	}
 }

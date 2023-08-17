@@ -1,10 +1,13 @@
 #include "ntoForegroundCoin.h"
 #include "Player.h"
+#include "ntoItemPSwitch.h"
 #include "Transform.h"
 #include "Animator.h"
 #include "SpriteRenderer.h"
 #include "ntoCollider.h"
 #include "ntoRigidbody.h"
+#include "ntoResources.h"
+#include "ntoSound.h"
 
 namespace nto
 {
@@ -33,6 +36,11 @@ namespace nto
 
 		SpriteRenderer* sr = GetComponent<SpriteRenderer>();
 
+        if (cType == 2 && cSwitch)
+        {
+            this->GetComponent<Animator>()->PlayAnimation(L"Foreground_Animation_EmptyBox", true);
+        }
+
 	}
 
 	void ForegroundCoin::Render(HDC hdc)
@@ -53,10 +61,10 @@ namespace nto
                 Collider* colPlayer = other;
 
                 float lenX = fabs(trPlayer->GetPosition().x - trBox->GetPosition().x);
-                float scaleX = (colPlayer->GetSize().x / 2.0f) + (GetComponent<Collider>()->GetSize().x / 2.0f);
+                float scaleX = (colPlayer->GetSize().x / 2.0f) + (GetComponent<Collider>()->GetSize().x / 2.0f) + trBox->GetScale().x;
 
                 float lenY = fabs(trPlayer->GetPosition().y - trBox->GetPosition().y);
-                float scaleY = (colPlayer->GetSize().y / 2.0f) + (GetComponent<Collider>()->GetSize().y / 2.0f);
+                float scaleY = (colPlayer->GetSize().y / 2.0f) + (GetComponent<Collider>()->GetSize().y / 2.0f) + trBox->GetScale().y;
 
                 if (lenX < scaleX && lenY < scaleY)
                 {
@@ -102,6 +110,8 @@ namespace nto
         Player* player = dynamic_cast<Player*>(other->GetOwner());
         if (player)
         {
+            Sound* sound = Resources::Load<Sound>(L"sfxCoin", L"..\\Assets\\Sound\\SFX\\WAV\\smw_coin.wav");
+            sound->Play(false);
             Destroy(this);
         }
 	}

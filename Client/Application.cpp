@@ -5,6 +5,7 @@
 #include "SceneManager.h"
 #include "Camera.h"
 #include "ntoCollisionManager.h"
+#include "ntoSoundManager.h"
 
 namespace nto
 {
@@ -55,7 +56,8 @@ namespace nto
 
 		Time::Initailize();
 		Controller::Initailize();
-		Camera::Initalize();
+		SoundManager::Initialize();
+		Camera::Initialize();
 		CollisionManager::Initialize();
 		SceneManager::Initialize();
 

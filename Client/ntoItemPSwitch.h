@@ -17,12 +17,13 @@ namespace nto
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
 
-		void SetType(bool status) { pStatus = status; }
-		bool GetType() { return pStatus; }
+		void SetSwitchStatus(bool status) { pStatus = status; }
+		bool GetSwitchStatus() { return pStatus; }
 
 	private:
 		bool pStatus;
 		bool pOnGround;
 		float pTimer;
+		float pDeathTime;
 	};
 }

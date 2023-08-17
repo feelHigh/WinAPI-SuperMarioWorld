@@ -6,6 +6,8 @@
 #include "ntoCollider.h"
 #include "ntoRigidbody.h"
 #include "CustomTime.h"
+#include "ntoResources.h"
+#include "ntoSound.h"
 
 namespace nto
 {
@@ -45,7 +47,6 @@ namespace nto
 				{
 					eTimer = 2.0f;
 					ePhase++;
-					return;
 				}
 			}
 			else if (ePhase == 2)
@@ -57,19 +58,18 @@ namespace nto
 				{
 					eTimer = 2.0f;
 					ePhase++;
-					return;
 				}
 			}
 			else if (ePhase == 3)
 			{
 				this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_CharginChuck_Right", true);
+
 				pos.x += 250.0f * Time::DeltaTime();
 				eTimer -= Time::DeltaTime();
 				if (eTimer < 0.0f)
 				{
 					eTimer = 2.0f;
 					ePhase++;
-					return;
 				}
 			}
 			else if (ePhase == 4)
@@ -80,12 +80,9 @@ namespace nto
 				if (eTimer < 0.0f)
 				{
 					eTimer = 2.0f;
-					ePhase++;
-					return;
+					ePhase = 1;
 				}
 			}
-
-			tr->SetPosition(pos);
 		}
 		else
 		{
@@ -97,6 +94,8 @@ namespace nto
 				eAttacked = false;
 			}
 		}
+
+		tr->SetPosition(pos);
 	}
 
 	void CharginChuck::Render(HDC hdc)
@@ -140,12 +139,16 @@ namespace nto
 					Vector2 playerPos = trPlayer->GetPosition();
 					if (trPlayer->GetPosition().y < trBox->GetPosition().y)
 					{
+						Sound* sound = Resources::Load<Sound>(L"sfxNoDamage", L"..\\Assets\\Sound\\SFX\\WAV\\smw_stomp_no_damage.wav");
+						sound->Play(false);
 						// Bump the player Up
 						playerPos.y += overlapY;
 						Rigidbody* rb = player->GetComponent<Rigidbody>();
 						rb->SetGround(false);
-						rb->SetVelocity(Vector2(0.0f, -550.0f));
+						rb->SetVelocity(Vector2(0.0f, -1000.0f));
+
 						this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_CharginChuck_Hit", true);
+						hitTimer = 2.0f;
 						tmpPhase = ePhase;
 						tmpTimer = eTimer;
 						eAttacked = true;

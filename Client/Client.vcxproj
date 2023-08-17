@@ -150,8 +150,8 @@
     <ClInclude Include="ntoEnvironmentGrayPlank.h" />
     <ClInclude Include="ntoEnvironmentWoodBall.h" />
     <ClInclude Include="ntoEnvironmentWoodPlank.h" />
-    <ClInclude Include="ntoFireMario.h" />
     <ClInclude Include="ntoFloor.h" />
+    <ClInclude Include="ntoFloorStair.h" />
     <ClInclude Include="ntoForegroundCoin.h" />
     <ClInclude Include="ntoForegroundFinishFlag.h" />
     <ClInclude Include="ntoForegroundFloorBox.h" />
@@ -170,8 +170,10 @@
     <ClInclude Include="ntoResource.h" />
     <ClInclude Include="ntoResources.h" />
     <ClInclude Include="ntoRigidbody.h" />
-    <ClInclude Include="ntoSmallMario.h" />
-    <ClInclude Include="ntoSuperMario.h" />
+    <ClInclude Include="ntoSound.h" />
+    <ClInclude Include="ntoSoundManager.h" />
+    <ClInclude Include="ntoStageDirector.h" />
+    <ClInclude Include="ntoStagePlate.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
@@ -209,8 +211,8 @@
     <ClCompile Include="ntoEnvironmentGrayPlank.cpp" />
     <ClCompile Include="ntoEnvironmentWoodBall.cpp" />
     <ClCompile Include="ntoEnvironmentWoodPlank.cpp" />
-    <ClCompile Include="ntoFireMario.cpp" />
     <ClCompile Include="ntoFloor.cpp" />
+    <ClCompile Include="ntoFloorStair.cpp" />
     <ClCompile Include="ntoForegroundCoin.cpp" />
     <ClCompile Include="ntoForegroundFinishFlag.cpp" />
     <ClCompile Include="ntoForegroundFloorBox.cpp" />
@@ -228,8 +230,10 @@
     <ClCompile Include="ntoResource.cpp" />
     <ClCompile Include="ntoResources.cpp" />
     <ClCompile Include="ntoRigidbody.cpp" />
-    <ClCompile Include="ntoSmallMario.cpp" />
-    <ClCompile Include="ntoSuperMario.cpp" />
+    <ClCompile Include="ntoSound.cpp" />
+    <ClCompile Include="ntoSoundManager.cpp" />
+    <ClCompile Include="ntoStageDirector.cpp" />
+    <ClCompile Include="ntoStagePlate.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />

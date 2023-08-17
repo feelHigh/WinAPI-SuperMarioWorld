@@ -18,6 +18,6 @@ namespace nto
 		virtual void OnCollisionExit(class Collider* other) override;
 
 	private:
-
+		bool hit;
 	};
 }

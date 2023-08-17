@@ -7,6 +7,8 @@
 #include "ntoRigidbody.h"
 #include "CustomTime.h"
 #include "SceneManager.h"
+#include "StageWorldMap.h"
+#include "Camera.h"
 
 namespace nto
 {
@@ -69,10 +71,14 @@ namespace nto
 	void ForegroundFinishFlag::OnCollisionStay(Collider* other)
 	{
 		Player* player = dynamic_cast<Player*>(other->GetOwner());
+
 		if (player)
 		{
 			Destroy(this);
-			SceneManager::LoadScene(L"Stage2");
+			Camera::SetTarget(nullptr);
+			Camera::SetOffset(Vector2(0.0f, 0.0f));
+
+			SceneManager::LoadScene(L"StageWorldMap");
 		}
 	}
 

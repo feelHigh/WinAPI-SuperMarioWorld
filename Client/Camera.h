@@ -7,7 +7,7 @@ namespace nto
 	class Camera
 	{
 	public:
-		static void Initalize();
+		static void Initialize();
 		static void Update();
 
 		static Vector2 CalculatePosition(Vector2 pos) { return pos - mDistance; }
@@ -27,6 +27,13 @@ namespace nto
 		Vector2 mPosition;
 
 		static Vector2 mOffset;
+
+		// New Methods
+		static Vector2 CalculateThreshold();
+		static Vector2 MoveTowards(Vector2 current, Vector2 target, float maxDistanceDelta);
+
+		// Optional speed variable for camera following speed
+		static float speed;
 	};
 }
 

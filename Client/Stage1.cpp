@@ -11,10 +11,12 @@
 #include "ntoCollider.h"
 #include "ntoCollisionManager.h"
 #include "ntoRigidbody.h"
+#include "ntoSound.h"
 
 namespace nto
 {
 	Stage1::Stage1()
+		: pSwitchState(false)
 	{
 	}
 
@@ -335,12 +337,12 @@ namespace nto
 			, L"..\\Assets\\Image\\Floor\\Stage1\\Stage1_BackHalf.bmp");
 
 		Floor* Stage1_Floor_FrontHalf_Entity = object::Instantiate<Floor>(eLayerType::Floor);
-		Floor* Stage1_Floor_Stair1_1_Entity = object::Instantiate<Floor>(eLayerType::Floor);
-		Floor* Stage1_Floor_Stair1_2_Entity = object::Instantiate<Floor>(eLayerType::Floor);
-		Floor* Stage1_Floor_Stair1_3_Entity = object::Instantiate<Floor>(eLayerType::Floor);
-		Floor* Stage1_Floor_Stair1_4_Entity = object::Instantiate<Floor>(eLayerType::Floor);
-		Floor* Stage1_Floor_Stair2_1_Entity = object::Instantiate<Floor>(eLayerType::Floor);
-		Floor* Stage1_Floor_Stair2_2_Entity = object::Instantiate<Floor>(eLayerType::Floor);
+		FloorStair* Stage1_Floor_Stair1_1_Entity = object::Instantiate<FloorStair>(eLayerType::Floor);
+		FloorStair* Stage1_Floor_Stair1_2_Entity = object::Instantiate<FloorStair>(eLayerType::Floor);
+		FloorStair* Stage1_Floor_Stair1_3_Entity = object::Instantiate<FloorStair>(eLayerType::Floor);
+		FloorStair* Stage1_Floor_Stair1_4_Entity = object::Instantiate<FloorStair>(eLayerType::Floor);
+		FloorStair* Stage1_Floor_Stair2_1_Entity = object::Instantiate<FloorStair>(eLayerType::Floor);
+		FloorStair* Stage1_Floor_Stair2_2_Entity = object::Instantiate<FloorStair>(eLayerType::Floor);
 		Floor* Stage1_Floor_BackHalf_Entity = object::Instantiate<Floor>(eLayerType::Floor);
 
 		SpriteRenderer* FrontHalf_Renderer = Stage1_Floor_FrontHalf_Entity->AddComponent<SpriteRenderer>();
@@ -480,10 +482,10 @@ namespace nto
 		ForegroundRedApple* Stage1_Foreground_RedApple_Entity = object::Instantiate<ForegroundRedApple>(eLayerType::Foreground);
 		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity1 = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
 		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity2 = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
-		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity3 = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
-		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity4 = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
+		ForegroundFloorBox* Stage1_Foreground_UpgradeBox_Entity3 = object::Instantiate<ForegroundFloorBox>(eLayerType::Foreground);
+		ForegroundFloorBox* Stage1_Foreground_UpgradeBox_Entity4 = object::Instantiate<ForegroundFloorBox>(eLayerType::Foreground);
 		ForegroundUpgradeBox* Stage1_Foreground_Checkpoint_Pole_Entity = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Checkpoint_Flag_Entity = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		ForegroundYoshiCoin* Stage1_Foreground_Checkpoint_Flag_Entity = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
 		ForegroundUpgradeBox* Stage1_Foreground_Checkpoint_Finish_Pole_Entity = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
 		ForegroundFinishFlag* Stage1_Foreground_Checkpoint_Finish_Flag_Entity = object::Instantiate<ForegroundFinishFlag>(eLayerType::Foreground);
 
@@ -965,7 +967,7 @@ namespace nto
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
 		Transform* trPlayer = player->GetComponent<Transform>();
 
-		trPlayer->SetPosition(Vector2(600.0f, 1248.0f));
+		trPlayer->SetPosition(Vector2(600.0f, 600.0f)); //1248
 
 		Animator* atPlayer = player->AddComponent<Animator>();
 		// ¹æÇâ = ¿ÞÂÊ
@@ -1201,10 +1203,12 @@ namespace nto
 			, L"..\\Assets\\Image\\ForegroundTiles\\PSwitch_On.bmp");
 		
 		ItemPSwitch* Stage1_Item_PSwitch_Entity = object::Instantiate<ItemPSwitch>(eLayerType::Item);
+
+		pSwitchState = Stage1_Item_PSwitch_Entity->GetSwitchStatus();
 		
 		Transform* trPSwitch = Stage1_Item_PSwitch_Entity->GetComponent<Transform>();
 		
-		trPSwitch->SetPosition(Vector2(18144.0f, 383.0f));
+		trPSwitch->SetPosition(Vector2(18144.0f, 699.0f));//y=383
 		
 		Animator* atPSwitch = Stage1_Item_PSwitch_Entity->AddComponent<Animator>();
 		
@@ -1234,6 +1238,9 @@ namespace nto
 		//CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Floor, true);
 		#pragma endregion
 
+		Sound* bgSound = Resources::Load<Sound>(L"bgmOverworld", L"..\\Assets\\Sound\\BGM\\WAV\\10.Overworld_Bgm.wav");
+		bgSound->Play(true);
+
 		Camera::SetTarget(player);
 		Camera::SetOffset(Vector2(0.0f, -218.0f));
 	}
@@ -1241,6 +1248,27 @@ namespace nto
 	void Stage1::Update()
 	{
 		Scene::Update();
+
+		/*pSwitchState = Stage1_Item_PSwitch_Entity->GetSwitchStatus();
+
+		Stage1_Foreground_Coin_Entity_4_1->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_2->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_3->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_4->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_5->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_6->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_7->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_8->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_9->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_10->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_11->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_12->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_13->SetSwitchStatus(pSwitchState);*/
+
+		if (Controller::GetKeyDown(eKeyCode::P))
+		{
+			SceneManager::LoadScene(L"StageWorldMap");
+		}
 	}
 
 	void Stage1::Render(HDC hdc)

@@ -8,6 +8,8 @@
 #include "ntoCollider.h"
 #include "ntoRigidbody.h"
 #include "CustomTime.h"
+#include "ntoResources.h"
+#include "ntoSound.h"
 
 namespace nto
 {
@@ -58,6 +60,13 @@ namespace nto
 
 	void RedKoopa::OnCollisionEnter(Collider* other)
 	{
+		RedShell* redShell = dynamic_cast<RedShell*>(other->GetOwner());
+
+		if (redShell)
+		{
+			Sound* sound = Resources::Load<Sound>(L"sfxNoDamage", L"..\\Assets\\Sound\\SFX\\WAV\\smw_stomp.wav");
+			sound->Play(false);
+		}
 	}
 
 	void RedKoopa::OnCollisionStay(Collider* other)

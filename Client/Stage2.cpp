@@ -2078,7 +2078,7 @@ namespace nto
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
 		Transform* trPlayer = player->GetComponent<Transform>();
 
-		trPlayer->SetPosition(Vector2(500.0f, 1920.0f)); // 500
+		trPlayer->SetPosition(Vector2(500.0f, 600.0f)); // 500,1920
 
 		Animator* atPlayer = player->AddComponent<Animator>();
 		// ¹æÇâ = ¿ÞÂÊ
@@ -2163,8 +2163,8 @@ namespace nto
 		//CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Floor, true);
 		#pragma endregion
 
-		Camera::SetTarget(player);
-		Camera::SetOffset(Vector2(0.0f, -218.0f));
+		//Camera::SetTarget(player);
+		//Camera::SetOffset(Vector2(0.0f, -218.0f));
 	}
 
 	void Stage2::Update()

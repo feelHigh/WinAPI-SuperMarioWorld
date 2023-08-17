@@ -88,9 +88,6 @@
     <Filter Include="Engine\Component\Rigidbody">
       <UniqueIdentifier>{83d1c054-a182-4461-833e-e3a387a7facf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\GameObject\Player\Class">
-      <UniqueIdentifier>{fd351b42-9fb5-4643-a602-6b9ed0cea04f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\GameObject\Effect">
       <UniqueIdentifier>{31c34194-5d03-4eeb-a3ce-536143df0f87}</UniqueIdentifier>
     </Filter>
@@ -108,6 +105,12 @@
     </Filter>
     <Filter Include="Contents\GameObject\Item">
       <UniqueIdentifier>{353f81aa-b913-492d-bf18-568cf7ec6900}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Foreground\Stage Plates">
+      <UniqueIdentifier>{31a78610-3702-40a1-9f74-0e7b797ad97c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Sound">
+      <UniqueIdentifier>{7924e1b9-6f0a-461a-bf0d-f2aef933686d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -222,15 +225,6 @@
     <ClInclude Include="ntoRigidbody.h">
       <Filter>Engine\Component\Rigidbody</Filter>
     </ClInclude>
-    <ClInclude Include="ntoSmallMario.h">
-      <Filter>Contents\GameObject\Player\Class</Filter>
-    </ClInclude>
-    <ClInclude Include="ntoSuperMario.h">
-      <Filter>Contents\GameObject\Player\Class</Filter>
-    </ClInclude>
-    <ClInclude Include="ntoFireMario.h">
-      <Filter>Contents\GameObject\Player\Class</Filter>
-    </ClInclude>
     <ClInclude Include="ntoEnvironment.h">
       <Filter>Contents\GameObject\Environment</Filter>
     </ClInclude>
@@ -287,6 +281,21 @@
     </ClInclude>
     <ClInclude Include="ntoEnvironmentGrayPlank.h">
       <Filter>Contents\GameObject\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoStagePlate.h">
+      <Filter>Contents\GameObject\Foreground\Stage Plates</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoStageDirector.h">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoFloorStair.h">
+      <Filter>Contents\GameObject\Floor</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoSound.h">
+      <Filter>Engine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoSoundManager.h">
+      <Filter>Engine\Sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -384,15 +393,6 @@
     <ClCompile Include="ntoRigidbody.cpp">
       <Filter>Engine\Component\Rigidbody</Filter>
     </ClCompile>
-    <ClCompile Include="ntoSmallMario.cpp">
-      <Filter>Contents\GameObject\Player\Class</Filter>
-    </ClCompile>
-    <ClCompile Include="ntoSuperMario.cpp">
-      <Filter>Contents\GameObject\Player\Class</Filter>
-    </ClCompile>
-    <ClCompile Include="ntoFireMario.cpp">
-      <Filter>Contents\GameObject\Player\Class</Filter>
-    </ClCompile>
     <ClCompile Include="ntoEnvironment.cpp">
       <Filter>Contents\GameObject\Environment</Filter>
     </ClCompile>
@@ -446,6 +446,21 @@
     </ClCompile>
     <ClCompile Include="ntoEnvironmentGrayPlank.cpp">
       <Filter>Contents\GameObject\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoStagePlate.cpp">
+      <Filter>Contents\GameObject\Foreground\Stage Plates</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoStageDirector.cpp">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoFloorStair.cpp">
+      <Filter>Contents\GameObject\Floor</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoSound.cpp">
+      <Filter>Engine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoSoundManager.cpp">
+      <Filter>Engine\Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
