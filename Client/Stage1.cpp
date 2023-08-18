@@ -462,7 +462,7 @@ namespace nto
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_3_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_3_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_3_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		/*ForegroundCoin* Stage1_Foreground_Coin_Entity_4_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_4 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
@@ -474,20 +474,7 @@ namespace nto
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_10 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_11 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_12 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_13 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);*/
-		Stage1_Foreground_Coin_Entity_4_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		Stage1_Foreground_Coin_Entity_4_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		Stage1_Foreground_Coin_Entity_4_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		Stage1_Foreground_Coin_Entity_4_4 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		Stage1_Foreground_Coin_Entity_4_5 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		Stage1_Foreground_Coin_Entity_4_6 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		Stage1_Foreground_Coin_Entity_4_7 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		Stage1_Foreground_Coin_Entity_4_8 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		Stage1_Foreground_Coin_Entity_4_9 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		Stage1_Foreground_Coin_Entity_4_10 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		Stage1_Foreground_Coin_Entity_4_11 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		Stage1_Foreground_Coin_Entity_4_12 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		Stage1_Foreground_Coin_Entity_4_13 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_13 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity1 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
 		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity2 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
 		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity3 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
@@ -1215,8 +1202,7 @@ namespace nto
 		Texture* Stage1_Item_PSwitch_On_Image = Resources::Load<Texture>(L"Stage1_PSwitch_On"
 			, L"..\\Assets\\Image\\ForegroundTiles\\PSwitch_On.bmp");
 		
-		//ItemPSwitch* Stage1_Item_PSwitch_Entity = object::Instantiate<ItemPSwitch>(eLayerType::Item);
-		Stage1_Item_PSwitch_Entity = object::Instantiate<ItemPSwitch>(eLayerType::Item);
+		ItemPSwitch* Stage1_Item_PSwitch_Entity = object::Instantiate<ItemPSwitch>(eLayerType::Item);
 
 		pSwitchState = Stage1_Item_PSwitch_Entity->GetSwitchStatus();
 		
@@ -1263,27 +1249,21 @@ namespace nto
 	{
 		Scene::Update();
 
-		if (Stage1_Item_PSwitch_Entity && Stage1_Item_PSwitch_Entity->GetSwitchStatus()) 
-		{
-			pSwitchState = true;
-		}
+		/*pSwitchState = Stage1_Item_PSwitch_Entity->GetSwitchStatus();
 
-		if (pSwitchState) 
-		{
-			Stage1_Foreground_Coin_Entity_4_1->SetSwitchStatus(pSwitchState);
-			Stage1_Foreground_Coin_Entity_4_2->SetSwitchStatus(pSwitchState);
-			Stage1_Foreground_Coin_Entity_4_3->SetSwitchStatus(pSwitchState);
-			Stage1_Foreground_Coin_Entity_4_4->SetSwitchStatus(pSwitchState);
-			Stage1_Foreground_Coin_Entity_4_5->SetSwitchStatus(pSwitchState);
-			Stage1_Foreground_Coin_Entity_4_6->SetSwitchStatus(pSwitchState);
-			Stage1_Foreground_Coin_Entity_4_7->SetSwitchStatus(pSwitchState);
-			Stage1_Foreground_Coin_Entity_4_8->SetSwitchStatus(pSwitchState);
-			Stage1_Foreground_Coin_Entity_4_9->SetSwitchStatus(pSwitchState);
-			Stage1_Foreground_Coin_Entity_4_10->SetSwitchStatus(pSwitchState);
-			Stage1_Foreground_Coin_Entity_4_11->SetSwitchStatus(pSwitchState);
-			Stage1_Foreground_Coin_Entity_4_12->SetSwitchStatus(pSwitchState);
-			Stage1_Foreground_Coin_Entity_4_13->SetSwitchStatus(pSwitchState);
-		}
+		Stage1_Foreground_Coin_Entity_4_1->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_2->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_3->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_4->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_5->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_6->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_7->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_8->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_9->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_10->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_11->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_12->SetSwitchStatus(pSwitchState);
+		Stage1_Foreground_Coin_Entity_4_13->SetSwitchStatus(pSwitchState);*/
 
 		if (Controller::GetKeyDown(eKeyCode::P))
 		{
