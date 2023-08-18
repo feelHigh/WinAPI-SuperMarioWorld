@@ -13,7 +13,7 @@ namespace nto
 {
 	ForegroundCoin::ForegroundCoin()
 		: cType(1)
-        , cSwitch(false)
+        , cStatus(false)
 	{
 	}
 
@@ -36,7 +36,7 @@ namespace nto
 
 		SpriteRenderer* sr = GetComponent<SpriteRenderer>();
 
-        if (cType == 2 && cSwitch)
+        if (cType == 2 && cStatus)
         {
             this->GetComponent<Animator>()->PlayAnimation(L"Foreground_Animation_EmptyBox", true);
         }
@@ -54,7 +54,7 @@ namespace nto
 
         if (player)
         {
-            if (cType == 2 && cSwitch)
+            if (cType == 2 && cStatus)
             {
                 Transform* trPlayer = player->GetComponent<Transform>();
                 Transform* trBox = GetComponent<Transform>();
@@ -110,9 +110,12 @@ namespace nto
         Player* player = dynamic_cast<Player*>(other->GetOwner());
         if (player)
         {
-            Sound* sound = Resources::Load<Sound>(L"sfxCoin", L"..\\Assets\\Sound\\SFX\\WAV\\smw_coin.wav");
-            sound->Play(false);
-            Destroy(this);
+            if (cType == 1 && !cStatus)
+            {
+                Sound* sound = Resources::Load<Sound>(L"sfxCoin", L"..\\Assets\\Sound\\SFX\\WAV\\smw_coin.wav");
+                sound->Play(false);
+                Destroy(this);
+            }
         }
 	}
 
