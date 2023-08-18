@@ -20,11 +20,11 @@ namespace nto
 		void SetType(int type) { cType = type; }
 		int GetType() { return cType; }
 
-		void SetSwitchStatus(bool status) { cStatus = status; }
-		bool GetSwitchStatus() { return cStatus; }
+		void SetSwitchStatus(bool change) { cSwitch = change; }
+		int GetSwitchStatus() { return cSwitch; }
 
 	private:
 		int cType;
-		bool cStatus;
+		bool cSwitch;
 	};
 }
