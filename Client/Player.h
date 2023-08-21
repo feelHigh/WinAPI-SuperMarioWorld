@@ -6,7 +6,7 @@ namespace nto
 	class Player : public GameObject
 	{
 	public:
-#define RUNSPEED 600.0f // 600 적기
+#define RUNSPEED 1000.0f // 600 적기
 #define JUMPFORCE -1200.f
 
 		enum class eState

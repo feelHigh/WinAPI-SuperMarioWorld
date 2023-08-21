@@ -20,8 +20,15 @@ namespace nto
 		void SetType(int type) { bType = type; }
 		int GetType() { return bType; }
 
+		void SetSpin(bool spin) { bSwitch = spin; }
+		bool GetSpin() { return bSwitch; }
+
+		void SetSpinTime(float spinTime) { bSpinTime = spinTime; }
+		int GetSpinTime() { return bSpinTime; }
+
 	private:
 		int bType;
+		float bSpinTime;
 		bool bSwitch;
 	};
 }

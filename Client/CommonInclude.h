@@ -31,6 +31,7 @@ namespace nto::enums
 		Foreground,
 		Player,
 		Monster,
+		MonsterCover,
 		Item,
 		Effect,
 		UI,

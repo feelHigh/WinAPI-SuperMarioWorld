@@ -1,10 +1,8 @@
 #include "Stage1.h"
-#include "ntoLayerHeaders.h"
 #include "SpriteRenderer.h"
 #include "Object.h"
 #include "Controller.h"
 #include "Texture.h"
-#include "Transform.h"
 #include "ntoResources.h"
 #include "Camera.h"
 #include "Animator.h"
@@ -108,7 +106,7 @@ namespace nto
 		Environment* Stage1_Environment_Pipe_Blue_1_Entity = object::Instantiate<Environment>(eLayerType::Environment);
 		Environment* Stage1_Environment_Pipe_Blue_2_Entity = object::Instantiate<Environment>(eLayerType::Environment);
 		Environment* Stage1_Environment_Pipe_Gray_1_Entity = object::Instantiate<Environment>(eLayerType::Environment);
-		Environment* Stage1_Environment_Pipe_Green_1_Entity = object::Instantiate<Environment>(eLayerType::Environment);
+		Environment* Stage1_Environment_Pipe_Green_1_Entity = object::Instantiate<Environment>(eLayerType::MonsterCover);
 		// Sign
 		Environment* Stage1_Environment_Sign_Finish_Entity = object::Instantiate<Environment>(eLayerType::Environment);
 		// Hill
@@ -450,7 +448,7 @@ namespace nto
 		ForegroundSpinBox* Stage1_Foreground_SpinBox_Entity6 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
 		ForegroundSpinBox* Stage1_Foreground_SpinBox_Entity7 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
 		ForegroundSpinBox* Stage1_Foreground_SpinBox_Entity8 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
-		ForegroundSpinBox* Stage1_Foreground_SpinBox_Entity9 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
+		Stage1_Foreground_SpinBox_Entity9 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
 		ForegroundSpinBox* Stage1_Foreground_SpinBox_Entity10 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_1_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_1_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
@@ -462,19 +460,6 @@ namespace nto
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_3_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_3_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_3_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		/*ForegroundCoin* Stage1_Foreground_Coin_Entity_4_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_4 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_5 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_6 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_7 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_8 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_9 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_10 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_11 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_12 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_13 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);*/
 		Stage1_Foreground_Coin_Entity_4_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		Stage1_Foreground_Coin_Entity_4_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		Stage1_Foreground_Coin_Entity_4_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
@@ -977,7 +962,7 @@ namespace nto
 		Texture* Mario_Right_Image = Resources::Load<Texture>(L"Direction_Right"
 			, L"..\\Assets\\Mario\\Mario_Right.bmp");
 
-		Player* player = object::Instantiate<Player>(eLayerType::Player);
+		player = object::Instantiate<Player>(eLayerType::Player);
 		Transform* trPlayer = player->GetComponent<Transform>();
 
 		trPlayer->SetPosition(Vector2(600.0f, 600.0f)); //1248
@@ -1215,14 +1200,13 @@ namespace nto
 		Texture* Stage1_Item_PSwitch_On_Image = Resources::Load<Texture>(L"Stage1_PSwitch_On"
 			, L"..\\Assets\\Image\\ForegroundTiles\\PSwitch_On.bmp");
 		
-		//ItemPSwitch* Stage1_Item_PSwitch_Entity = object::Instantiate<ItemPSwitch>(eLayerType::Item);
 		Stage1_Item_PSwitch_Entity = object::Instantiate<ItemPSwitch>(eLayerType::Item);
 
 		pSwitchState = Stage1_Item_PSwitch_Entity->GetSwitchStatus();
 		
-		Transform* trPSwitch = Stage1_Item_PSwitch_Entity->GetComponent<Transform>();
+		trPSwitch = Stage1_Item_PSwitch_Entity->GetComponent<Transform>();
 		
-		trPSwitch->SetPosition(Vector2(18144.0f, 699.0f));//y=383
+		trPSwitch->SetPosition(Vector2(18144.0f, 383.0f));//y=383,699
 		
 		Animator* atPSwitch = Stage1_Item_PSwitch_Entity->AddComponent<Animator>();
 		
@@ -1234,12 +1218,11 @@ namespace nto
 
 		atPSwitch->PlayAnimation(L"Item_Animation_PSwitch_Off", true);
 
-		atPSwitch->SetAffectedCamera(false);
-
 		Collider* colPSwitch = Stage1_Item_PSwitch_Entity->AddComponent<Collider>();
 
 		colPSwitch->SetSize(Vector2(64.0f, 64.0f));
-		//Stage1_Item_PSwitch_Entity->AddComponent<Rigidbody>();
+
+		eventTime = Stage1_Foreground_SpinBox_Entity9->GetSpinTime();
 		#pragma endregion
 
 		#pragma region Collision Manager
@@ -1248,7 +1231,9 @@ namespace nto
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Foreground, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::MonsterCover, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Monster, true);
+		//CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Foreground, true);
 		//CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Floor, true);
 		#pragma endregion
 
@@ -1262,7 +1247,9 @@ namespace nto
 	void Stage1::Update()
 	{
 		Scene::Update();
+		Camera::SetTarget(player);
 
+		#pragma region CoinToBlock Event
 		if (Stage1_Item_PSwitch_Entity && Stage1_Item_PSwitch_Entity->GetSwitchStatus()) 
 		{
 			pSwitchState = true;
@@ -1284,6 +1271,20 @@ namespace nto
 			Stage1_Foreground_Coin_Entity_4_12->SetSwitchStatus(pSwitchState);
 			Stage1_Foreground_Coin_Entity_4_13->SetSwitchStatus(pSwitchState);
 		}
+
+		if (Stage1_Foreground_SpinBox_Entity9->GetSpin())
+		{
+			Vector2 psPos = trPSwitch->GetPosition();
+			psPos.y += 316 * Time::DeltaTime();
+			trPSwitch->SetPosition(psPos);
+
+			eventTime -= Time::DeltaTime();
+			if (eventTime < 0.0f)
+			{
+				Stage1_Foreground_SpinBox_Entity9->SetSpin(false);
+			}
+		}
+		#pragma endregion
 
 		if (Controller::GetKeyDown(eKeyCode::P))
 		{

@@ -12,6 +12,7 @@ namespace nto
 	ForegroundSpinBox::ForegroundSpinBox()
         : bType(1)
         , bSwitch(false)
+        , bSpinTime(1.0f)
 	{
 	}
 
@@ -33,6 +34,15 @@ namespace nto
 		tr->SetPosition(pos);
 
 		SpriteRenderer* sr = GetComponent<SpriteRenderer>();
+
+        if (bType == 2 && bSwitch)
+        {
+            this->GetComponent<Animator>()->PlayAnimation(L"Foreground_Animation_SpinBox_Idle", true);
+        }
+        else if (bType == 2 && !bSwitch)
+        {
+            this->GetComponent<Animator>()->PlayAnimation(L"Foreground_Animation_SpinBox_Spin", true);
+        }
 	}
 
 	void ForegroundSpinBox::Render(HDC hdc)
@@ -94,7 +104,6 @@ namespace nto
                         }
                         else if (bType == 2)
                         {
-                            this->GetComponent<Animator>()->PlayAnimation(L"Foreground_Animation_SpinBox_Spin", true);
                             bSwitch = true;
                             Collider* boxCollider = GetComponent<Collider>();
                             boxCollider->SetActive(false);

@@ -1,5 +1,4 @@
 #include "StageWorldMap.h"
-#include "ntoLayerHeaders.h"
 #include "SpriteRenderer.h"
 #include "Object.h"
 #include "Controller.h"
@@ -31,8 +30,8 @@ namespace nto
 		Texture* WorldMap_World_1_Image = Resources::Load<Texture>(L"WorldMap_World_1"
 			, L"..\\Assets\\Image\\WorldMap\\WorldMap_World_1.bmp");
 
-		BackGround* WorldMap_Border_Entity = object::Instantiate<BackGround>(eLayerType::Background);
-		BackGround* WorldMap_World_1_Entity = object::Instantiate<BackGround>(eLayerType::Background);
+		WorldMap_Border_Entity = object::Instantiate<BackGround>(eLayerType::Background);
+		WorldMap_World_1_Entity = object::Instantiate<BackGround>(eLayerType::Background);
 
 		SpriteRenderer* WorldMap_Border_Renderer = WorldMap_Border_Entity->AddComponent<SpriteRenderer>();
 		SpriteRenderer* WorldMap_World_1_Renderer = WorldMap_World_1_Entity->AddComponent<SpriteRenderer>();
@@ -53,7 +52,7 @@ namespace nto
 		Texture* Mario_Right_Image = Resources::Load<Texture>(L"Direction_Right"
 			, L"..\\Assets\\Mario\\Mario_Right.bmp");
 
-		StageDirector* player = object::Instantiate<StageDirector>(eLayerType::Player);
+		player = object::Instantiate<StageDirector>(eLayerType::Player);
 		Transform* trPlayer = player->GetComponent<Transform>();
 
 		trPlayer->SetPosition(Vector2(488.0f, 668.0f)); // 500
@@ -136,6 +135,8 @@ namespace nto
 	void StageWorldMap::Update()
 	{
 		Scene::Update();
+		Camera::SetTarget(WorldMap_Border_Entity);
+		Camera::SetOffset(Vector2(0.0f, 0.0f));
 	}
 
 	void StageWorldMap::Render(HDC hdc)

@@ -1,6 +1,8 @@
 #pragma once
 #include "Scene.h"
 #include "ntoLayerHeaders.h"
+#include "Transform.h"
+#include "CustomTime.h"
 
 namespace nto
 {
@@ -16,7 +18,13 @@ namespace nto
 
 	private:
 		bool pSwitchState;
+		ForegroundSpinBox* Stage1_Foreground_SpinBox_Entity9;
+		Player* player;
+
 		ItemPSwitch* Stage1_Item_PSwitch_Entity;
+		Transform* trPSwitch;
+		float eventTime;
+
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_1;
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_2;
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_3;

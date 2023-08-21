@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "ntoLayerHeaders.h"
 
 namespace nto
 {
@@ -14,6 +15,8 @@ namespace nto
 		virtual void Render(HDC hdc) override;
 
 	private:
-
+		BackGround* WorldMap_Border_Entity;
+		BackGround* WorldMap_World_1_Entity;
+		StageDirector* player;
 	};
 }
