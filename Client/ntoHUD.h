@@ -4,6 +4,8 @@
 
 namespace nto
 {
+	using namespace math;
+
 	class HUD : public GameObject
 	{
 	public:
@@ -17,10 +19,10 @@ namespace nto
 		static void DrawCoinCount(HDC hdc, int x, int y, int count);
 
 	private:
-		static Vector2 mResolution;        // Screen resolution
-		static Vector2 mLookPosition;      // Camera focus position
-		static Vector2 mDistance;          // Distance moved from the center
-		static GameObject* mTarget;        // The GameObject the camera is focusing on
+		static Vector2 hResolution;        // Screen resolution
+		static Vector2 hLookPosition;      // Camera focus position
+		static Vector2 hDistance;          // Distance moved from the center
+		static GameObject* hTarget;        // The GameObject the camera is focusing on
 
 		static int coinCount;              // The count of coins collected
 	};

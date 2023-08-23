@@ -24,7 +24,7 @@ namespace nto
 		bool GetSpin() { return bSwitch; }
 
 		void SetSpinTime(float spinTime) { bSpinTime = spinTime; }
-		int GetSpinTime() { return bSpinTime; }
+		float GetSpinTime() { return bSpinTime; }
 
 	private:
 		int bType;
