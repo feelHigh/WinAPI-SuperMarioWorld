@@ -17,21 +17,8 @@ namespace nto
 			Jump,
 			Fall,
 			Kick,
+			Attack,
 			Dead,
-
-			SuperMIdle,
-			SuperMRun,
-			SuperMDuck,
-			SuperMJump,
-			SuperMFall,
-			SuperMKick,
-
-			FireMRun,
-			FireMDuck,
-			FireMJump,
-			FireMFall,
-			FireMKick,
-			FireMAttack,
 		};
 
 		enum class eMarioDirection
@@ -74,6 +61,7 @@ namespace nto
 		void SuperM_Jump();
 		void SuperM_Fall();
 		void SuperM_Kick();
+		void SuperM_Dead();
 
 		// Fire Mario Action
 		void FireM_Idle();
@@ -83,6 +71,10 @@ namespace nto
 		void FireM_Fall();
 		void FireM_Kick();
 		void FireM_Attack();
+		void FireM_Dead();
+
+		void SetPlayerClass(eMarioClass playerClass) { mPlayerClass = playerClass; }
+		eMarioClass GetPlayerClass() const { return mPlayerClass; }
 
 	private:
 		eMarioClass mPlayerClass;
@@ -90,7 +82,7 @@ namespace nto
 		eState mState;
 
 		bool onGround;
-
+		
 		int mLife;
 		
 	};

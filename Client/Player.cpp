@@ -17,7 +17,7 @@
 namespace nto
 {
 	Player::Player()
-		: mPlayerClass(eMarioClass::Small)
+		: mPlayerClass(eMarioClass::Fire)
 		, mDir(eMarioDirection::Right)
 		, mState(eState::Idle)
 		, mLife(10)
@@ -70,23 +70,26 @@ namespace nto
 		case nto::Player::eMarioClass::Super:
 			switch (mState)
 			{
-			case nto::Player::eState::SuperMIdle:
+			case nto::Player::eState::Idle:
 				SuperM_Idle();
 				break;
-			case nto::Player::eState::SuperMRun:
+			case nto::Player::eState::Run:
 				SuperM_Run();
 				break;
-			case nto::Player::eState::SuperMDuck:
+			case nto::Player::eState::Duck:
 				SuperM_Duck();
 				break;
-			case nto::Player::eState::SuperMJump:
+			case nto::Player::eState::Jump:
 				SuperM_Jump();
 				break;
-			case nto::Player::eState::SuperMFall:
+			case nto::Player::eState::Fall:
 				SuperM_Fall();
 				break;
-			case nto::Player::eState::SuperMKick:
+			case nto::Player::eState::Kick:
 				SuperM_Kick();
+				break;
+			case nto::Player::eState::Dead:
+				SuperM_Dead();
 				break;
 			default:
 				break;
@@ -95,23 +98,28 @@ namespace nto
 		case nto::Player::eMarioClass::Fire:
 			switch (mState)
 			{
-			case nto::Player::eState::FireMRun:
+			case nto::Player::eState::Idle:
 				FireM_Idle();
 				break;
-			case nto::Player::eState::FireMDuck:
+			case nto::Player::eState::Run:
+				FireM_Run();
+				break;
+			case nto::Player::eState::Duck:
 				FireM_Duck();
 				break;
-			case nto::Player::eState::FireMJump:
+			case nto::Player::eState::Jump:
 				FireM_Jump();
 				break;
-			case nto::Player::eState::FireMFall:
+			case nto::Player::eState::Fall:
 				FireM_Fall();
 				break;
-			case nto::Player::eState::FireMKick:
+			case nto::Player::eState::Kick:
 				FireM_Kick();
 				break;
-			case nto::Player::eState::FireMAttack:
+			case nto::Player::eState::Attack:
 				FireM_Attack();
+			case nto::Player::eState::Dead:
+				FireM_Dead();
 				break;
 			default:
 				break;
@@ -130,6 +138,16 @@ namespace nto
 
 	void Player::OnCollisionEnter(Collider* other)
 	{
+		ItemSuperMushroom* upgradeMushroom = dynamic_cast<ItemSuperMushroom*>(other->GetOwner());
+		if (upgradeMushroom)
+		{
+			mPlayerClass = eMarioClass::Super;
+		}
+		ItemFireFlower* upgradeFlower = dynamic_cast<ItemFireFlower*>(other->GetOwner());
+		if (upgradeFlower)
+		{
+			mPlayerClass = eMarioClass::Fire;
+		}
 	}
 
 	void Player::OnCollisionStay(Collider* other)
@@ -465,6 +483,11 @@ namespace nto
 			}
 			mState = eState::Jump;
 		}
+		if (Controller::GetKeyDown(eKeyCode::Z))
+		{
+			animator->PlayAnimation(L"Animation_Super_Kick_Right", true);
+			mState = eState::Kick;
+		}
 	}
 
 	void Player::SuperM_Run()
@@ -651,6 +674,25 @@ namespace nto
 
 	void Player::SuperM_Kick()
 	{
+		Transform* tr = GetComponent<Transform>();
+
+		Texture* image = Resources::Load<Texture>(L"RedShell_Atk"
+			, L"..\\Assets\\Image\\Items\\Red_Shell.bmp");
+
+		RedShell* thItem = object::Instantiate<RedShell>(eLayerType::Item, tr->GetPosition());
+		Animator* at = thItem->AddComponent<Animator>();
+		at->CreateAnimation(L"Item_Animation_RedShell_Spin_1", image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 4, Vector2(0.0f, 0.0f), 0.1f);
+		at->SetScale(Vector2(4.0f, 4.0f));
+		at->PlayAnimation(L"Item_Animation_RedShell_Spin_1", true);
+		Collider* col = thItem->AddComponent<Collider>();
+		col->SetSize(Vector2(64.0f, 64.0f));
+
+		//object::Instantiate<RedShell>(eLayerType::Item, tr->GetPosition());
+		mState = eState::Idle;
+	}
+
+	void Player::SuperM_Dead()
+	{
 	}
 	#pragma endregion
 
@@ -709,6 +751,11 @@ namespace nto
 				animator->PlayAnimation(L"Animation_Fire_Jump_Right", true);
 			}
 			mState = eState::Jump;
+		}
+		if (Controller::GetKeyDown(eKeyCode::Z))
+		{
+			animator->PlayAnimation(L"Animation_Fire_Kick_Right", true);
+			mState = eState::Kick;
 		}
 	}
 
@@ -896,9 +943,29 @@ namespace nto
 
 	void Player::FireM_Kick()
 	{
+		Transform* tr = GetComponent<Transform>();
+
+		Texture* image = Resources::Load<Texture>(L"RedShell_Atk"
+			, L"..\\Assets\\Image\\Items\\Red_Shell.bmp");
+
+		RedShell* thItem = object::Instantiate<RedShell>(eLayerType::Item, tr->GetPosition());
+		Animator* at = thItem->AddComponent<Animator>();
+		at->CreateAnimation(L"Item_Animation_RedShell_Spin_1", image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 4, Vector2(0.0f, 0.0f), 0.1f);
+		at->SetScale(Vector2(4.0f, 4.0f));
+		at->PlayAnimation(L"Item_Animation_RedShell_Spin_1", true);
+		Collider* col = thItem->AddComponent<Collider>();
+		col->SetSize(Vector2(64.0f, 64.0f));
+
+		//object::Instantiate<RedShell>(eLayerType::Item, tr->GetPosition());
+		mState = eState::Idle;
 	}
 
 	void Player::FireM_Attack()
+	{
+
+	}
+
+	void Player::FireM_Dead()
 	{
 	}
 	#pragma endregion

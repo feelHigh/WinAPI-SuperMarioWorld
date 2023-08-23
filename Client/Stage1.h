@@ -22,6 +22,7 @@ namespace nto
 		ForegroundSpinBox* Stage1_Foreground_SpinBox_Entity9;
 		// Player
 		Player* player;
+		Collider* colPlayer;
 		// Foreground
 		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity1;
 		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity2;

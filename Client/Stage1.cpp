@@ -970,73 +970,82 @@ namespace nto
 		Animator* atPlayer = player->AddComponent<Animator>();
 		// 방향 = 왼쪽
 		// <Small Mario Animation>
-		atPlayer->CreateAnimation(L"Animation_Small_Idle_Left", Mario_Left_Image, Vector2(0.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_Run_Left", Mario_Left_Image, Vector2(48.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_Jump_Left", Mario_Left_Image, Vector2(192.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_Fall_Left", Mario_Left_Image, Vector2(240.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_LookUp_Left", Mario_Left_Image, Vector2(288.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_Duck_Left", Mario_Left_Image, Vector2(336.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_Kick_Left", Mario_Left_Image, Vector2(384.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_Swim_Left", Mario_Left_Image, Vector2(432.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -56.0f), 0.2f);
+		atPlayer->CreateAnimation(L"Animation_Small_Idle_Left", Mario_Left_Image, Vector2(0.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_Run_Left", Mario_Left_Image, Vector2(48.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_Jump_Left", Mario_Left_Image, Vector2(192.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_Fall_Left", Mario_Left_Image, Vector2(240.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_LookUp_Left", Mario_Left_Image, Vector2(288.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_Duck_Left", Mario_Left_Image, Vector2(336.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_Kick_Left", Mario_Left_Image, Vector2(384.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_Swim_Left", Mario_Left_Image, Vector2(432.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -56.0f), 0.1f);
 		
 		// <Super Mario Animation>
-		atPlayer->CreateAnimation(L"Animation_Super_Idle_Left", Mario_Left_Image, Vector2(0.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_Run_Left", Mario_Left_Image, Vector2(48.0f, 48.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_Jump_Left", Mario_Left_Image, Vector2(192.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_Fall_Left", Mario_Left_Image, Vector2(240.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_LookUp_Left", Mario_Left_Image, Vector2(288.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_Duck_Left", Mario_Left_Image, Vector2(336.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_Kick_Left", Mario_Left_Image, Vector2(384.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_Swim_Left", Mario_Left_Image, Vector2(432.0f, 48.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.2f);
+		atPlayer->CreateAnimation(L"Animation_Super_Idle_Left", Mario_Left_Image, Vector2(0.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_Run_Left", Mario_Left_Image, Vector2(48.0f, 48.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_Jump_Left", Mario_Left_Image, Vector2(192.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_Fall_Left", Mario_Left_Image, Vector2(240.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_LookUp_Left", Mario_Left_Image, Vector2(288.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_Duck_Left", Mario_Left_Image, Vector2(336.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_Kick_Left", Mario_Left_Image, Vector2(384.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_Swim_Left", Mario_Left_Image, Vector2(432.0f, 48.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.1f);
 		
 		// <Fire Mario Animation>
-		atPlayer->CreateAnimation(L"Animation_Fire_Idle_Left", Mario_Left_Image, Vector2(0.0f, 48.0f), Vector2(48.0f, 96.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_Run_Left", Mario_Left_Image, Vector2(48.0f, 48.0f), Vector2(48.0f, 96.0f), 3, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_Jump_Left", Mario_Left_Image, Vector2(192.0f, 48.0f), Vector2(48.0f, 96.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_Fall_Left", Mario_Left_Image, Vector2(240.0f, 48.0f), Vector2(48.0f, 96.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_LookUp_Left", Mario_Left_Image, Vector2(288.0f, 48.0f), Vector2(48.0f, 96.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_Duck_Left", Mario_Left_Image, Vector2(336.0f, 48.0f), Vector2(48.0f, 96.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_Kick_Left", Mario_Left_Image, Vector2(384.0f, 48.0f), Vector2(48.0f, 96.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_Swim_Left", Mario_Left_Image, Vector2(432.0f, 48.0f), Vector2(48.0f, 96.0f), 3, Vector2(0.0f, -40.0f), 0.2f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Idle_Left", Mario_Left_Image, Vector2(0.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Run_Left", Mario_Left_Image, Vector2(48.0f, 96.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Jump_Left", Mario_Left_Image, Vector2(192.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Fall_Left", Mario_Left_Image, Vector2(240.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_LookUp_Left", Mario_Left_Image, Vector2(288.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Duck_Left", Mario_Left_Image, Vector2(336.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Kick_Left", Mario_Left_Image, Vector2(384.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Swim_Left", Mario_Left_Image, Vector2(432.0f, 96.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.1f);
 		
 		// 방향 = 오른쪽
 		// <Small Mario Animation>
-		atPlayer->CreateAnimation(L"Animation_Small_Idle_Right", Mario_Right_Image, Vector2(0.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_Run_Right", Mario_Right_Image, Vector2(48.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_Jump_Right", Mario_Right_Image, Vector2(192.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_Fall_Right", Mario_Right_Image, Vector2(240.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_LookUp_Right", Mario_Right_Image, Vector2(288.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_Duck_Right", Mario_Right_Image, Vector2(336.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_Kick_Right", Mario_Right_Image, Vector2(384.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Small_Swim_Right", Mario_Right_Image, Vector2(432.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -56.0f), 0.2f);
+		atPlayer->CreateAnimation(L"Animation_Small_Idle_Right", Mario_Right_Image, Vector2(0.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_Run_Right", Mario_Right_Image, Vector2(48.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_Jump_Right", Mario_Right_Image, Vector2(192.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_Fall_Right", Mario_Right_Image, Vector2(240.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_LookUp_Right", Mario_Right_Image, Vector2(288.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_Duck_Right", Mario_Right_Image, Vector2(336.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_Kick_Right", Mario_Right_Image, Vector2(384.0f, 0.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -56.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Small_Swim_Right", Mario_Right_Image, Vector2(432.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -56.0f), 0.1f);
 
 		// <Super Mario Animation>
-		atPlayer->CreateAnimation(L"Animation_Super_Idle_Right", Mario_Right_Image, Vector2(0.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_Run_Right", Mario_Right_Image, Vector2(48.0f, 48.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_Jump_Right", Mario_Right_Image, Vector2(192.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_Fall_Right", Mario_Right_Image, Vector2(240.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_LookUp_Right", Mario_Right_Image, Vector2(288.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_Duck_Right", Mario_Right_Image, Vector2(336.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_Kick_Right", Mario_Right_Image, Vector2(384.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Super_Swim_Right", Mario_Right_Image, Vector2(432.0f, 48.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.2f);
+		atPlayer->CreateAnimation(L"Animation_Super_Idle_Right", Mario_Right_Image, Vector2(0.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_Run_Right", Mario_Right_Image, Vector2(48.0f, 48.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_Jump_Right", Mario_Right_Image, Vector2(192.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_Fall_Right", Mario_Right_Image, Vector2(240.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_LookUp_Right", Mario_Right_Image, Vector2(288.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_Duck_Right", Mario_Right_Image, Vector2(336.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_Kick_Right", Mario_Right_Image, Vector2(384.0f, 48.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Super_Swim_Right", Mario_Right_Image, Vector2(432.0f, 48.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.1f);
 
 		// <Fire Mario Animation>
-		atPlayer->CreateAnimation(L"Animation_Fire_Idle_Right", Mario_Right_Image, Vector2(0.0f, 48.0f), Vector2(48.0f, 96.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_Run_Right", Mario_Right_Image, Vector2(48.0f, 48.0f), Vector2(48.0f, 96.0f), 3, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_Jump_Right", Mario_Right_Image, Vector2(192.0f, 48.0f), Vector2(48.0f, 96.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_Fall_Right", Mario_Right_Image, Vector2(240.0f, 48.0f), Vector2(48.0f, 96.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_LookUp_Right", Mario_Right_Image, Vector2(288.0f, 48.0f), Vector2(48.0f, 96.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_Duck_Right", Mario_Right_Image, Vector2(336.0f, 48.0f), Vector2(48.0f, 96.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_Kick_Right", Mario_Right_Image, Vector2(384.0f, 48.0f), Vector2(48.0f, 96.0f), 1, Vector2(0.0f, -40.0f), 0.2f);
-		atPlayer->CreateAnimation(L"Animation_Fire_Swim_Right", Mario_Right_Image, Vector2(432.0f, 48.0f), Vector2(48.0f, 96.0f), 3, Vector2(0.0f, -40.0f), 0.2f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Idle_Right", Mario_Right_Image, Vector2(0.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Run_Right", Mario_Right_Image, Vector2(48.0f, 96.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Jump_Right", Mario_Right_Image, Vector2(192.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Fall_Right", Mario_Right_Image, Vector2(240.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_LookUp_Right", Mario_Right_Image, Vector2(288.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Duck_Right", Mario_Right_Image, Vector2(336.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Kick_Right", Mario_Right_Image, Vector2(384.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
+		atPlayer->CreateAnimation(L"Animation_Fire_Swim_Right", Mario_Right_Image, Vector2(432.0f, 96.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.1f);
 
 		atPlayer->SetScale(Vector2(4.0f, 4.0f));
-		atPlayer->PlayAnimation(L"Animation_Small_Idle_Right", true);
+		if (player->GetPlayerClass() == Player::eMarioClass::Small)
+		{
+			atPlayer->PlayAnimation(L"Animation_Small_Idle_Right", true);
+		}
+		if (player->GetPlayerClass() == Player::eMarioClass::Super)
+		{
+			atPlayer->PlayAnimation(L"Animation_Super_Idle_Right", true);
+		}
+		if (player->GetPlayerClass() == Player::eMarioClass::Fire)
+		{
+			atPlayer->PlayAnimation(L"Animation_Fire_Idle_Right", true);
+		}
 		atPlayer->SetAffectedCamera(true);
 
-		Collider* colPlayer = player->AddComponent<Collider>();
-		colPlayer->SetSize(Vector2(64.0f, 80.0f)); // Small Mario
-		//colPlayer->SetSize(Vector2(64.0f, 112.0f)); // Super, Fire Mario
+		colPlayer = player->AddComponent<Collider>();
 		player->AddComponent<Rigidbody>();
 		#pragma endregion
 
@@ -1267,6 +1276,21 @@ namespace nto
 	{
 		Scene::Update();
 		Camera::SetTarget(player);
+
+		#pragma region Mario Class
+		if (player->GetPlayerClass() == Player::eMarioClass::Small)
+		{
+			colPlayer->SetSize(Vector2(64.0f, 80.0f)); // Small Mario
+		}
+		if (player->GetPlayerClass() == Player::eMarioClass::Super)
+		{
+			colPlayer->SetSize(Vector2(64.0f, 112.0f)); // Super, Fire Mario
+		}
+		if (player->GetPlayerClass() == Player::eMarioClass::Fire)
+		{
+			colPlayer->SetSize(Vector2(64.0f, 112.0f)); // Super, Fire Mario
+		}
+		#pragma endregion
 
 		#pragma region	Mario Upgrade Items
 		if (Stage1_Foreground_UpgradeBox_Entity1->GetHit())
