@@ -484,7 +484,7 @@ namespace nto
 		ForegroundUpgradeBox* Stage1_Foreground_Checkpoint_Pole_Entity = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
 		ForegroundYoshiCoin* Stage1_Foreground_Checkpoint_Flag_Entity = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
 		ForegroundUpgradeBox* Stage1_Foreground_Checkpoint_Finish_Pole_Entity = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
-		ForegroundFinishFlag* Stage1_Foreground_Checkpoint_Finish_Flag_Entity = object::Instantiate<ForegroundFinishFlag>(eLayerType::Foreground);
+		Stage1_Foreground_Checkpoint_Finish_Flag_Entity = object::Instantiate<ForegroundFinishFlag>(eLayerType::Foreground);
 
 		// Set Type
 		Stage1_Foreground_Coin_Entity_4_1->SetType(2);
@@ -962,7 +962,7 @@ namespace nto
 			, L"..\\Assets\\Mario\\Mario_Right.bmp");
 
 		player = object::Instantiate<Player>(eLayerType::Player);
-		Transform* trPlayer = player->GetComponent<Transform>();
+		trPlayer = player->GetComponent<Transform>();
 
 		trPlayer->SetPosition(Vector2(600.0f, 600.0f)); //1248
 
@@ -1030,6 +1030,7 @@ namespace nto
 		atPlayer->CreateAnimation(L"Animation_Fire_Swim_Right", Mario_Right_Image, Vector2(432.0f, 96.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.1f);
 
 		atPlayer->SetScale(Vector2(4.0f, 4.0f));
+
 		if (player->GetPlayerClass() == Player::eMarioClass::Small)
 		{
 			atPlayer->PlayAnimation(L"Animation_Small_Idle_Right", true);
@@ -1259,7 +1260,7 @@ namespace nto
 
 		trHUD_Base = Stage1_HUD_Entity->GetComponent<Transform>();
 
-		trHUD_Base->SetPosition(Vector2(600.0f, 100.0f));
+		//trHUD_Base->SetPosition(Vector2(600.0f, 100.0f));
 
 		SpriteRenderer* Stage1_HUD_Renderer = Stage1_HUD_Entity->AddComponent<SpriteRenderer>();
 
@@ -1376,6 +1377,15 @@ namespace nto
 				Stage1_Foreground_SpinBox_Entity9->SetSpin(false);
 			}
 		}
+		#pragma endregion
+
+		#pragma region Finish Flag
+		if (Stage1_Foreground_Checkpoint_Finish_Flag_Entity->GetHit())
+		{
+			bgSound->Stop(true);
+			SceneManager::LoadScene(L"StageWorldMap");
+		}
+
 		#pragma endregion
 
 		#pragma region HUD Update

@@ -1,6 +1,8 @@
 #pragma once
 #include "Scene.h"
 #include "ntoLayerHeaders.h"
+#include "ntoResources.h"
+#include "ntoSound.h"
 
 namespace nto
 {
@@ -18,5 +20,11 @@ namespace nto
 		BackGround* WorldMap_Border_Entity;
 		BackGround* WorldMap_World_1_Entity;
 		StageDirector* player;
+		StagePlate* StagePlate1_Entity;
+		StagePlate* StagePlate2_Entity;
+		StagePlate* StagePlate3_Entity;
+		StagePlate* StagePlate4_Entity;
+
+		Sound* bgSound;
 	};
 }

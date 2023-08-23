@@ -3,6 +3,7 @@
 #include "ntoLayerHeaders.h"
 #include "Transform.h"
 #include "CustomTime.h"
+#include "ntoResources.h"
 #include "ntoSound.h"
 
 namespace nto
@@ -23,10 +24,12 @@ namespace nto
 		ForegroundSpinBox* Stage1_Foreground_SpinBox_Entity9;
 		// Player
 		Player* player;
+		Transform* trPlayer;
 		Collider* colPlayer;
 		// Foreground
 		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity1;
 		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity2;
+		ForegroundFinishFlag* Stage1_Foreground_Checkpoint_Finish_Flag_Entity;
 		// Items
 		ItemSuperMushroom* Stage1_Item_SuperMushroom_Entity;
 		ItemFireFlower* Stage1_Item_FireFlower_Entity;

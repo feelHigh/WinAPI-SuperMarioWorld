@@ -17,8 +17,16 @@ namespace nto
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
 
+		void SetHit(bool hit) { bHit = hit; }
+		bool GetHit() { return bHit; }
+
+		void SetStage(int exit) { bExitStage = exit; }
+		bool GetStage() { return bExitStage; }
+
 	private:
 		float bTimer;
 		bool bTick;
+		bool bHit;
+		int bExitStage;
 	};
 }

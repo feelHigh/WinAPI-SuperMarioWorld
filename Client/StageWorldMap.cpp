@@ -98,10 +98,15 @@ namespace nto
 		#pragma endregion
 
 		#pragma region Foreground Layer
-		StagePlate* StagePlate1_Entity = object::Instantiate<StagePlate>(eLayerType::Foreground);
-		StagePlate* StagePlate2_Entity = object::Instantiate<StagePlate>(eLayerType::Foreground);
-		StagePlate* StagePlate3_Entity = object::Instantiate<StagePlate>(eLayerType::Foreground);
-		StagePlate* StagePlate4_Entity = object::Instantiate<StagePlate>(eLayerType::Foreground);
+		StagePlate1_Entity = object::Instantiate<StagePlate>(eLayerType::Foreground);
+		StagePlate2_Entity = object::Instantiate<StagePlate>(eLayerType::Foreground);
+		StagePlate3_Entity = object::Instantiate<StagePlate>(eLayerType::Foreground);
+		StagePlate4_Entity = object::Instantiate<StagePlate>(eLayerType::Foreground);
+
+		StagePlate1_Entity->SetStageNum(1);
+		StagePlate2_Entity->SetStageNum(2);
+		StagePlate3_Entity->SetStageNum(3);
+		StagePlate4_Entity->SetStageNum(4);
 
 		Transform* trStagePlate1 = StagePlate1_Entity->GetComponent<Transform>();
 		Transform* trStagePlate2 = StagePlate2_Entity->GetComponent<Transform>();

@@ -17,6 +17,8 @@
 namespace nto
 {
 	StagePlate::StagePlate()
+		: StageNum(1)
+		, StageEnter(false)
 	{
 	}
 
@@ -52,10 +54,41 @@ namespace nto
 
         if (player)
         {
-			if (Controller::GetKeyDown(eKeyCode::I))
+			if (StageNum == 1)
 			{
-				SceneManager::CreateScene<Stage1>(L"Stage1");
-				SceneManager::LoadScene(L"Stage1");
+				StageEnter = true;
+				if (Controller::GetKeyDown(eKeyCode::I))
+				{
+					SceneManager::CreateScene<Stage1>(L"Stage1");
+					SceneManager::LoadScene(L"Stage1");
+				}
+			}
+			if (StageNum == 2)
+			{
+				StageEnter = true;
+				if (Controller::GetKeyDown(eKeyCode::I))
+				{
+					SceneManager::CreateScene<Stage2>(L"Stage2");
+					SceneManager::LoadScene(L"Stage2");
+				}
+			}
+			if (StageNum == 3)
+			{
+				StageEnter = true;
+				if (Controller::GetKeyDown(eKeyCode::I))
+				{
+					//SceneManager::CreateScene<Stage3>(L"Stage3");
+					//SceneManager::LoadScene(L"Stage3");
+				}
+			}
+			if (StageNum == 4)
+			{
+				StageEnter = true;
+				if (Controller::GetKeyDown(eKeyCode::I))
+				{
+					//SceneManager::CreateScene<StageBoss>(L"StageBoss");
+					//SceneManager::LoadScene(L"StageBoss");
+				}
 			}
         }
 	}

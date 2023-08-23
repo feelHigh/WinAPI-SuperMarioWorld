@@ -5,6 +5,8 @@
 #include "SpriteRenderer.h"
 #include "ntoCollider.h"
 #include "ntoRigidbody.h"
+#include "ntoResources.h"
+#include "ntoSound.h"
 #include "CustomTime.h"
 
 namespace nto
@@ -100,6 +102,8 @@ namespace nto
                         // ¼öÁ¤
                         if (bType == 1)
                         {
+                            Sound* sound = Resources::Load<Sound>(L"sfxSpinCoin", L"..\\Assets\\Sound\\SFX\\WAV\\smw_coin.wav");
+                            sound->Play(false);
                             this->GetComponent<Animator>()->PlayAnimation(L"Foreground_Animation_EmptyBox", true);
                         }
                         else if (bType == 2)

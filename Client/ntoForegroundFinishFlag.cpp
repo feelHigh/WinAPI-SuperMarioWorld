@@ -9,12 +9,16 @@
 #include "SceneManager.h"
 #include "StageWorldMap.h"
 #include "Camera.h"
+#include "ntoResources.h"
+#include "ntoSound.h"
 
 namespace nto
 {
 	ForegroundFinishFlag::ForegroundFinishFlag()
 		: bTimer(3.0f)
 		, bTick(true)
+		, bHit(false)
+		, bExitStage(1)
 	{
 	}
 
@@ -74,11 +78,38 @@ namespace nto
 
 		if (player)
 		{
-			Destroy(this);
-			Camera::SetTarget(nullptr);
+			if (bExitStage == 1)
+			{
+				//bHit = true;
+				//Destroy(this);
+				SceneManager::LoadScene(L"StageWorldMap");
+			}
+			if (bExitStage == 2)
+			{
+				//bHit = true;
+				//Destroy(this);
+				SceneManager::LoadScene(L"StageWorldMap");
+			}
+			if (bExitStage == 3)
+			{
+				//bHit = true;
+				//Destroy(this);
+				SceneManager::LoadScene(L"StageWorldMap");
+			}
+			if (bExitStage == 4)
+			{
+				//bHit = true;
+				//Destroy(this);
+				SceneManager::LoadScene(L"StageWorldMap");
+			}
+
+			//bHit = true;
+			//Destroy(this);
+			
+			/*Camera::SetTarget(nullptr);
 			Camera::SetOffset(Vector2(0.0f, 0.0f));
 
-			SceneManager::LoadScene(L"StageWorldMap");
+			SceneManager::LoadScene(L"StageWorldMap");*/
 		}
 	}
 
