@@ -3,6 +3,7 @@
 #include "ntoLayerHeaders.h"
 #include "Transform.h"
 #include "CustomTime.h"
+#include "ntoSound.h"
 
 namespace nto
 {
@@ -36,6 +37,10 @@ namespace nto
 		float smShowTime;
 		float ffShowTime;
 		float eventTime;
+		// UI
+		HUD* Stage1_HUD_Entity;
+		Transform* trHUD_Base;
+
 		// Changable Coins
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_1;
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_2;
@@ -50,5 +55,7 @@ namespace nto
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_11;
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_12;
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_13;
+		// Sound
+		Sound* bgSound;
 	};
 }

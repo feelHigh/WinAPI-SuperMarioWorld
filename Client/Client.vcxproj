@@ -155,6 +155,7 @@
     <ClInclude Include="ntoForegroundCoin.h" />
     <ClInclude Include="ntoForegroundFinishFlag.h" />
     <ClInclude Include="ntoForegroundFloorBox.h" />
+    <ClInclude Include="ntoHUD.h" />
     <ClInclude Include="ntoItemFireFlower.h" />
     <ClInclude Include="ntoItemPSwitch.h" />
     <ClInclude Include="ntoForegroundRandomBox.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="ntoForegroundCoin.cpp" />
     <ClCompile Include="ntoForegroundFinishFlag.cpp" />
     <ClCompile Include="ntoForegroundFloorBox.cpp" />
+    <ClCompile Include="ntoHUD.cpp" />
     <ClCompile Include="ntoItemFireFlower.cpp" />
     <ClCompile Include="ntoItemPSwitch.cpp" />
     <ClCompile Include="ntoForegroundRandomBox.cpp" />

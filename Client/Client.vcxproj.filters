@@ -303,6 +303,9 @@
     <ClInclude Include="ntoItemSuperMushroom.h">
       <Filter>Contents\GameObject\Item</Filter>
     </ClInclude>
+    <ClInclude Include="ntoHUD.h">
+      <Filter>Contents\GameObject\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
@@ -473,6 +476,9 @@
     </ClCompile>
     <ClCompile Include="ntoItemSuperMushroom.cpp">
       <Filter>Contents\GameObject\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoHUD.cpp">
+      <Filter>Contents\GameObject\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

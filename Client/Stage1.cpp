@@ -32,7 +32,6 @@ namespace nto
 		SpriteRenderer* Stage1_BackGround_Renderer = Stage1_BackGround_Entity->AddComponent<SpriteRenderer>();
 		Stage1_BackGround_Renderer->SetImage(Stage1_Background_Image);
 		Stage1_BackGround_Renderer->SetScale(Vector2(4.0f, 4.0f));
-		Stage1_BackGround_Renderer->SetAffectCamera(false);
 		Stage1_BackGround_Entity->GetComponent<Transform>()->SetPosition(Vector2(11154.0f, 100.0f));
 		#pragma endregion
 
@@ -1222,8 +1221,8 @@ namespace nto
 		trFireFlower = Stage1_Item_FireFlower_Entity->GetComponent<Transform>();
 		trPSwitch = Stage1_Item_PSwitch_Entity->GetComponent<Transform>();
 
-		trSuperMushroom->SetPosition(Vector2(2684.0f, 510.0f)); // move to 446
-		trFireFlower->SetPosition(Vector2(14380.0f, 398.0f)); // move to 334
+		trSuperMushroom->SetPosition(Vector2(14380.0f, 398.0f)); // move to 446, 2684.0f, 510.0f
+		trFireFlower->SetPosition(Vector2(2684.0f, 510.0f)); // move to 334, 14380.0f, 398.0f
 		trPSwitch->SetPosition(Vector2(18144.0f, 383.0f)); //y=383,699
 
 		Animator* atSuperMushroom = Stage1_Item_SuperMushroom_Entity->AddComponent<Animator>();
@@ -1247,9 +1246,26 @@ namespace nto
 
 		colPSwitch->SetSize(Vector2(64.0f, 64.0f));
 
-		smShowTime = 2.0f;
-		ffShowTime = 2.0f;
+		smShowTime = 1.0f;
+		ffShowTime = 1.0f;
 		eventTime = Stage1_Foreground_SpinBox_Entity9->GetSpinTime();
+		#pragma endregion
+
+		#pragma region UI Layer
+		Texture* Stage1_HUD_Base_Image = Resources::Load<Texture>(L"Stage1_HUD_Base"
+			, L"..\\Assets\\HUD\\HUD_Base.bmp");
+
+		Stage1_HUD_Entity = object::Instantiate<HUD>(eLayerType::UI);
+
+		trHUD_Base = Stage1_HUD_Entity->GetComponent<Transform>();
+
+		trHUD_Base->SetPosition(Vector2(600.0f, 100.0f));
+
+		SpriteRenderer* Stage1_HUD_Renderer = Stage1_HUD_Entity->AddComponent<SpriteRenderer>();
+
+		Stage1_HUD_Renderer->SetImage(Stage1_HUD_Base_Image);
+
+		Stage1_HUD_Renderer->SetScale(Vector2(4.0f, 4.0f));
 		#pragma endregion
 
 		#pragma region Collision Manager
@@ -1265,8 +1281,10 @@ namespace nto
 		//CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Floor, true);
 		#pragma endregion
 
-		Sound* bgSound = Resources::Load<Sound>(L"bgmOverworld", L"..\\Assets\\Sound\\BGM\\WAV\\10.Overworld_Bgm.wav");
+		#pragma region Sound
+		bgSound = Resources::Load<Sound>(L"bgmOverworld", L"..\\Assets\\Sound\\BGM\\WAV\\10.Overworld_Bgm.wav");
 		bgSound->Play(true);
+		#pragma endregion
 
 		Camera::SetTarget(player);
 		Camera::SetOffset(Vector2(0.0f, -218.0f));
@@ -1295,30 +1313,30 @@ namespace nto
 		#pragma region	Mario Upgrade Items
 		if (Stage1_Foreground_UpgradeBox_Entity1->GetHit())
 		{
-			Vector2 smPos = trSuperMushroom->GetPosition();
-			smPos.y -= 32 * Time::DeltaTime();
-			trSuperMushroom->SetPosition(smPos);
+			Vector2 ffPos = trFireFlower->GetPosition();
+			ffPos.y -= 64 * Time::DeltaTime();
+			trFireFlower->SetPosition(ffPos);
 
 			smShowTime -= Time::DeltaTime();
 			if (smShowTime < 0.0f)
 			{
 				Stage1_Foreground_UpgradeBox_Entity1->SetHit(false);
-				Collider* colSuperMushroom = Stage1_Item_SuperMushroom_Entity->AddComponent<Collider>();
-				colSuperMushroom->SetSize(Vector2(64.0f, 64.0f));
+				Collider* colFireFlower = Stage1_Item_FireFlower_Entity->AddComponent<Collider>();
+				colFireFlower->SetSize(Vector2(64.0f, 64.0f));
 			}
 		}
 		if (Stage1_Foreground_UpgradeBox_Entity2->GetHit())
 		{
-			Vector2 ffPos = trFireFlower->GetPosition();
-			ffPos.y -= 32 * Time::DeltaTime();
-			trFireFlower->SetPosition(ffPos);
+			Vector2 smPos = trSuperMushroom->GetPosition();
+			smPos.y -= 64 * Time::DeltaTime();
+			trSuperMushroom->SetPosition(smPos);
 
 			ffShowTime -= Time::DeltaTime();
 			if (ffShowTime < 0.0f)
 			{
 				Stage1_Foreground_UpgradeBox_Entity2->SetHit(false);
-				Collider* colFireFlower = Stage1_Item_FireFlower_Entity->AddComponent<Collider>();
-				colFireFlower->SetSize(Vector2(64.0f, 64.0f));
+				Collider* colSuperMushroom = Stage1_Item_SuperMushroom_Entity->AddComponent<Collider>();
+				colSuperMushroom->SetSize(Vector2(64.0f, 64.0f));
 			}
 		}
 		#pragma endregion
@@ -1360,9 +1378,14 @@ namespace nto
 		}
 		#pragma endregion
 
+		#pragma region HUD Update
+
+		#pragma endregion
+
 		if (Controller::GetKeyDown(eKeyCode::P))
 		{
 			SceneManager::LoadScene(L"StageWorldMap");
+			bgSound->Stop(true);
 		}
 	}
 
