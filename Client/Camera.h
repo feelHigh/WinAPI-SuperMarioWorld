@@ -27,12 +27,9 @@ namespace nto
 		Vector2 mPosition;
 
 		static Vector2 mOffset;
+		static float mThresholdX;
+		static float mThresholdY;
 
-		// New Methods
-		static Vector2 CalculateThreshold();
-		static Vector2 MoveTowards(Vector2 current, Vector2 target, float maxDistanceDelta);
-
-		// Optional speed variable for camera following speed
 		static float speed;
 	};
 }

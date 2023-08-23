@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "ntoLayerHeaders.h"
 #include "ntoFloor.h"
 #include "ntoRedShell.h"
 #include "Transform.h"
@@ -10,6 +11,7 @@
 #include "Object.h"
 #include "Texture.h"
 #include "ntoResources.h"
+#include "ntoSound.h"
 #include "CustomTime.h"
 
 namespace nto

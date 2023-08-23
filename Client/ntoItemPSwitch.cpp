@@ -14,7 +14,7 @@ namespace nto
     ItemPSwitch::ItemPSwitch()
         : pStatus(false)
         , pOnGround(false)
-        , pTimer(2.0f)
+        , pTimer(3.0f)
         , pDeathTime(1.0f)
 	{
 	}
@@ -95,7 +95,7 @@ namespace nto
                         rb->SetVelocity(Vector2(0.0f, -600.0f));
 
                         pStatus = true;
-                        Sound* sound = Resources::Load<Sound>(L"sfxCoin", L"..\\Assets\\Sound\\SFX\\WAV\\smw_switch_activated.wav");
+                        Sound* sound = Resources::Load<Sound>(L"sfxPSwitch", L"..\\Assets\\Sound\\SFX\\WAV\\smw_switch_activated.wav");
                         sound->Play(false);
                         this->GetComponent<Animator>()->PlayAnimation(L"Item_Animation_PSwitch_On", true);
                         Collider* boxCollider = GetComponent<Collider>();

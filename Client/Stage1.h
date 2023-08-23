@@ -18,13 +18,24 @@ namespace nto
 
 	private:
 		bool pSwitchState;
+		// Interactive Box
 		ForegroundSpinBox* Stage1_Foreground_SpinBox_Entity9;
+		// Player
 		Player* player;
-
+		// Foreground
+		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity1;
+		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity2;
+		// Items
+		ItemSuperMushroom* Stage1_Item_SuperMushroom_Entity;
+		ItemFireFlower* Stage1_Item_FireFlower_Entity;
 		ItemPSwitch* Stage1_Item_PSwitch_Entity;
+		Transform* trSuperMushroom;
+		Transform* trFireFlower;
 		Transform* trPSwitch;
+		float smShowTime;
+		float ffShowTime;
 		float eventTime;
-
+		// Changable Coins
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_1;
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_2;
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_3;

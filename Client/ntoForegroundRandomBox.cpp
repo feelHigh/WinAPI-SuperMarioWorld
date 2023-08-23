@@ -11,7 +11,7 @@
 namespace nto
 {
 	ForegroundRandomBox::ForegroundRandomBox()
-		: hit(false)
+		: bHit(false)
 	{
 	}
 
@@ -82,20 +82,20 @@ namespace nto
 					}
 					else
 					{
-						if (hit)
+						if (bHit)
 						{
 						}
 						else
 						{
 							Sound* sound = Resources::Load<Sound>(L"sfxCoin", L"..\\Assets\\Sound\\SFX\\WAV\\smw_coin.wav");
 							sound->Play(false);
-							hit = true;
+							bHit = true;
 						}
 						// Bump the player down
 						playerPos.y -= overlapY;
 						Rigidbody* rb = player->GetComponent<Rigidbody>();
 						rb->SetGround(false);
-						rb->SetVelocity(Vector2(0.0f, 600.0f));
+						rb->SetVelocity(Vector2(0.0f, 500.0f));
 
 						this->GetComponent<Animator>()->PlayAnimation(L"Foreground_Animation_EmptyBox", true);
 					}

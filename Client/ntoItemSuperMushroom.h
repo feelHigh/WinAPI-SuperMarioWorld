@@ -3,11 +3,11 @@
 
 namespace nto
 {
-	class ForegroundUpgradeBox : public GameObject
+	class ItemSuperMushroom : public GameObject
 	{
 	public:
-		ForegroundUpgradeBox();
-		virtual ~ForegroundUpgradeBox();
+		ItemSuperMushroom();
+		virtual ~ItemSuperMushroom();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -17,10 +17,6 @@ namespace nto
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
 
-		void SetHit(bool hit) { bHit = hit; }
-		bool GetHit() { return bHit; }
-
 	private:
-		bool bHit;
 	};
 }

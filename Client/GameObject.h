@@ -50,6 +50,12 @@ namespace nto
 			return comp;
 		}
 
+		template <typename T>
+		bool HasComponent()
+		{
+			return GetComponent<T>() != nullptr;
+		}
+
 		virtual void OnCollisionEnter(class Collider* other);
 		virtual void OnCollisionStay(class Collider* other);
 		virtual void OnCollisionExit(class Collider* other);

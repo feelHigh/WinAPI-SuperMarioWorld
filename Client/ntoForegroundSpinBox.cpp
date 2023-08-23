@@ -12,7 +12,7 @@ namespace nto
 	ForegroundSpinBox::ForegroundSpinBox()
         : bType(1)
         , bSwitch(false)
-        , bSpinTime(1.0f)
+        , bSpinTime(3.0f)
 	{
 	}
 

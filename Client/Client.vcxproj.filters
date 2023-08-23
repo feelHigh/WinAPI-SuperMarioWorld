@@ -297,6 +297,12 @@
     <ClInclude Include="ntoSoundManager.h">
       <Filter>Engine\Sound</Filter>
     </ClInclude>
+    <ClInclude Include="ntoItemFireFlower.h">
+      <Filter>Contents\GameObject\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoItemSuperMushroom.h">
+      <Filter>Contents\GameObject\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
@@ -461,6 +467,12 @@
     </ClCompile>
     <ClCompile Include="ntoSoundManager.cpp">
       <Filter>Engine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoItemFireFlower.cpp">
+      <Filter>Contents\GameObject\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoItemSuperMushroom.cpp">
+      <Filter>Contents\GameObject\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

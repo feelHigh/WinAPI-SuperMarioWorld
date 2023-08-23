@@ -478,8 +478,8 @@ namespace nto
 		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity3 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
 		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity4 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
 		ForegroundRedApple* Stage1_Foreground_RedApple_Entity = object::Instantiate<ForegroundRedApple>(eLayerType::Foreground);
-		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity1 = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
-		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity2 = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
+		Stage1_Foreground_UpgradeBox_Entity1 = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
+		Stage1_Foreground_UpgradeBox_Entity2 = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
 		ForegroundFloorBox* Stage1_Foreground_UpgradeBox_Entity3 = object::Instantiate<ForegroundFloorBox>(eLayerType::Foreground);
 		ForegroundFloorBox* Stage1_Foreground_UpgradeBox_Entity4 = object::Instantiate<ForegroundFloorBox>(eLayerType::Foreground);
 		ForegroundUpgradeBox* Stage1_Foreground_Checkpoint_Pole_Entity = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
@@ -1192,36 +1192,54 @@ namespace nto
 		#pragma endregion
 
 		#pragma region Item Layer
-		// Animated Image
-		
 		// Static Image
+		Texture* Stage1_Item_SuperMushroom_Image = Resources::Load<Texture>(L"Stage1_SuperMushroom"
+			, L"..\\Assets\\Image\\Items\\SuperMushroom.bmp");
+		Texture* Stage1_Item_FireFlower_Image = Resources::Load<Texture>(L"Stage1_FireFlower"
+			, L"..\\Assets\\Image\\Items\\FireFlower.bmp");
 		Texture* Stage1_Item_PSwitch_Off_Image = Resources::Load<Texture>(L"Stage1_PSwitch_Off"
 			, L"..\\Assets\\Image\\ForegroundTiles\\PSwitch_Off.bmp");
 		Texture* Stage1_Item_PSwitch_On_Image = Resources::Load<Texture>(L"Stage1_PSwitch_On"
 			, L"..\\Assets\\Image\\ForegroundTiles\\PSwitch_On.bmp");
-		
-		Stage1_Item_PSwitch_Entity = object::Instantiate<ItemPSwitch>(eLayerType::Item);
 
+		Stage1_Item_SuperMushroom_Entity = object::Instantiate<ItemSuperMushroom>(eLayerType::HiddenItem);
+		Stage1_Item_FireFlower_Entity = object::Instantiate<ItemFireFlower>(eLayerType::HiddenItem);
+		Stage1_Item_PSwitch_Entity = object::Instantiate<ItemPSwitch>(eLayerType::Item);
+		
+		// SetState
 		pSwitchState = Stage1_Item_PSwitch_Entity->GetSwitchStatus();
-		
+
+		trSuperMushroom = Stage1_Item_SuperMushroom_Entity->GetComponent<Transform>();
+		trFireFlower = Stage1_Item_FireFlower_Entity->GetComponent<Transform>();
 		trPSwitch = Stage1_Item_PSwitch_Entity->GetComponent<Transform>();
-		
-		trPSwitch->SetPosition(Vector2(18144.0f, 383.0f));//y=383,699
-		
+
+		trSuperMushroom->SetPosition(Vector2(2684.0f, 510.0f)); // move to 446
+		trFireFlower->SetPosition(Vector2(14380.0f, 398.0f)); // move to 334
+		trPSwitch->SetPosition(Vector2(18144.0f, 383.0f)); //y=383,699
+
+		Animator* atSuperMushroom = Stage1_Item_SuperMushroom_Entity->AddComponent<Animator>();
+		Animator* atFireFlower = Stage1_Item_FireFlower_Entity->AddComponent<Animator>();
 		Animator* atPSwitch = Stage1_Item_PSwitch_Entity->AddComponent<Animator>();
-		
+
+		atSuperMushroom->CreateAnimation(L"Stage1_Animation_SuperMushroom", Stage1_Item_SuperMushroom_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atFireFlower->CreateAnimation(L"Stage1_Animation_FireFlower", Stage1_Item_FireFlower_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
 		atPSwitch->CreateAnimation(L"Item_Animation_PSwitch_Off", Stage1_Item_PSwitch_Off_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		
 		atPSwitch->CreateAnimation(L"Item_Animation_PSwitch_On", Stage1_Item_PSwitch_On_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 8.0f), 1, Vector2(0.0f, 16.0f));
-		
+
+		atSuperMushroom->SetScale(Vector2(4.0f, 4.0f));
+		atFireFlower->SetScale(Vector2(4.0f, 4.0f));
 		atPSwitch->SetScale(Vector2(4.0f, 4.0f));
 
+		atSuperMushroom->PlayAnimation(L"Stage1_Animation_SuperMushroom", true);
+		atFireFlower->PlayAnimation(L"Stage1_Animation_FireFlower", true);
 		atPSwitch->PlayAnimation(L"Item_Animation_PSwitch_Off", true);
 
 		Collider* colPSwitch = Stage1_Item_PSwitch_Entity->AddComponent<Collider>();
 
 		colPSwitch->SetSize(Vector2(64.0f, 64.0f));
 
+		smShowTime = 2.0f;
+		ffShowTime = 2.0f;
 		eventTime = Stage1_Foreground_SpinBox_Entity9->GetSpinTime();
 		#pragma endregion
 
@@ -1230,6 +1248,7 @@ namespace nto
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Environment, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Foreground, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::HiddenItem, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::MonsterCover, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Monster, true);
@@ -1248,6 +1267,37 @@ namespace nto
 	{
 		Scene::Update();
 		Camera::SetTarget(player);
+
+		#pragma region	Mario Upgrade Items
+		if (Stage1_Foreground_UpgradeBox_Entity1->GetHit())
+		{
+			Vector2 smPos = trSuperMushroom->GetPosition();
+			smPos.y -= 32 * Time::DeltaTime();
+			trSuperMushroom->SetPosition(smPos);
+
+			smShowTime -= Time::DeltaTime();
+			if (smShowTime < 0.0f)
+			{
+				Stage1_Foreground_UpgradeBox_Entity1->SetHit(false);
+				Collider* colSuperMushroom = Stage1_Item_SuperMushroom_Entity->AddComponent<Collider>();
+				colSuperMushroom->SetSize(Vector2(64.0f, 64.0f));
+			}
+		}
+		if (Stage1_Foreground_UpgradeBox_Entity2->GetHit())
+		{
+			Vector2 ffPos = trFireFlower->GetPosition();
+			ffPos.y -= 32 * Time::DeltaTime();
+			trFireFlower->SetPosition(ffPos);
+
+			ffShowTime -= Time::DeltaTime();
+			if (ffShowTime < 0.0f)
+			{
+				Stage1_Foreground_UpgradeBox_Entity2->SetHit(false);
+				Collider* colFireFlower = Stage1_Item_FireFlower_Entity->AddComponent<Collider>();
+				colFireFlower->SetSize(Vector2(64.0f, 64.0f));
+			}
+		}
+		#pragma endregion
 
 		#pragma region CoinToBlock Event
 		if (Stage1_Item_PSwitch_Entity && Stage1_Item_PSwitch_Entity->GetSwitchStatus()) 
@@ -1275,7 +1325,7 @@ namespace nto
 		if (Stage1_Foreground_SpinBox_Entity9->GetSpin())
 		{
 			Vector2 psPos = trPSwitch->GetPosition();
-			psPos.y += 316 * Time::DeltaTime();
+			psPos.y += 105 * Time::DeltaTime();
 			trPSwitch->SetPosition(psPos);
 
 			eventTime -= Time::DeltaTime();

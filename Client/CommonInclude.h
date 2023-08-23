@@ -28,6 +28,7 @@ namespace nto::enums
 		Background,
 		Environment,
 		Floor,
+		HiddenItem,
 		Foreground,
 		Player,
 		Monster,

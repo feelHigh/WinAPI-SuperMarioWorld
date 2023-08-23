@@ -15,6 +15,8 @@
 #include "ntoForegroundFinishFlag.h"
 #include "ntoForegroundFloorBox.h"
 #include "ntoItemPSwitch.h"
+#include "ntoItemSuperMushroom.h"
+#include "ntoItemFireFlower.h"
 #include "Player.h"
 #include "ntoStageDirector.h"
 #include "ntoRedKoopa.h"
