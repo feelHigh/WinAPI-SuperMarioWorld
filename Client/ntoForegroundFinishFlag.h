@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "ntoResources.h"
+#include "ntoSound.h"
 
 namespace nto
 {
@@ -20,13 +22,15 @@ namespace nto
 		void SetHit(bool hit) { bHit = hit; }
 		bool GetHit() { return bHit; }
 
-		void SetStage(int exit) { bExitStage = exit; }
-		bool GetStage() { return bExitStage; }
+		void SetExitStage(int exit) { bExitStage = exit; }
+		bool GetExitStage() { return bExitStage; }
 
 	private:
 		float bTimer;
 		bool bTick;
 		bool bHit;
 		int bExitStage;
+
+		Sound* m_bgSound;
 	};
 }

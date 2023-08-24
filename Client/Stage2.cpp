@@ -1,5 +1,4 @@
 #include "Stage2.h"
-#include "ntoLayerHeaders.h"
 #include "SpriteRenderer.h"
 #include "Object.h"
 #include "Controller.h"
@@ -503,8 +502,8 @@ namespace nto
 		Environment_WoodPlank_Entity_8->GetComponent<Transform>()->SetPosition(Vector2(18370.0f, 153.0f));
 		Environment_GrayPlank_Entity_1->GetComponent<Transform>()->SetPosition(Vector2(5634.0f, 57.0f));
 		Environment_GrayPlank_Entity_2->GetComponent<Transform>()->SetPosition(Vector2(6018.0f, 57.0f));
-		Environment_GrayPlank_Entity_3->GetComponent<Transform>()->SetPosition(Vector2(11714.0f, 249.0f));
-		Environment_GrayPlank_Entity_4->GetComponent<Transform>()->SetPosition(Vector2(15938.0f, -7.0f));
+		Environment_GrayPlank_Entity_3->GetComponent<Transform>()->SetPosition(Vector2(11842.0f, 249.0f));
+		Environment_GrayPlank_Entity_4->GetComponent<Transform>()->SetPosition(Vector2(16088.0f, -7.0f));
 		Environment_Pipe_Yellow_1_Entity->GetComponent<Transform>()->SetPosition(Vector2(7074.0f, 726.0f));
 		Environment_Pipe_Orange_1_Entity->GetComponent<Transform>()->SetPosition(Vector2(8866.0f, 474.0f));
 		Environment_Sign_Finish_Entity->GetComponent<Transform>()->SetPosition(Vector2(19076.0f, 346.0f));
@@ -919,9 +918,15 @@ namespace nto
 		ForegroundFloorBox* Foreground_FloorBox_Entity_10_1 = object::Instantiate<ForegroundFloorBox>(eLayerType::Foreground);
 		ForegroundFloorBox* Foreground_FloorBox_Entity_10_2 = object::Instantiate<ForegroundFloorBox>(eLayerType::Foreground);
 		ForegroundFloorBox* Foreground_FloorBox_Entity_10_3 = object::Instantiate<ForegroundFloorBox>(eLayerType::Foreground);
+		ForegroundSpinBox* Foreground_SpinBox_Entity_1 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
+		ForegroundSpinBox* Foreground_SpinBox_Entity_2 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
+		ForegroundSpinBox* Foreground_SpinBox_Entity_3 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
+		ForegroundSpinBox* Foreground_SpinBox_Entity_4 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
+		ForegroundSpinBox* Foreground_SpinBox_Entity_5 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
 		ForegroundRandomBox* Foreground_RandomBox_Entity1 = object::Instantiate<ForegroundRandomBox>(eLayerType::Foreground);
 		ForegroundRandomBox* Foreground_RandomBox_Entity2 = object::Instantiate<ForegroundRandomBox>(eLayerType::Foreground);
-		ForegroundRandomBox* Foreground_RandomBox_Entity3 = object::Instantiate<ForegroundRandomBox>(eLayerType::Foreground);
+		Foreground_RandomBox_Entity3 = object::Instantiate<ForegroundRandomBox>(eLayerType::Foreground);
+		Foreground_UpgradeBox_Entity = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
 		ForegroundCoin* Foreground_Coin_Entity_1_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundCoin* Foreground_Coin_Entity_1_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundCoin* Foreground_Coin_Entity_1_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
@@ -960,10 +965,10 @@ namespace nto
 		ForegroundUpgradeBox* Foreground_Checkpoint_Pole_Entity = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
 		ForegroundCoin* Foreground_Checkpoint_Flag_Entity = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		ForegroundUpgradeBox* Foreground_Checkpoint_Finish_Pole_Entity = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
-		ForegroundFinishFlag* Foreground_Checkpoint_Finish_Flag_Entity = object::Instantiate<ForegroundFinishFlag>(eLayerType::Foreground);
+		Foreground_Checkpoint_Finish_Flag_Entity = object::Instantiate<ForegroundFinishFlag>(eLayerType::Foreground);
 
 		// Set Type
-		//Stage1_Foreground_Coin_Entity_4_1->SetType(2);
+		Foreground_Checkpoint_Finish_Flag_Entity->SetExitStage(2);
 
 		Transform* trFloorBox_1_1 = Foreground_FloorBox_Entity_1_1->GetComponent<Transform>();
 		Transform* trFloorBox_1_2 = Foreground_FloorBox_Entity_1_2->GetComponent<Transform>();
@@ -1060,9 +1065,15 @@ namespace nto
 		Transform* trFloorBox_10_1 = Foreground_FloorBox_Entity_10_1->GetComponent<Transform>();
 		Transform* trFloorBox_10_2 = Foreground_FloorBox_Entity_10_2->GetComponent<Transform>();
 		Transform* trFloorBox_10_3 = Foreground_FloorBox_Entity_10_3->GetComponent<Transform>();
+		Transform* trSpinBox_1 = Foreground_SpinBox_Entity_1->GetComponent<Transform>();
+		Transform* trSpinBox_2 = Foreground_SpinBox_Entity_2->GetComponent<Transform>();
+		Transform* trSpinBox_3 = Foreground_SpinBox_Entity_3->GetComponent<Transform>();
+		Transform* trSpinBox_4 = Foreground_SpinBox_Entity_4->GetComponent<Transform>();
+		Transform* trSpinBox_5 = Foreground_SpinBox_Entity_5->GetComponent<Transform>();
 		Transform* trRandomBox_1 = Foreground_RandomBox_Entity1->GetComponent<Transform>();
 		Transform* trRandomBox_2 = Foreground_RandomBox_Entity2->GetComponent<Transform>();
 		Transform* trRandomBox_3 = Foreground_RandomBox_Entity3->GetComponent<Transform>();
+		Transform* trUpgradeBox = Foreground_UpgradeBox_Entity->GetComponent<Transform>();
 		Transform* trCoin_1_1 = Foreground_Coin_Entity_1_1->GetComponent<Transform>();
 		Transform* trCoin_1_2 = Foreground_Coin_Entity_1_2->GetComponent<Transform>();
 		Transform* trCoin_1_3 = Foreground_Coin_Entity_1_3->GetComponent<Transform>();
@@ -1198,9 +1209,15 @@ namespace nto
 		trFloorBox_10_1->SetPosition(Vector2(14914.0f, -7.0f));
 		trFloorBox_10_2->SetPosition(Vector2(14978.0f, -7.0f));
 		trFloorBox_10_3->SetPosition(Vector2(15042.0f, -7.0f));
+		trSpinBox_1->SetPosition(Vector2(10816.0f, 504.0f));
+		trSpinBox_2->SetPosition(Vector2(10880.0f, 504.0f));
+		trSpinBox_3->SetPosition(Vector2(10944.0f, 504.0f));
+		trSpinBox_4->SetPosition(Vector2(11008.0f, 504.0f));
+		trSpinBox_5->SetPosition(Vector2(11072.0f, 504.0f));
 		trRandomBox_1->SetPosition(Vector2(4866.0f, -135.0f));
 		trRandomBox_2->SetPosition(Vector2(4930.0f, -135.0f));
 		trRandomBox_3->SetPosition(Vector2(11330.0f, -7.0f));
+		trUpgradeBox->SetPosition(Vector2(2400.0f, -7.0f));
 		trCoin_1_1->SetPosition(Vector2(1538.0f, 441.0f));
 		trCoin_1_2->SetPosition(Vector2(1602.0f, 441.0f));
 		trCoin_1_3->SetPosition(Vector2(1666.0f, 441.0f));
@@ -1336,9 +1353,15 @@ namespace nto
 		Animator* atFloorBox_10_1 = Foreground_FloorBox_Entity_10_1->AddComponent<Animator>();
 		Animator* atFloorBox_10_2 = Foreground_FloorBox_Entity_10_2->AddComponent<Animator>();
 		Animator* atFloorBox_10_3 = Foreground_FloorBox_Entity_10_3->AddComponent<Animator>();
+		Animator* atSpinBox_1 = Foreground_SpinBox_Entity_1->AddComponent<Animator>();
+		Animator* atSpinBox_2 = Foreground_SpinBox_Entity_2->AddComponent<Animator>();
+		Animator* atSpinBox_3 = Foreground_SpinBox_Entity_3->AddComponent<Animator>();
+		Animator* atSpinBox_4 = Foreground_SpinBox_Entity_4->AddComponent<Animator>();
+		Animator* atSpinBox_5 = Foreground_SpinBox_Entity_5->AddComponent<Animator>();
 		Animator* atRandomBox_1 = Foreground_RandomBox_Entity1->AddComponent<Animator>();
 		Animator* atRandomBox_2 = Foreground_RandomBox_Entity2->AddComponent<Animator>();
 		Animator* atRandomBox_3 = Foreground_RandomBox_Entity3->AddComponent<Animator>();
+		Animator* atUpgradeBox = Foreground_UpgradeBox_Entity->AddComponent<Animator>();
 		Animator* atCoin_1_1 = Foreground_Coin_Entity_1_1->AddComponent<Animator>();
 		Animator* atCoin_1_2 = Foreground_Coin_Entity_1_2->AddComponent<Animator>();
 		Animator* atCoin_1_3 = Foreground_Coin_Entity_1_3->AddComponent<Animator>();
@@ -1474,12 +1497,24 @@ namespace nto
 		atFloorBox_10_1->CreateAnimation(L"Foreground_Animation_UpgradeBox", Foreground_UpgradeBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
 		atFloorBox_10_2->CreateAnimation(L"Foreground_Animation_UpgradeBox", Foreground_UpgradeBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
 		atFloorBox_10_3->CreateAnimation(L"Foreground_Animation_UpgradeBox", Foreground_UpgradeBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atSpinBox_1->CreateAnimation(L"Foreground_Animation_SpinBox", Foreground_SpinBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atSpinBox_2->CreateAnimation(L"Foreground_Animation_SpinBox", Foreground_SpinBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atSpinBox_3->CreateAnimation(L"Foreground_Animation_SpinBox", Foreground_SpinBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atSpinBox_4->CreateAnimation(L"Foreground_Animation_SpinBox", Foreground_SpinBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atSpinBox_5->CreateAnimation(L"Foreground_Animation_SpinBox", Foreground_SpinBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atSpinBox_1->CreateAnimation(L"Foreground_Animation_EmptyBox", Foreground_EmptyBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atSpinBox_2->CreateAnimation(L"Foreground_Animation_EmptyBox", Foreground_EmptyBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atSpinBox_3->CreateAnimation(L"Foreground_Animation_EmptyBox", Foreground_EmptyBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atSpinBox_4->CreateAnimation(L"Foreground_Animation_EmptyBox", Foreground_EmptyBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atSpinBox_5->CreateAnimation(L"Foreground_Animation_EmptyBox", Foreground_EmptyBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
 		atRandomBox_1->CreateAnimation(L"Foreground_Animation_RandomBox", Foreground_RandomBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 4, Vector2(0.0f, 0.0f), 0.2f);
 		atRandomBox_2->CreateAnimation(L"Foreground_Animation_RandomBox", Foreground_RandomBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 4, Vector2(0.0f, 0.0f), 0.2f);
 		atRandomBox_3->CreateAnimation(L"Foreground_Animation_RandomBox", Foreground_RandomBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 4, Vector2(0.0f, 0.0f), 0.2f);
 		atRandomBox_1->CreateAnimation(L"Foreground_Animation_EmptyBox", Foreground_EmptyBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
 		atRandomBox_2->CreateAnimation(L"Foreground_Animation_EmptyBox", Foreground_EmptyBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
 		atRandomBox_3->CreateAnimation(L"Foreground_Animation_EmptyBox", Foreground_EmptyBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atUpgradeBox->CreateAnimation(L"Foreground_Animation_UpgradeBox", Foreground_UpgradeBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atUpgradeBox->CreateAnimation(L"Foreground_Animation_EmptyBox", Foreground_EmptyBox_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
 		atCoin_1_1->CreateAnimation(L"Foreground_Animation_Coin", Foreground_Coin_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 4, Vector2(0.0f, 0.0f), 0.2f);
 		atCoin_1_2->CreateAnimation(L"Foreground_Animation_Coin", Foreground_Coin_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 4, Vector2(0.0f, 0.0f), 0.2f);
 		atCoin_1_3->CreateAnimation(L"Foreground_Animation_Coin", Foreground_Coin_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 4, Vector2(0.0f, 0.0f), 0.2f);
@@ -1615,9 +1650,15 @@ namespace nto
 		atFloorBox_10_1->SetScale(Vector2(4.0f, 4.0f));
 		atFloorBox_10_2->SetScale(Vector2(4.0f, 4.0f));
 		atFloorBox_10_3->SetScale(Vector2(4.0f, 4.0f));
+		atSpinBox_1->SetScale(Vector2(4.0f, 4.0f));
+		atSpinBox_2->SetScale(Vector2(4.0f, 4.0f));
+		atSpinBox_3->SetScale(Vector2(4.0f, 4.0f));
+		atSpinBox_4->SetScale(Vector2(4.0f, 4.0f));
+		atSpinBox_5->SetScale(Vector2(4.0f, 4.0f));
 		atRandomBox_1->SetScale(Vector2(4.0f, 4.0f));
 		atRandomBox_2->SetScale(Vector2(4.0f, 4.0f));
 		atRandomBox_3->SetScale(Vector2(4.0f, 4.0f));
+		atUpgradeBox->SetScale(Vector2(4.0f, 4.0f));
 		atCoin_1_1->SetScale(Vector2(4.0f, 4.0f));
 		atCoin_1_2->SetScale(Vector2(4.0f, 4.0f));
 		atCoin_1_3->SetScale(Vector2(4.0f, 4.0f));
@@ -1753,9 +1794,15 @@ namespace nto
 		atFloorBox_10_1->PlayAnimation(L"Foreground_Animation_UpgradeBox", true);
 		atFloorBox_10_2->PlayAnimation(L"Foreground_Animation_UpgradeBox", true);
 		atFloorBox_10_3->PlayAnimation(L"Foreground_Animation_UpgradeBox", true);
+		atSpinBox_1->PlayAnimation(L"Foreground_Animation_SpinBox", true);
+		atSpinBox_2->PlayAnimation(L"Foreground_Animation_SpinBox", true);
+		atSpinBox_3->PlayAnimation(L"Foreground_Animation_SpinBox", true);
+		atSpinBox_4->PlayAnimation(L"Foreground_Animation_SpinBox", true);
+		atSpinBox_5->PlayAnimation(L"Foreground_Animation_SpinBox", true);
 		atRandomBox_1->PlayAnimation(L"Foreground_Animation_RandomBox", true);
 		atRandomBox_2->PlayAnimation(L"Foreground_Animation_RandomBox", true);
 		atRandomBox_3->PlayAnimation(L"Foreground_Animation_RandomBox", true);
+		atUpgradeBox->PlayAnimation(L"Foreground_Animation_UpgradeBox", true);
 		atCoin_1_1->PlayAnimation(L"Foreground_Animation_Coin", true);
 		atCoin_1_2->PlayAnimation(L"Foreground_Animation_Coin", true);
 		atCoin_1_3->PlayAnimation(L"Foreground_Animation_Coin", true);
@@ -1891,9 +1938,15 @@ namespace nto
 		Collider* colFloorBox_10_1 = Foreground_FloorBox_Entity_10_1->AddComponent<Collider>();
 		Collider* colFloorBox_10_2 = Foreground_FloorBox_Entity_10_2->AddComponent<Collider>();
 		Collider* colFloorBox_10_3 = Foreground_FloorBox_Entity_10_3->AddComponent<Collider>();
+		Collider* colSpinBox_1 = Foreground_SpinBox_Entity_1->AddComponent<Collider>();
+		Collider* colSpinBox_2 = Foreground_SpinBox_Entity_2->AddComponent<Collider>();
+		Collider* colSpinBox_3 = Foreground_SpinBox_Entity_3->AddComponent<Collider>();
+		Collider* colSpinBox_4 = Foreground_SpinBox_Entity_4->AddComponent<Collider>();
+		Collider* colSpinBox_5 = Foreground_SpinBox_Entity_5->AddComponent<Collider>();
 		Collider* colRandomBox_1 = Foreground_RandomBox_Entity1->AddComponent<Collider>();
 		Collider* colRandomBox_2 = Foreground_RandomBox_Entity2->AddComponent<Collider>();
 		Collider* colRandomBox_3 = Foreground_RandomBox_Entity3->AddComponent<Collider>();
+		Collider* colUpgradeBox = Foreground_UpgradeBox_Entity->AddComponent<Collider>();
 		Collider* colCoin_1_1 = Foreground_Coin_Entity_1_1->AddComponent<Collider>();
 		Collider* colCoin_1_2 = Foreground_Coin_Entity_1_2->AddComponent<Collider>();
 		Collider* colCoin_1_3 = Foreground_Coin_Entity_1_3->AddComponent<Collider>();
@@ -2027,9 +2080,15 @@ namespace nto
 		colFloorBox_10_1->SetSize(Vector2(64.0f, 64.0f));
 		colFloorBox_10_2->SetSize(Vector2(64.0f, 64.0f));
 		colFloorBox_10_3->SetSize(Vector2(64.0f, 64.0f));
+		colSpinBox_1->SetSize(Vector2(64.0f, 64.0f));
+		colSpinBox_2->SetSize(Vector2(64.0f, 64.0f));
+		colSpinBox_3->SetSize(Vector2(64.0f, 64.0f));
+		colSpinBox_4->SetSize(Vector2(64.0f, 64.0f));
+		colSpinBox_5->SetSize(Vector2(64.0f, 64.0f));
 		colRandomBox_1->SetSize(Vector2(64.0f, 64.0f));
 		colRandomBox_2->SetSize(Vector2(64.0f, 64.0f));
 		colRandomBox_3->SetSize(Vector2(64.0f, 64.0f));
+		colUpgradeBox->SetSize(Vector2(64.0f, 64.0f));
 		colCoin_1_1->SetSize(Vector2(64.0f, 64.0f));
 		colCoin_1_2->SetSize(Vector2(64.0f, 64.0f));
 		colCoin_1_3->SetSize(Vector2(64.0f, 64.0f));
@@ -2163,6 +2222,120 @@ namespace nto
 		player->AddComponent<Rigidbody>();
 		#pragma endregion
 
+#		pragma region Enemy Layer
+		Texture* Koopa_Red_Left_Image = Resources::Load<Texture>(L"Koopa_Red_Left"
+			, L"..\\Assets\\Image\\Enemies\\KoopaTroopa_Red_Left.bmp");
+		Texture* Koopa_Red_Right_Image = Resources::Load<Texture>(L"Koopa_Red_Right"
+			, L"..\\Assets\\Image\\Enemies\\KoopaTroopa_Red_Right.bmp");
+		Texture* Para_Red_Left_Image = Resources::Load<Texture>(L"Para_Red_Left"
+			, L"..\\Assets\\Image\\Enemies\\ParaTroopa_Red_Left.bmp");
+		Texture* Para_Red_Right_Image = Resources::Load<Texture>(L"Para_Red_Right"
+			, L"..\\Assets\\Image\\Enemies\\ParaTroopa_Red_Right.bmp");
+
+		RedKoopa* Monster_RedKoopa_Entity_1 = object::Instantiate<RedKoopa>(eLayerType::Monster);
+		RedKoopa* Monster_RedKoopa_Entity_2 = object::Instantiate<RedKoopa>(eLayerType::Monster);
+		RedPara* Monster_RedPara_Entity_1 = object::Instantiate<RedPara>(eLayerType::Monster);
+		RedPara* Monster_RedPara_Entity_2 = object::Instantiate<RedPara>(eLayerType::Monster);
+		RedPara* Monster_RedPara_Entity_3 = object::Instantiate<RedPara>(eLayerType::Monster);
+		RedPara* Monster_RedPara_Entity_4 = object::Instantiate<RedPara>(eLayerType::Monster);
+
+		Transform* trRedKoopa_1 = Monster_RedKoopa_Entity_1->GetComponent<Transform>();
+		Transform* trRedKoopa_2 = Monster_RedKoopa_Entity_2->GetComponent<Transform>();
+		Transform* trRedPara_1 = Monster_RedPara_Entity_1->GetComponent<Transform>();
+		Transform* trRedPara_2 = Monster_RedPara_Entity_2->GetComponent<Transform>();
+		Transform* trRedPara_3 = Monster_RedPara_Entity_3->GetComponent<Transform>();
+		Transform* trRedPara_4 = Monster_RedPara_Entity_4->GetComponent<Transform>();
+
+		trRedKoopa_1->SetPosition(Vector2(6882.0f, -285.0f));
+		trRedKoopa_2->SetPosition(Vector2(11072.0f, 420.0f));
+		trRedPara_1->SetPosition(Vector2(5122.0f, -359.0f));
+		trRedPara_2->SetPosition(Vector2(5634.0f, -231.0f));
+		trRedPara_3->SetPosition(Vector2(16088.0f, -423.0f));
+		trRedPara_4->SetPosition(Vector2(16088.0f, 89.0f));
+
+
+		Animator* atRedKoopa_1 = Monster_RedKoopa_Entity_1->AddComponent<Animator>();
+		Animator* atRedKoopa_2 = Monster_RedKoopa_Entity_2->AddComponent<Animator>();
+		Animator* atRedPara_1 = Monster_RedPara_Entity_1->AddComponent<Animator>();
+		Animator* atRedPara_2 = Monster_RedPara_Entity_2->AddComponent<Animator>();
+		Animator* atRedPara_3 = Monster_RedPara_Entity_3->AddComponent<Animator>();
+		Animator* atRedPara_4 = Monster_RedPara_Entity_4->AddComponent<Animator>();
+
+		// Left
+		atRedKoopa_1->CreateAnimation(L"Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_2->CreateAnimation(L"Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedPara_1->CreateAnimation(L"Animation_RedPara_Left", Para_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(22.0f, 28.0f), 2, Vector2(0.0f, 0.0f), 0.4f);
+		atRedPara_2->CreateAnimation(L"Animation_RedPara_Left", Para_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(22.0f, 28.0f), 2, Vector2(0.0f, 0.0f), 0.4f);
+		atRedPara_3->CreateAnimation(L"Animation_RedPara_Left", Para_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(22.0f, 28.0f), 2, Vector2(0.0f, 0.0f), 0.4f);
+		atRedPara_4->CreateAnimation(L"Animation_RedPara_Left", Para_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(22.0f, 28.0f), 2, Vector2(0.0f, 0.0f), 0.4f);
+
+		// Right
+		atRedKoopa_1->CreateAnimation(L"Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_2->CreateAnimation(L"Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedPara_1->CreateAnimation(L"Animation_RedPara_Right", Para_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(22.0f, 28.0f), 2, Vector2(0.0f, 0.0f), 0.4f);
+		atRedPara_2->CreateAnimation(L"Animation_RedPara_Right", Para_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(22.0f, 28.0f), 2, Vector2(0.0f, 0.0f), 0.4f);
+		atRedPara_3->CreateAnimation(L"Animation_RedPara_Right", Para_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(22.0f, 28.0f), 2, Vector2(0.0f, 0.0f), 0.4f);
+		atRedPara_4->CreateAnimation(L"Animation_RedPara_Right", Para_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(22.0f, 28.0f), 2, Vector2(0.0f, 0.0f), 0.4f);
+
+		atRedKoopa_1->SetScale(Vector2(4.0f, 4.0f));
+		atRedKoopa_2->SetScale(Vector2(4.0f, 4.0f));
+		atRedPara_1->SetScale(Vector2(4.0f, 4.0f));
+		atRedPara_2->SetScale(Vector2(4.0f, 4.0f));
+		atRedPara_3->SetScale(Vector2(4.0f, 4.0f));
+		atRedPara_4->SetScale(Vector2(4.0f, 4.0f));
+
+		atRedKoopa_1->PlayAnimation(L"Animation_RedKoopa_Left", true);
+		atRedKoopa_2->PlayAnimation(L"Animation_RedKoopa_Left", true);
+		atRedPara_1->PlayAnimation(L"Animation_RedPara_Left", true);
+		atRedPara_2->PlayAnimation(L"Animation_RedPara_Left", true);
+		atRedPara_3->PlayAnimation(L"Animation_RedPara_Left", true);
+		atRedPara_4->PlayAnimation(L"Animation_RedPara_Left", true);
+
+		Collider* colRedKoopa_1 = Monster_RedKoopa_Entity_1->AddComponent<Collider>();
+		Collider* colRedKoopa_2 = Monster_RedKoopa_Entity_2->AddComponent<Collider>();
+		Collider* colRedPara_1 = Monster_RedPara_Entity_1->AddComponent<Collider>();
+		Collider* colRedPara_2 = Monster_RedPara_Entity_2->AddComponent<Collider>();
+		Collider* colRedPara_3 = Monster_RedPara_Entity_3->AddComponent<Collider>();
+		Collider* colRedPara_4 = Monster_RedPara_Entity_4->AddComponent<Collider>();
+
+		colRedKoopa_1->SetSize(Vector2(64.0f, 108.0f));
+		colRedKoopa_2->SetSize(Vector2(64.0f, 108.0f));
+		colRedPara_1->SetSize(Vector2(64.0f, 112.0f));
+		colRedPara_2->SetSize(Vector2(64.0f, 112.0f));
+		colRedPara_3->SetSize(Vector2(64.0f, 112.0f));
+		colRedPara_4->SetSize(Vector2(64.0f, 112.0f));
+		#pragma endregion
+
+		#pragma region Item Layer
+		// Static Image
+		Texture* Item_SuperMushroom_Image = Resources::Load<Texture>(L"SuperMushroom"
+			, L"..\\Assets\\Image\\Items\\SuperMushroom.bmp");
+
+		Item_SuperMushroom_Entity_1 = object::Instantiate<ItemSuperMushroom>(eLayerType::HiddenItem);
+		Item_SuperMushroom_Entity_2 = object::Instantiate<ItemSuperMushroom>(eLayerType::HiddenItem);
+
+		trSuperMushroom1 = Item_SuperMushroom_Entity_1->GetComponent<Transform>();
+		trSuperMushroom2 = Item_SuperMushroom_Entity_2->GetComponent<Transform>();
+
+		trSuperMushroom1->SetPosition(Vector2(11330.0f, -7.0f));
+		trSuperMushroom2->SetPosition(Vector2(2400.0f, -7.0f));
+
+		Animator* atSuperMushroom1 = Item_SuperMushroom_Entity_1->AddComponent<Animator>();
+		Animator* atSuperMushroom2 = Item_SuperMushroom_Entity_2->AddComponent<Animator>();
+
+		atSuperMushroom1->CreateAnimation(L"Animation_SuperMushroom", Item_SuperMushroom_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atSuperMushroom2->CreateAnimation(L"Animation_SuperMushroom", Item_SuperMushroom_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+
+		atSuperMushroom1->SetScale(Vector2(4.0f, 4.0f));
+		atSuperMushroom2->SetScale(Vector2(4.0f, 4.0f));
+
+		atSuperMushroom1->PlayAnimation(L"Animation_SuperMushroom", true);
+		atSuperMushroom2->PlayAnimation(L"Animation_SuperMushroom", true);
+
+		smShowTime1 = 1.0f;
+		smShowTime2 = 1.0f;
+		#pragma endregion
+
 		#pragma region UI Layer
 		Texture* HUD_Base_Image = Resources::Load<Texture>(L"Stage2_HUD_Base"
 			, L"..\\Assets\\HUD\\HUD_Base.bmp");
@@ -2191,6 +2364,11 @@ namespace nto
 		CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Monster, true);
 		#pragma endregion
 
+		#pragma region Sound
+		bgSound = Resources::Load<Sound>(L"bgmAthletic", L"..\\Assets\\Sound\\BGM\\WAV\\11.Athletic_Bgm.wav");
+		bgSound->Play(true);
+		#pragma endregion
+
 		Camera::SetTarget(player);
 		Camera::SetOffset(Vector2(0.0f, -218.0f));
 	}
@@ -2215,8 +2393,48 @@ namespace nto
 		}
 		#pragma endregion
 
+		#pragma region	Mario Upgrade Items
+		if (Foreground_RandomBox_Entity3->GetHit())
+		{
+			Vector2 smPos1 = trSuperMushroom1->GetPosition();
+			smPos1.y -= 64 * Time::DeltaTime();
+			trSuperMushroom1->SetPosition(smPos1);
+
+			smShowTime1 -= Time::DeltaTime();
+			if (smShowTime1 < 0.0f)
+			{
+				Foreground_RandomBox_Entity3->SetHit(false);
+				Collider* colSuperMushroom1 = Item_SuperMushroom_Entity_1->AddComponent<Collider>();
+				colSuperMushroom1->SetSize(Vector2(64.0f, 64.0f));
+			}
+		}
+		if (Foreground_UpgradeBox_Entity->GetHit())
+		{
+			Vector2 smPos2 = trSuperMushroom2->GetPosition();
+			smPos2.y -= 64 * Time::DeltaTime();
+			trSuperMushroom2->SetPosition(smPos2);
+
+			smShowTime2 -= Time::DeltaTime();
+			if (smShowTime2 < 0.0f)
+			{
+				Foreground_UpgradeBox_Entity->SetHit(false);
+				Collider* colSuperMushroom2 = Item_SuperMushroom_Entity_2->AddComponent<Collider>();
+				colSuperMushroom2->SetSize(Vector2(64.0f, 64.0f));
+			}
+		}
+		#pragma endregion
+
+		#pragma region Finish Flag
+		if (Foreground_Checkpoint_Finish_Flag_Entity->GetHit())
+		{
+			bgSound->Stop(true);
+			SceneManager::LoadScene(L"StageWorldMap");
+		}
+		#pragma endregion
+
 		if (Controller::GetKeyDown(eKeyCode::P))
 		{
+			bgSound->Stop(true);
 			SceneManager::LoadScene(L"StageWorldMap");
 		}
 	}

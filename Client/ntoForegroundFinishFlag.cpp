@@ -9,8 +9,6 @@
 #include "SceneManager.h"
 #include "StageWorldMap.h"
 #include "Camera.h"
-#include "ntoResources.h"
-#include "ntoSound.h"
 
 namespace nto
 {
@@ -80,36 +78,24 @@ namespace nto
 		{
 			if (bExitStage == 1)
 			{
-				//bHit = true;
-				//Destroy(this);
-				SceneManager::LoadScene(L"StageWorldMap");
+				bHit = true;
+				Destroy(this);
 			}
 			if (bExitStage == 2)
 			{
-				//bHit = true;
-				//Destroy(this);
-				SceneManager::LoadScene(L"StageWorldMap");
+				bHit = true;
+				Destroy(this);
 			}
 			if (bExitStage == 3)
 			{
-				//bHit = true;
-				//Destroy(this);
-				SceneManager::LoadScene(L"StageWorldMap");
+				bHit = true;
+				Destroy(this);
 			}
 			if (bExitStage == 4)
 			{
-				//bHit = true;
-				//Destroy(this);
-				SceneManager::LoadScene(L"StageWorldMap");
+				bHit = true;
+				Destroy(this);
 			}
-
-			//bHit = true;
-			//Destroy(this);
-			
-			/*Camera::SetTarget(nullptr);
-			Camera::SetOffset(Vector2(0.0f, 0.0f));
-
-			SceneManager::LoadScene(L"StageWorldMap");*/
 		}
 	}
 

@@ -165,10 +165,10 @@
     <ClInclude Include="ntoForegroundYoshiCoin.h" />
     <ClInclude Include="ntoItemSuperMushroom.h" />
     <ClInclude Include="ntoLayerHeaders.h" />
-    <ClInclude Include="ntoMonster.h" />
     <ClInclude Include="ntoMontyMole.h" />
     <ClInclude Include="ntoPiranha.h" />
     <ClInclude Include="ntoRedKoopa.h" />
+    <ClInclude Include="ntoRedPara.h" />
     <ClInclude Include="ntoRedShell.h" />
     <ClInclude Include="ntoResource.h" />
     <ClInclude Include="ntoResources.h" />
@@ -228,10 +228,10 @@
     <ClCompile Include="ntoForegroundUpgradeBox.cpp" />
     <ClCompile Include="ntoForegroundYoshiCoin.cpp" />
     <ClCompile Include="ntoItemSuperMushroom.cpp" />
-    <ClCompile Include="ntoMonster.cpp" />
     <ClCompile Include="ntoMontyMole.cpp" />
     <ClCompile Include="ntoPiranha.cpp" />
     <ClCompile Include="ntoRedKoopa.cpp" />
+    <ClCompile Include="ntoRedPara.cpp" />
     <ClCompile Include="ntoRedShell.cpp" />
     <ClCompile Include="ntoResource.cpp" />
     <ClCompile Include="ntoResources.cpp" />

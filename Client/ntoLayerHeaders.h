@@ -21,6 +21,7 @@
 #include "ntoHUD.h"
 #include "ntoStageDirector.h"
 #include "ntoRedKoopa.h"
+#include "ntoRedPara.h"
 #include "ntoCharginChuck.h"
 #include "ntoPiranha.h"
 #include "ntoRedShell.h"

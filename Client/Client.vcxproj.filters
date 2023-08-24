@@ -94,9 +94,6 @@
     <Filter Include="Contents\GameObject\UI">
       <UniqueIdentifier>{00c7c9e4-7aef-4681-93cb-befe3144886d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\GameObject\Monster\Class">
-      <UniqueIdentifier>{c1318407-fd71-446f-9982-0a8c65b687c3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\GameObject\Environment">
       <UniqueIdentifier>{691b575d-e3d6-4a0a-ae8c-a8a617bbed48}</UniqueIdentifier>
     </Filter>
@@ -210,9 +207,6 @@
     <ClInclude Include="StageWorldMap.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="ntoMonster.h">
-      <Filter>Contents\GameObject\Monster</Filter>
-    </ClInclude>
     <ClInclude Include="ntoFloor.h">
       <Filter>Contents\GameObject\Floor</Filter>
     </ClInclude>
@@ -246,15 +240,6 @@
     <ClInclude Include="ntoForegroundRedApple.h">
       <Filter>Contents\GameObject\Foreground</Filter>
     </ClInclude>
-    <ClInclude Include="ntoRedKoopa.h">
-      <Filter>Contents\GameObject\Monster\Class</Filter>
-    </ClInclude>
-    <ClInclude Include="ntoMontyMole.h">
-      <Filter>Contents\GameObject\Monster\Class</Filter>
-    </ClInclude>
-    <ClInclude Include="ntoCharginChuck.h">
-      <Filter>Contents\GameObject\Monster\Class</Filter>
-    </ClInclude>
     <ClInclude Include="ntoRedShell.h">
       <Filter>Contents\GameObject\Item</Filter>
     </ClInclude>
@@ -266,9 +251,6 @@
     </ClInclude>
     <ClInclude Include="ntoItemPSwitch.h">
       <Filter>Contents\GameObject\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="ntoPiranha.h">
-      <Filter>Contents\GameObject\Monster\Class</Filter>
     </ClInclude>
     <ClInclude Include="ntoForegroundFloorBox.h">
       <Filter>Contents\GameObject\Foreground</Filter>
@@ -305,6 +287,21 @@
     </ClInclude>
     <ClInclude Include="ntoHUD.h">
       <Filter>Contents\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoRedPara.h">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoCharginChuck.h">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoMontyMole.h">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoPiranha.h">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoRedKoopa.h">
+      <Filter>Contents\GameObject\Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -387,9 +384,6 @@
     <ClCompile Include="StageWorldMap.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="ntoMonster.cpp">
-      <Filter>Contents\GameObject\Monster</Filter>
-    </ClCompile>
     <ClCompile Include="ntoFloor.cpp">
       <Filter>Contents\GameObject\Floor</Filter>
     </ClCompile>
@@ -420,15 +414,6 @@
     <ClCompile Include="ntoForegroundRedApple.cpp">
       <Filter>Contents\GameObject\Foreground</Filter>
     </ClCompile>
-    <ClCompile Include="ntoMontyMole.cpp">
-      <Filter>Contents\GameObject\Monster\Class</Filter>
-    </ClCompile>
-    <ClCompile Include="ntoRedKoopa.cpp">
-      <Filter>Contents\GameObject\Monster\Class</Filter>
-    </ClCompile>
-    <ClCompile Include="ntoCharginChuck.cpp">
-      <Filter>Contents\GameObject\Monster\Class</Filter>
-    </ClCompile>
     <ClCompile Include="ntoRedShell.cpp">
       <Filter>Contents\GameObject\Item</Filter>
     </ClCompile>
@@ -440,9 +425,6 @@
     </ClCompile>
     <ClCompile Include="ntoItemPSwitch.cpp">
       <Filter>Contents\GameObject\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="ntoPiranha.cpp">
-      <Filter>Contents\GameObject\Monster\Class</Filter>
     </ClCompile>
     <ClCompile Include="ntoForegroundFloorBox.cpp">
       <Filter>Contents\GameObject\Foreground</Filter>
@@ -479,6 +461,21 @@
     </ClCompile>
     <ClCompile Include="ntoHUD.cpp">
       <Filter>Contents\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoCharginChuck.cpp">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoMontyMole.cpp">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoPiranha.cpp">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoRedKoopa.cpp">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoRedPara.cpp">
+      <Filter>Contents\GameObject\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

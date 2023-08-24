@@ -131,8 +131,8 @@ namespace nto
 
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Foreground, true);
 
-		//Sound* bgSound = Resources::Load<Sound>(L"bgmSound", L"..\\Assets\\Sound\\BGM\\WAV\\02.Map_1(Yoshi's Island).wav");
-		//bgSound->Play(false);
+		bgSound = Resources::Load<Sound>(L"bgmYoshiIsland", L"..\\Assets\\Sound\\BGM\\WAV\\02.Map_1(Yoshi's Island).wav");
+		bgSound->Play(true);
 
 		Camera::SetTarget(WorldMap_Border_Entity);
 	}
@@ -142,6 +142,23 @@ namespace nto
 		Scene::Update();
 		Camera::SetTarget(WorldMap_Border_Entity);
 		Camera::SetOffset(Vector2(0.0f, 0.0f));
+
+		if (StagePlate1_Entity->GetStageEnter())
+		{
+			bgSound->Stop(true);
+		}
+		if (StagePlate2_Entity->GetStageEnter())
+		{
+			bgSound->Stop(true);
+		}
+		if (StagePlate3_Entity->GetStageEnter())
+		{
+			bgSound->Stop(true);
+		}
+		if (StagePlate4_Entity->GetStageEnter())
+		{
+			bgSound->Stop(true);
+		}
 	}
 
 	void StageWorldMap::Render(HDC hdc)

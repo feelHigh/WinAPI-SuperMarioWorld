@@ -18,7 +18,10 @@ namespace nto
 		virtual void OnCollisionExit(class Collider* other) override;
 
 		void SetStageNum(int num) { StageNum = num; }
-		bool GetStageNum() { return StageNum; }
+		int GetStageNum() { return StageNum; }
+
+		void SetStageEnter(bool enter) { StageEnter = enter; }
+		bool GetStageEnter() { return StageEnter; }
 
 	private:
 		int StageNum;

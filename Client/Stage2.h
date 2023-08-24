@@ -23,9 +23,21 @@ namespace nto
 		Player* player;
 		Transform* trPlayer;
 		Collider* colPlayer;
-
+		// Foreground
+		ForegroundRandomBox* Foreground_RandomBox_Entity3;
+		ForegroundUpgradeBox* Foreground_UpgradeBox_Entity;
+		ForegroundFinishFlag* Foreground_Checkpoint_Finish_Flag_Entity;
+		// Items
+		ItemSuperMushroom* Item_SuperMushroom_Entity_1;
+		ItemSuperMushroom* Item_SuperMushroom_Entity_2;
+		Transform* trSuperMushroom1;
+		Transform* trSuperMushroom2;
+		float smShowTime1;
+		float smShowTime2;
 		// UI
 		HUD* Stage2_HUD_Entity;
 		Transform* trHUD_Base;
+		// Sound
+		Sound* bgSound;
 	};
 }
