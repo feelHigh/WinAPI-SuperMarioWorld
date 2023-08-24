@@ -47,7 +47,7 @@ namespace nto
 
 		pos = Camera::CalculatePosition(pos);
 		
-		HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
+		/*HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, transparentBrush);
 		
 		HPEN pen = NULL;
@@ -70,7 +70,7 @@ namespace nto
 		DeleteObject(transparentBrush);
 
 		SelectObject(hdc, oldPen);
-		DeleteObject(pen);
+		DeleteObject(pen);*/
 		
 	}
 	void Collider::OnCollisionEnter(Collider* other)

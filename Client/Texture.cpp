@@ -185,8 +185,8 @@ namespace nto
 				, nullptr);
 		}
 
-		Rectangle(hdc
+		/*Rectangle(hdc
 			, pos.x, pos.y
-			, pos.x + 10, pos.y + 10);
+			, pos.x + 10, pos.y + 10);*/
 	}
 }
