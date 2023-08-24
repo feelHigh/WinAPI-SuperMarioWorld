@@ -39,46 +39,44 @@ namespace nto
 		{
 			if (ePhase == 1)
 			{
-				this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_CharginChuck_Left", true);
-
 				pos.x -= 250.0f * Time::DeltaTime();
 				eTimer -= Time::DeltaTime();
 				if (eTimer < 0.0f)
 				{
+					this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_CharginChuck_Middle", true);
 					eTimer = 2.0f;
 					ePhase++;
 				}
 			}
 			else if (ePhase == 2)
 			{
-				this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_CharginChuck_Middle", true);
 
 				eTimer -= Time::DeltaTime();
 				if (eTimer < 0.0f)
 				{
+					this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_CharginChuck_Right", true);
 					eTimer = 2.0f;
 					ePhase++;
 				}
 			}
 			else if (ePhase == 3)
 			{
-				this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_CharginChuck_Right", true);
 
 				pos.x += 250.0f * Time::DeltaTime();
 				eTimer -= Time::DeltaTime();
 				if (eTimer < 0.0f)
 				{
+					this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_CharginChuck_Middle", true);
 					eTimer = 2.0f;
 					ePhase++;
 				}
 			}
 			else if (ePhase == 4)
 			{
-				this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_CharginChuck_Middle", true);
-
 				eTimer -= Time::DeltaTime();
 				if (eTimer < 0.0f)
 				{
+					this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_CharginChuck_Left", true);
 					eTimer = 2.0f;
 					ePhase = 1;
 				}

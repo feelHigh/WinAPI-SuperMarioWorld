@@ -18,6 +18,7 @@
 #include "ntoItemSuperMushroom.h"
 #include "ntoItemFireFlower.h"
 #include "Player.h"
+#include "ntoAttackFireball.h"
 #include "ntoHUD.h"
 #include "ntoStageDirector.h"
 #include "ntoRedKoopa.h"

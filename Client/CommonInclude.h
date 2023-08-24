@@ -33,6 +33,7 @@ namespace nto::enums
 		Monster,
 		MonsterCover,
 		Item,
+		PlayerAttack,
 		Player,
 		Effect,
 		UI,

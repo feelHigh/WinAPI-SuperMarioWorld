@@ -1038,7 +1038,6 @@ namespace nto
 		atPlayer->CreateAnimation(L"Animation_Fire_Kick_Right", Mario_Right_Image, Vector2(384.0f, 96.0f), Vector2(48.0f, 48.0f), 1, Vector2(0.0f, -40.0f), 0.1f);
 		atPlayer->CreateAnimation(L"Animation_Fire_Swim_Right", Mario_Right_Image, Vector2(432.0f, 96.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.1f);
 		atPlayer->CreateAnimation(L"Animation_Fire_Attack_Right", FireMario_Attack_Right_Image, Vector2(0.0f, 0.0f), Vector2(48.0f, 48.0f), 3, Vector2(0.0f, -40.0f), 0.1f);
-		atPlayer->CreateAnimation(L"Animation_Attack_Fireball", FireMario_Attack_Fireball_Image, Vector2(0.0f, 0.0f), Vector2(6.0f, 7.0f), 1, Vector2(0.0f, 0.0f), 0.1f);
 
 		atPlayer->SetScale(Vector2(4.0f, 4.0f));
 
@@ -1065,6 +1064,8 @@ namespace nto
 			, L"..\\Assets\\Image\\Enemies\\KoopaTroopa_Red_Left.bmp");
 		Texture* Koopa_Red_Right_Image = Resources::Load<Texture>(L"Koopa_Red_Right"
 			, L"..\\Assets\\Image\\Enemies\\KoopaTroopa_Red_Right.bmp");
+		Texture* Koopa_Red_Hit_Image = Resources::Load<Texture>(L"Koopa_Red_Hit"
+			, L"..\\Assets\\Image\\Enemies\\KoopaTroopa_Red_Hit.bmp");
 		Texture* Koopa_Red_Dead_Image = Resources::Load<Texture>(L"Koopa_Red_Dead"
 			, L"..\\Assets\\Image\\Enemies\\KoopaTroopa_Red_Dead.bmp");
 		Texture* CharginChuck_Basic_Left_Image = Resources::Load<Texture>(L"CharginChuck_Basic_Left"
@@ -1142,6 +1143,14 @@ namespace nto
 		atRedKoopa_1_6->CreateAnimation(L"Monster_Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
 		atRedKoopa_1_7->CreateAnimation(L"Monster_Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
 		atRedKoopa_1_8->CreateAnimation(L"Monster_Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_1->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_2->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_3->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_4->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_5->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_6->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_7->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_8->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
 		atRedKoopa_1_1->CreateAnimation(L"Monster_Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
 		atRedKoopa_1_2->CreateAnimation(L"Monster_Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
 		atRedKoopa_1_3->CreateAnimation(L"Monster_Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
@@ -1286,9 +1295,12 @@ namespace nto
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::HiddenItem, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::MonsterCover, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::PlayerAttack, eLayerType::Floor, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::PlayerAttack, eLayerType::Monster, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::PlayerAttack, eLayerType::Environment, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::PlayerAttack, eLayerType::Foreground, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Monster, true);
 		//CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Foreground, true);
-		//CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Floor, true);
 		#pragma endregion
 
 		#pragma region Sound

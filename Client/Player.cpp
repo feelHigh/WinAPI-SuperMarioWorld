@@ -17,7 +17,7 @@
 namespace nto
 {
 	Player::Player()
-		: mPlayerClass(eMarioClass::Fire)
+		: mPlayerClass(eMarioClass::Super)
 		, mDir(eMarioDirection::Right)
 		, mState(eState::Idle)
 		, mLife(10)
@@ -757,6 +757,18 @@ namespace nto
 			animator->PlayAnimation(L"Animation_Fire_Kick_Right", true);
 			mState = eState::Kick;
 		}
+		if (Controller::GetKeyDown(eKeyCode::X))
+		{
+			if (mDir == eMarioDirection::Left)
+			{
+				animator->PlayAnimation(L"Animation_Fire_Attack_Left", true);
+			}
+			else
+			{
+				animator->PlayAnimation(L"Animation_Fire_Attack_Right", true);
+			}
+			mState = eState::Attack;
+		}
 	}
 
 	void Player::FireM_Run()
@@ -962,7 +974,45 @@ namespace nto
 
 	void Player::FireM_Attack()
 	{
+		// Get the player's transform component
+		Transform* tr = GetComponent<Transform>();
 
+		// Load the texture of the fireball image
+		Texture* image = Resources::Load<Texture>(L"Attack_Fireball", L"..\\Assets\\Mario\\fireball.bmp");
+
+		Vector2 fireballOffset(0.0f, 0.0f); // Adjust the values as needed
+		// Define the fireball offset relative to the player's position
+		if (mDir == eMarioDirection::Left)
+		{
+			Vector2 fireballOffset(-100.0f, 0.0f); // Adjust the values as needed
+		}
+		else
+		{
+			Vector2 fireballOffset(100.0f, 0.0f); // Adjust the values as needed
+		}
+
+		// Calculate the spawn position for the fireball using the offset
+		Vector2 spawnPosition = tr->GetPosition() + fireballOffset;
+
+		// Create an instance of the AttackFireball object at the calculated spawn position
+		AttackFireball* fireball = object::Instantiate<AttackFireball>(eLayerType::PlayerAttack, spawnPosition);
+
+		// Add an Animator component to the fireball
+		Animator* animator = fireball->AddComponent<Animator>();
+		animator->CreateAnimation(L"Animation_Attack_Fireball", image, Vector2(0.0f, 0.0f), Vector2(6.0f, 7.0f), 1, Vector2(0.0f, 0.0f), 0.1f);
+		animator->SetScale(Vector2(4.0f, 4.0f));
+		animator->PlayAnimation(L"Animation_Attack_Fireball", false);
+
+		// Add a Collider component to the fireball
+		Collider* col = fireball->AddComponent<Collider>();
+		col->SetSize(Vector2(24.0f, 27.0f));
+
+		// Add a Rigidbody component to the fireball
+		/*Rigidbody* rb = fireball->AddComponent<Rigidbody>();
+		rb->SetVelocity(Vector2(600.0f, 0.0f));*/
+
+		// Change the player's state to idle after attacking with the fireball
+		mState = eState::Idle;
 	}
 
 	void Player::FireM_Dead()

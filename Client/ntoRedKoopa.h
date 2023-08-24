@@ -21,5 +21,8 @@ namespace nto
 		float mRotateTime;
 		float mDeathTime;
 		bool mAttacked;
+		bool mAttacked2;
+		bool mTick;
+		int mState;
 	};
 }

@@ -2227,6 +2227,8 @@ namespace nto
 			, L"..\\Assets\\Image\\Enemies\\KoopaTroopa_Red_Left.bmp");
 		Texture* Koopa_Red_Right_Image = Resources::Load<Texture>(L"Koopa_Red_Right"
 			, L"..\\Assets\\Image\\Enemies\\KoopaTroopa_Red_Right.bmp");
+		Texture* Koopa_Red_Hit_Image = Resources::Load<Texture>(L"Koopa_Red_Hit"
+			, L"..\\Assets\\Image\\Enemies\\KoopaTroopa_Red_Hit.bmp");
 		Texture* Para_Red_Left_Image = Resources::Load<Texture>(L"Para_Red_Left"
 			, L"..\\Assets\\Image\\Enemies\\ParaTroopa_Red_Left.bmp");
 		Texture* Para_Red_Right_Image = Resources::Load<Texture>(L"Para_Red_Right"
@@ -2277,6 +2279,9 @@ namespace nto
 		atRedPara_3->CreateAnimation(L"Animation_RedPara_Right", Para_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(22.0f, 28.0f), 2, Vector2(0.0f, 0.0f), 0.4f);
 		atRedPara_4->CreateAnimation(L"Animation_RedPara_Right", Para_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(22.0f, 28.0f), 2, Vector2(0.0f, 0.0f), 0.4f);
 
+		atRedKoopa_1->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_2->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		
 		atRedKoopa_1->SetScale(Vector2(4.0f, 4.0f));
 		atRedKoopa_2->SetScale(Vector2(4.0f, 4.0f));
 		atRedPara_1->SetScale(Vector2(4.0f, 4.0f));

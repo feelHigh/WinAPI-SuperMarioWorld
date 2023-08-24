@@ -143,6 +143,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="ntoAttackFireball.h" />
     <ClInclude Include="ntoCharginChuck.h" />
     <ClInclude Include="ntoCollider.h" />
     <ClInclude Include="ntoCollisionManager.h" />
@@ -207,6 +208,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ntoAttackFireball.cpp" />
     <ClCompile Include="ntoCharginChuck.cpp" />
     <ClCompile Include="ntoCollider.cpp" />
     <ClCompile Include="ntoCollisionManager.cpp" />
