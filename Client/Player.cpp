@@ -1,6 +1,4 @@
 #include "Player.h"
-#include "ntoLayerHeaders.h"
-#include "ntoFloor.h"
 #include "ntoRedShell.h"
 #include "Transform.h"
 #include "Controller.h"
@@ -17,7 +15,7 @@
 namespace nto
 {
 	Player::Player()
-		: mPlayerClass(eMarioClass::Super)
+		: mPlayerClass(eMarioClass::Fire)
 		, mDir(eMarioDirection::Right)
 		, mState(eState::Idle)
 		, mLife(10)
@@ -203,7 +201,10 @@ namespace nto
 			velocity.y = JUMPFORCE;
 			rb->SetVelocity(velocity);
 			rb->SetGround(false);
-			
+
+			Sound* mSound = Resources::Load<Sound>(L"playerJump", L"..\\Assets\\Sound\\SFX\\WAV\\smw_jump.wav");
+			mSound->Play(false);
+
 			if (mDir == eMarioDirection::Left)
 			{
 				animator->PlayAnimation(L"Animation_Small_Jump_Left", true);
@@ -253,6 +254,9 @@ namespace nto
 			velocity.y = JUMPFORCE;
 			rb->SetVelocity(velocity);
 			rb->SetGround(false);
+
+			Sound* mSound = Resources::Load<Sound>(L"playerJump", L"..\\Assets\\Sound\\SFX\\WAV\\smw_jump.wav");
+			mSound->Play(false);
 
 			if (mDir == eMarioDirection::Left)
 			{
@@ -473,6 +477,9 @@ namespace nto
 			rb->SetVelocity(velocity);
 			rb->SetGround(false);
 
+			Sound* mSound = Resources::Load<Sound>(L"playerJump", L"..\\Assets\\Sound\\SFX\\WAV\\smw_jump.wav");
+			mSound->Play(false);
+
 			if (mDir == eMarioDirection::Left)
 			{
 				animator->PlayAnimation(L"Animation_Super_Jump_Left", true);
@@ -522,6 +529,9 @@ namespace nto
 			velocity.y = JUMPFORCE;
 			rb->SetVelocity(velocity);
 			rb->SetGround(false);
+
+			Sound* mSound = Resources::Load<Sound>(L"playerJump", L"..\\Assets\\Sound\\SFX\\WAV\\smw_jump.wav");
+			mSound->Play(false);
 
 			if (mDir == eMarioDirection::Left)
 			{
@@ -742,6 +752,9 @@ namespace nto
 			rb->SetVelocity(velocity);
 			rb->SetGround(false);
 
+			Sound* mSound = Resources::Load<Sound>(L"playerJump", L"..\\Assets\\Sound\\SFX\\WAV\\smw_jump.wav");
+			mSound->Play(false);
+
 			if (mDir == eMarioDirection::Left)
 			{
 				animator->PlayAnimation(L"Animation_Fire_Jump_Left", true);
@@ -759,6 +772,8 @@ namespace nto
 		}
 		if (Controller::GetKeyDown(eKeyCode::X))
 		{
+			Sound* mSound = Resources::Load<Sound>(L"SFX_Fireball", L"..\\Assets\\Sound\\SFX\\WAV\\smw_fireball.wav");
+			mSound->Play(false);
 			if (mDir == eMarioDirection::Left)
 			{
 				animator->PlayAnimation(L"Animation_Fire_Attack_Left", true);
@@ -803,6 +818,9 @@ namespace nto
 			velocity.y = JUMPFORCE;
 			rb->SetVelocity(velocity);
 			rb->SetGround(false);
+
+			Sound* mSound = Resources::Load<Sound>(L"playerJump", L"..\\Assets\\Sound\\SFX\\WAV\\smw_jump.wav");
+			mSound->Play(false);
 
 			if (mDir == eMarioDirection::Left)
 			{
@@ -995,21 +1013,21 @@ namespace nto
 		Vector2 spawnPosition = tr->GetPosition() + fireballOffset;
 
 		// Create an instance of the AttackFireball object at the calculated spawn position
-		AttackFireball* fireball = object::Instantiate<AttackFireball>(eLayerType::PlayerAttack, spawnPosition);
+		AttackFireball* mFireball = object::Instantiate<AttackFireball>(eLayerType::PlayerAttack, spawnPosition);
 
 		// Add an Animator component to the fireball
-		Animator* animator = fireball->AddComponent<Animator>();
+		Animator* animator = mFireball->AddComponent<Animator>();
 		animator->CreateAnimation(L"Animation_Attack_Fireball", image, Vector2(0.0f, 0.0f), Vector2(6.0f, 7.0f), 1, Vector2(0.0f, 0.0f), 0.1f);
 		animator->SetScale(Vector2(4.0f, 4.0f));
 		animator->PlayAnimation(L"Animation_Attack_Fireball", false);
 
 		// Add a Collider component to the fireball
-		Collider* col = fireball->AddComponent<Collider>();
+		Collider* col = mFireball->AddComponent<Collider>();
 		col->SetSize(Vector2(24.0f, 27.0f));
 
 		// Add a Rigidbody component to the fireball
-		/*Rigidbody* rb = fireball->AddComponent<Rigidbody>();
-		rb->SetVelocity(Vector2(600.0f, 0.0f));*/
+		Rigidbody* rb = mFireball->AddComponent<Rigidbody>();
+		rb->SetVelocity(Vector2(600.0f, 0.0f));
 
 		// Change the player's state to idle after attacking with the fireball
 		mState = eState::Idle;

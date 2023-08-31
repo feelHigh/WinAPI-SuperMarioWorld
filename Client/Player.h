@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "ntoLayerHeaders.h"
 
 namespace nto
 {
@@ -80,10 +81,8 @@ namespace nto
 		eMarioClass mPlayerClass;
 		eMarioDirection mDir;
 		eState mState;
-
 		bool onGround;
-		
+
 		int mLife;
-		
 	};
 }

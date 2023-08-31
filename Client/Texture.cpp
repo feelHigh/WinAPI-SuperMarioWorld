@@ -146,21 +146,6 @@ namespace nto
 		}
 		else if (mType == eTextureType::Png)
 		{
-			////create a new empty bitmap to hold rotated image
-			//Bitmap returnBitmap = new Bitmap(b.Width, b.Height);
-			////make a graphics object from the empty bitmap
-			//Graphics g = Graphics.FromImage(returnBitmap);
-			////move rotation point to center of image
-			//g.TranslateTransform((float)b.Width / 2, (float)b.Height / 2);
-			////rotate
-			//g.RotateTransform(angle);
-			////move image back
-			//g.TranslateTransform(-(float)b.Width / 2, -(float)b.Height / 2);
-			////draw passed in image onto graphics object
-			//g.DrawImage(b, new Point(0, 0));
-			//return returnBitmap;
-
-
 			//// 내가 원하는 픽셀을 투명화 시킬떄
 			Gdiplus::ImageAttributes imageAtt = {};
 			//// 투명화 시킬 픽셀 색 범위
@@ -185,8 +170,8 @@ namespace nto
 				, nullptr);
 		}
 
-		/*Rectangle(hdc
+		Rectangle(hdc
 			, pos.x, pos.y
-			, pos.x + 10, pos.y + 10);*/
+			, pos.x + 10, pos.y + 10);
 	}
 }

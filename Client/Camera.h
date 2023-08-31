@@ -34,6 +34,7 @@ namespace nto
 		static float mThresholdY;
 
 		static float speed;
+
 	};
 }
 

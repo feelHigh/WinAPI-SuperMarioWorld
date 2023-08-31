@@ -8,7 +8,7 @@ namespace nto
 	{
 	public:
 		Rigidbody();
-		~Rigidbody();
+		virtual ~Rigidbody();
 
 		virtual void Initialize();
 		virtual void Update();

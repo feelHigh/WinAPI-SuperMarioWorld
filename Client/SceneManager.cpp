@@ -5,6 +5,7 @@
 #include "Stage2.h"
 #include "Stage3.h"
 #include "StageBoss.h"
+#include "EndingScene.h"
 
 namespace nto
 {
@@ -14,9 +15,10 @@ namespace nto
 	void SceneManager::Initialize()
 	{
 		CreateScene<TitleScene>(L"TitleScene");
-		CreateScene<StageWorldMap>(L"StageWorldMap");
+		//CreateScene<StageWorldMap>(L"StageWorldMap");
 
-		LoadScene(L"StageWorldMap");
+		LoadScene(L"TitleScene");
+		//LoadScene(L"StageWorldMap");
 	}
 
 	void SceneManager::Update()

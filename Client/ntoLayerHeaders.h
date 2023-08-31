@@ -1,10 +1,14 @@
 #pragma once
 #include "Background.h"
+#include "ntoTitleIntro.h"
+#include "ntoEndingOutro.h"
 #include "ntoEnvironment.h"
 #include "ntoEnvironmentWoodBall.h"
 #include "ntoEnvironmentWoodPlank.h"
 #include "ntoEnvironmentGrayPlank.h"
 #include "ntoFloor.h"
+#include "ntoHiddenFloor.h"
+#include "ntoWall.h"
 #include "ntoFloorStair.h"
 #include "ntoForegroundRandomBox.h"
 #include "ntoForegroundCoin.h"
@@ -25,6 +29,7 @@
 #include "ntoRedPara.h"
 #include "ntoCharginChuck.h"
 #include "ntoPiranha.h"
+#include "ntoMorton.h"
 #include "ntoRedShell.h"
 
 #include "ntoStagePlate.h"

@@ -17,9 +17,9 @@ namespace nto
 		: mRotateTime(5.0f)
 		, mDeathTime(1.0f) // 5
 		, mAttacked(false)
-		, mAttacked2(false)
 		, mTick(true)
 		, mState(1)
+		, mType(1)
 	{
 	}
 
@@ -38,7 +38,7 @@ namespace nto
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 
-		if (mState == 1)
+		if (mState == 1 && !mAttacked)
 		{
 			if (mTick)
 			{
@@ -46,7 +46,7 @@ namespace nto
 				mRotateTime -= Time::DeltaTime();
 				if (mRotateTime < 0.0f)
 				{
-					this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_RedKoopa_Right", true);
+					this->GetComponent<Animator>()->PlayAnimation(L"Animation_RedKoopa_Right", true);
 					mRotateTime = 5.0f;
 					mTick = false;
 				}
@@ -57,24 +57,41 @@ namespace nto
 				mRotateTime -= Time::DeltaTime();
 				if (mRotateTime < 0.0f)
 				{
-					this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_RedKoopa_Left", true);
+					this->GetComponent<Animator>()->PlayAnimation(L"Animation_RedKoopa_Left", true);
 					mRotateTime = 5.0f;
 					mTick = true;
 				}
 			}
 		}
 
-		if (mState == 2 && mAttacked)
+		if (mAttacked)
 		{
-			pos.y += 32.0f * Time::DeltaTime(); //400
-			tr->SetPosition(pos);
-
-			mDeathTime -= Time::DeltaTime();
-			if (mDeathTime < 0.0f && mAttacked)
+			// ¹âÇûÀ» ¶§
+			if (mType == 1 && mState == 2)
 			{
-				mAttacked = false; // remove
-				//Destroy(this);
+				pos.y += 32.0f * Time::DeltaTime(); //400
+				tr->SetPosition(pos);
+
+				mDeathTime -= Time::DeltaTime();
+				if (mDeathTime < 0.0f && mAttacked)
+				{
+					mAttacked = false; // remove
+				}
 			}
+
+			// µî²®µ¥±â¿¡ ¸ÂÀ¸ ¶§
+			//if (mType == 2 && mState == 2)
+			//{
+			//	pos.y += 400.0f * Time::DeltaTime(); //400
+			//	tr->SetPosition(pos);
+
+			//	mDeathTime -= Time::DeltaTime();
+			//	if (mDeathTime < 0.0f && mAttacked)
+			//	{
+			//		mAttacked = false; // remove
+			//		Destroy(this);
+			//	}
+			//}
 		}
 
 
@@ -92,8 +109,10 @@ namespace nto
 
 		if (redShell)
 		{
-			Sound* sound = Resources::Load<Sound>(L"sfxNoDamage", L"..\\Assets\\Sound\\SFX\\WAV\\smw_stomp.wav");
+			Sound* sound = Resources::Load<Sound>(L"sfxStomp", L"..\\Assets\\Sound\\SFX\\WAV\\smw_stomp.wav");
 			sound->Play(false);
+			mAttacked = true;
+			mState == 2;
 		}*/
 
 		Player* player = dynamic_cast<Player*>(other->GetOwner());
@@ -105,10 +124,12 @@ namespace nto
 			Collider* colPlayer = other;
 
 			float lenX = fabs(trPlayer->GetPosition().x - trBox->GetPosition().x);
-			float scaleX = (colPlayer->GetSize().x / 2.0f) + (GetComponent<Collider>()->GetSize().x / 2.0f) + trBox->GetScale().x;
+			//float scaleX = (colPlayer->GetSize().x / 2.0f) + (GetComponent<Collider>()->GetSize().x / 2.0f) + trBox->GetScale().x;
+			float scaleX = (colPlayer->GetSize().x / 2.0f) + (GetComponent<Collider>()->GetSize().x / 2.0f);
 
 			float lenY = fabs(trPlayer->GetPosition().y - trBox->GetPosition().y);
-			float scaleY = (colPlayer->GetSize().y / 2.0f) + (GetComponent<Collider>()->GetSize().y / 2.0f) + trBox->GetScale().y;
+			//float scaleY = (colPlayer->GetSize().y / 2.0f) + (GetComponent<Collider>()->GetSize().y / 2.0f) + trBox->GetScale().y;
+			float scaleY = (colPlayer->GetSize().y / 2.0f) + (GetComponent<Collider>()->GetSize().y / 2.0f);
 
 			if (lenX < scaleX && lenY < scaleY)
 			{
@@ -131,19 +152,18 @@ namespace nto
 					if (trPlayer->GetPosition().y < trBox->GetPosition().y)
 					{
 						mAttacked = true;
-						mAttacked2 = true;
 						mState = 2;
 						// Bump the player up
 						playerPos.y -= overlapY;
 						Rigidbody* rb = player->GetComponent<Rigidbody>();
 						rb->SetGround(false);
-						rb->SetVelocity(Vector2(0.0f, -500.0f));
-						this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_RedKoopa_Hit", true);
+						rb->SetVelocity(Vector2(0.0f, -800.0f));
+						this->GetComponent<Animator>()->PlayAnimation(L"Animation_RedKoopa_Hit", true);
 
 						Collider* cl = GetComponent<Collider>();
 						cl->SetSize(Vector2(64.0f, 64.0f));
 
-						Sound* sound = Resources::Load<Sound>(L"sfxNoDamage", L"..\\Assets\\Sound\\SFX\\WAV\\smw_stomp.wav");
+						Sound* sound = Resources::Load<Sound>(L"sfxStomp", L"..\\Assets\\Sound\\SFX\\WAV\\smw_stomp.wav");
 						sound->Play(false);
 					}
 					else
@@ -162,13 +182,14 @@ namespace nto
 
 		if (redShell)
 		{
-			this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_RedKoopa_Dead", true);
-			this->mAttacked = true;
+			if (mType == 2)
+			{
+				this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_RedKoopa_Dead", true);
+				Transform* tr = GetComponent<Transform>();
+				Collider* cl = GetComponent<Collider>();
 
-			Transform* tr = GetComponent<Transform>();
-			Collider* cl = GetComponent<Collider>();
-
-			cl->SetActive(false);
+				cl->SetActive(false);
+			}
 		}*/
 	}
 

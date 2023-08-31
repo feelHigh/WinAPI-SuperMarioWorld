@@ -139,6 +139,7 @@
     <ClInclude Include="Controller.h" />
     <ClInclude Include="CustomMath.h" />
     <ClInclude Include="CustomTime.h" />
+    <ClInclude Include="EndingScene.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameObject.h" />
@@ -147,6 +148,7 @@
     <ClInclude Include="ntoCharginChuck.h" />
     <ClInclude Include="ntoCollider.h" />
     <ClInclude Include="ntoCollisionManager.h" />
+    <ClInclude Include="ntoEndingOutro.h" />
     <ClInclude Include="ntoEnvironment.h" />
     <ClInclude Include="ntoEnvironmentGrayPlank.h" />
     <ClInclude Include="ntoEnvironmentWoodBall.h" />
@@ -156,6 +158,7 @@
     <ClInclude Include="ntoForegroundCoin.h" />
     <ClInclude Include="ntoForegroundFinishFlag.h" />
     <ClInclude Include="ntoForegroundFloorBox.h" />
+    <ClInclude Include="ntoHiddenFloor.h" />
     <ClInclude Include="ntoHUD.h" />
     <ClInclude Include="ntoItemFireFlower.h" />
     <ClInclude Include="ntoItemPSwitch.h" />
@@ -167,6 +170,7 @@
     <ClInclude Include="ntoItemSuperMushroom.h" />
     <ClInclude Include="ntoLayerHeaders.h" />
     <ClInclude Include="ntoMontyMole.h" />
+    <ClInclude Include="ntoMorton.h" />
     <ClInclude Include="ntoPiranha.h" />
     <ClInclude Include="ntoRedKoopa.h" />
     <ClInclude Include="ntoRedPara.h" />
@@ -178,6 +182,8 @@
     <ClInclude Include="ntoSoundManager.h" />
     <ClInclude Include="ntoStageDirector.h" />
     <ClInclude Include="ntoStagePlate.h" />
+    <ClInclude Include="ntoTitleIntro.h" />
+    <ClInclude Include="ntoWall.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
@@ -204,6 +210,7 @@
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="CustomMath.cpp" />
     <ClCompile Include="CustomTime.cpp" />
+    <ClCompile Include="EndingScene.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Layer.cpp" />
@@ -212,6 +219,7 @@
     <ClCompile Include="ntoCharginChuck.cpp" />
     <ClCompile Include="ntoCollider.cpp" />
     <ClCompile Include="ntoCollisionManager.cpp" />
+    <ClCompile Include="ntoEndingOutro.cpp" />
     <ClCompile Include="ntoEnvironment.cpp" />
     <ClCompile Include="ntoEnvironmentGrayPlank.cpp" />
     <ClCompile Include="ntoEnvironmentWoodBall.cpp" />
@@ -221,6 +229,7 @@
     <ClCompile Include="ntoForegroundCoin.cpp" />
     <ClCompile Include="ntoForegroundFinishFlag.cpp" />
     <ClCompile Include="ntoForegroundFloorBox.cpp" />
+    <ClCompile Include="ntoHiddenFloor.cpp" />
     <ClCompile Include="ntoHUD.cpp" />
     <ClCompile Include="ntoItemFireFlower.cpp" />
     <ClCompile Include="ntoItemPSwitch.cpp" />
@@ -231,6 +240,7 @@
     <ClCompile Include="ntoForegroundYoshiCoin.cpp" />
     <ClCompile Include="ntoItemSuperMushroom.cpp" />
     <ClCompile Include="ntoMontyMole.cpp" />
+    <ClCompile Include="ntoMorton.cpp" />
     <ClCompile Include="ntoPiranha.cpp" />
     <ClCompile Include="ntoRedKoopa.cpp" />
     <ClCompile Include="ntoRedPara.cpp" />
@@ -242,6 +252,8 @@
     <ClCompile Include="ntoSoundManager.cpp" />
     <ClCompile Include="ntoStageDirector.cpp" />
     <ClCompile Include="ntoStagePlate.cpp" />
+    <ClCompile Include="ntoTitleIntro.cpp" />
+    <ClCompile Include="ntoWall.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />

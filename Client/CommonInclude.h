@@ -27,6 +27,7 @@ namespace nto::enums
 	{
 		Background,
 		Environment,
+		HiddenFloor,
 		Floor,
 		HiddenItem,
 		Foreground,

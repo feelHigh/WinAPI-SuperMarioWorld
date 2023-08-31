@@ -306,6 +306,24 @@
     <ClInclude Include="ntoAttackFireball.h">
       <Filter>Contents\GameObject\Player</Filter>
     </ClInclude>
+    <ClInclude Include="ntoTitleIntro.h">
+      <Filter>Contents\GameObject\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoWall.h">
+      <Filter>Contents\GameObject\Floor</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoHiddenFloor.h">
+      <Filter>Contents\GameObject\Floor</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoMorton.h">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoEndingOutro.h">
+      <Filter>Contents\GameObject\Background</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
@@ -482,6 +500,24 @@
     </ClCompile>
     <ClCompile Include="ntoAttackFireball.cpp">
       <Filter>Contents\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoTitleIntro.cpp">
+      <Filter>Contents\GameObject\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoWall.cpp">
+      <Filter>Contents\GameObject\Floor</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoHiddenFloor.cpp">
+      <Filter>Contents\GameObject\Floor</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoMorton.cpp">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoEndingOutro.cpp">
+      <Filter>Contents\GameObject\Background</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

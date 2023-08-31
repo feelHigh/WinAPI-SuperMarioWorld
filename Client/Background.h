@@ -14,6 +14,7 @@ namespace nto
 		virtual void Render(HDC hdc) override;
 
 	private:
-
+		int ePhase;
+		float eTimer;
 	};
 }

@@ -29,27 +29,6 @@ namespace nto
     {
         GameObject::Update();
 
-        /*Transform* tr = GetComponent<Transform>();
-        Vector2 pos = tr->GetPosition();
-
-        SpriteRenderer* sr = GetComponent<SpriteRenderer>();
-        
-        if (mThrow)
-        {
-            pos.x += 400.0f * Time::DeltaTime();
-            tr->SetPosition(pos);
-
-            mDeathTime -= Time::DeltaTime();
-            if (mDeathTime < 0.0f)
-            {
-                Destroy(this);
-            }
-        }
-        else
-        {
-            tr->SetPosition(pos);
-        }*/
-
         Transform* tr = GetComponent<Transform>();
         Vector2 pos = tr->GetPosition();
         pos.x += 600.0f * Time::DeltaTime();

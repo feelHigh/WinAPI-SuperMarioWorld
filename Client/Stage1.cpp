@@ -341,6 +341,7 @@ namespace nto
 		FloorStair* Stage1_Floor_Stair2_1_Entity = object::Instantiate<FloorStair>(eLayerType::Floor);
 		FloorStair* Stage1_Floor_Stair2_2_Entity = object::Instantiate<FloorStair>(eLayerType::Floor);
 		Floor* Stage1_Floor_BackHalf_Entity = object::Instantiate<Floor>(eLayerType::Floor);
+		HiddenFloor* Hidden_Floor_Entity_1 = object::Instantiate<HiddenFloor>(eLayerType::HiddenFloor);
 
 		SpriteRenderer* FrontHalf_Renderer = Stage1_Floor_FrontHalf_Entity->AddComponent<SpriteRenderer>();
 		SpriteRenderer* Stair1_1_Renderer = Stage1_Floor_Stair1_1_Entity->AddComponent<SpriteRenderer>();
@@ -386,6 +387,7 @@ namespace nto
 		Stage1_Floor_Stair2_1_Entity->GetComponent<Transform>()->SetPosition(Vector2(14272.0f, 696.0f));
 		Stage1_Floor_Stair2_2_Entity->GetComponent<Transform>()->SetPosition(Vector2(14272.0f, 632.0f));
 		Stage1_Floor_BackHalf_Entity->GetComponent<Transform>()->SetPosition(Vector2(17600.0f, 824.0f));
+		Hidden_Floor_Entity_1->GetComponent<Transform>()->SetPosition(Vector2(7296.0f, 824.0f));
 
 		Collider* FrontHalf_Collider = Stage1_Floor_FrontHalf_Entity->AddComponent<Collider>();
 		Collider* Stair1_1_Collider = Stage1_Floor_Stair1_1_Entity->AddComponent<Collider>();
@@ -395,6 +397,7 @@ namespace nto
 		Collider* Stair2_1_Collider = Stage1_Floor_Stair2_1_Entity->AddComponent<Collider>();
 		Collider* Stair2_2_Collider = Stage1_Floor_Stair2_2_Entity->AddComponent<Collider>();
 		Collider* BackHalf_Collider = Stage1_Floor_BackHalf_Entity->AddComponent<Collider>();
+		Collider* Hidden_Collider = Hidden_Floor_Entity_1->AddComponent<Collider>();
 
 		FrontHalf_Collider->SetSize(Vector2(14592.0f, 192.0f));
 		Stair1_1_Collider->SetSize(Vector2(1664.0f, 64.0f));
@@ -404,6 +407,7 @@ namespace nto
 		Stair2_1_Collider->SetSize(Vector2(640.0f, 64.0f));
 		Stair2_2_Collider->SetSize(Vector2(640.0f, 64.0f));
 		BackHalf_Collider->SetSize(Vector2(5760.0f, 192.0f));
+		Hidden_Collider->SetSize(Vector2(14592.0f, 192.0f));
 		#pragma endregion
 
 		#pragma region Foreground Layer
@@ -1087,6 +1091,8 @@ namespace nto
 		RedKoopa* Stage1_Monster_RedKoopa_Entity_1_6 = object::Instantiate<RedKoopa>(eLayerType::Monster);
 		RedKoopa* Stage1_Monster_RedKoopa_Entity_1_7 = object::Instantiate<RedKoopa>(eLayerType::Monster);
 		RedKoopa* Stage1_Monster_RedKoopa_Entity_1_8 = object::Instantiate<RedKoopa>(eLayerType::Monster);
+		RedKoopa* Stage1_Monster_RedKoopa_Entity_2_1 = object::Instantiate<RedKoopa>(eLayerType::Monster);
+		RedKoopa* Stage1_Monster_RedKoopa_Entity_2_2 = object::Instantiate<RedKoopa>(eLayerType::Monster);
 		CharginChuck* Stage1_Monster_CharginChuck_Entity1 = object::Instantiate<CharginChuck>(eLayerType::Monster);
 		CharginChuck* Stage1_Monster_CharginChuck_Entity2 = object::Instantiate<CharginChuck>(eLayerType::Monster);
 		Piranha* Stage1_Monster_Piranha_Entity = object::Instantiate<Piranha>(eLayerType::Monster);
@@ -1099,6 +1105,8 @@ namespace nto
 		Transform* trRedKoopa_1_6 = Stage1_Monster_RedKoopa_Entity_1_6->GetComponent<Transform>();
 		Transform* trRedKoopa_1_7 = Stage1_Monster_RedKoopa_Entity_1_7->GetComponent<Transform>();
 		Transform* trRedKoopa_1_8 = Stage1_Monster_RedKoopa_Entity_1_8->GetComponent<Transform>();
+		Transform* trRedKoopa_2_1 = Stage1_Monster_RedKoopa_Entity_2_1->GetComponent<Transform>();
+		Transform* trRedKoopa_2_2 = Stage1_Monster_RedKoopa_Entity_2_2->GetComponent<Transform>();
 		Transform* trCharginChuck_1 = Stage1_Monster_CharginChuck_Entity1->GetComponent<Transform>();
 		Transform* trCharginChuck_2 = Stage1_Monster_CharginChuck_Entity2->GetComponent<Transform>();
 		Transform* trPiranha = Stage1_Monster_Piranha_Entity->GetComponent<Transform>();
@@ -1111,6 +1119,8 @@ namespace nto
 		trRedKoopa_1_6->SetPosition(Vector2(2120.0f, 486.0f));
 		trRedKoopa_1_7->SetPosition(Vector2(2204.0f, 486.0f));
 		trRedKoopa_1_8->SetPosition(Vector2(2288.0f, 486.0f));
+		trRedKoopa_2_1->SetPosition(Vector2(5160.0f, 670.0f));
+		trRedKoopa_2_2->SetPosition(Vector2(7000.0f, 670.0f));
 		trCharginChuck_1->SetPosition(Vector2(9040.0f, 420.0f));
 		trCharginChuck_2->SetPosition(Vector2(19100.0f, 676.0f));
 		trPiranha->SetPosition(Vector2(17520.0f, 600.0f));
@@ -1123,42 +1133,52 @@ namespace nto
 		Animator* atRedKoopa_1_6 = Stage1_Monster_RedKoopa_Entity_1_6->AddComponent<Animator>();
 		Animator* atRedKoopa_1_7 = Stage1_Monster_RedKoopa_Entity_1_7->AddComponent<Animator>();
 		Animator* atRedKoopa_1_8 = Stage1_Monster_RedKoopa_Entity_1_8->AddComponent<Animator>();
+		Animator* atRedKoopa_2_1 = Stage1_Monster_RedKoopa_Entity_2_1->AddComponent<Animator>();
+		Animator* atRedKoopa_2_2 = Stage1_Monster_RedKoopa_Entity_2_2->AddComponent<Animator>();
 		Animator* atCharginChuck_1 = Stage1_Monster_CharginChuck_Entity1->AddComponent<Animator>();
 		Animator* atCharginChuck_2 = Stage1_Monster_CharginChuck_Entity2->AddComponent<Animator>();
 		Animator* atPiranha = Stage1_Monster_Piranha_Entity->AddComponent<Animator>();
 
-		atRedKoopa_1_1->CreateAnimation(L"Monster_Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_2->CreateAnimation(L"Monster_Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_3->CreateAnimation(L"Monster_Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_4->CreateAnimation(L"Monster_Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_5->CreateAnimation(L"Monster_Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_6->CreateAnimation(L"Monster_Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_7->CreateAnimation(L"Monster_Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_8->CreateAnimation(L"Monster_Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_1->CreateAnimation(L"Monster_Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_2->CreateAnimation(L"Monster_Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_3->CreateAnimation(L"Monster_Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_4->CreateAnimation(L"Monster_Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_5->CreateAnimation(L"Monster_Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_6->CreateAnimation(L"Monster_Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_7->CreateAnimation(L"Monster_Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_8->CreateAnimation(L"Monster_Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
-		atRedKoopa_1_1->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_2->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_3->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_4->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_5->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_6->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_7->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_8->CreateAnimation(L"Monster_Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_1->CreateAnimation(L"Monster_Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_2->CreateAnimation(L"Monster_Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_3->CreateAnimation(L"Monster_Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_4->CreateAnimation(L"Monster_Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_5->CreateAnimation(L"Monster_Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_6->CreateAnimation(L"Monster_Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_7->CreateAnimation(L"Monster_Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
-		atRedKoopa_1_8->CreateAnimation(L"Monster_Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_1->CreateAnimation(L"Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_2->CreateAnimation(L"Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_3->CreateAnimation(L"Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_4->CreateAnimation(L"Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_5->CreateAnimation(L"Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_6->CreateAnimation(L"Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_7->CreateAnimation(L"Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_8->CreateAnimation(L"Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_2_1->CreateAnimation(L"Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_2_2->CreateAnimation(L"Animation_RedKoopa_Left", Koopa_Red_Left_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_1->CreateAnimation(L"Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_2->CreateAnimation(L"Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_3->CreateAnimation(L"Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_4->CreateAnimation(L"Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_5->CreateAnimation(L"Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_6->CreateAnimation(L"Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_7->CreateAnimation(L"Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_8->CreateAnimation(L"Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_2_1->CreateAnimation(L"Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_2_2->CreateAnimation(L"Animation_RedKoopa_Right", Koopa_Red_Right_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 2, Vector2(0.0f, -8.0f), 0.4f);
+		atRedKoopa_1_1->CreateAnimation(L"Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_2->CreateAnimation(L"Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_3->CreateAnimation(L"Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_4->CreateAnimation(L"Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_5->CreateAnimation(L"Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_6->CreateAnimation(L"Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_7->CreateAnimation(L"Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_8->CreateAnimation(L"Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_2_1->CreateAnimation(L"Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_2_2->CreateAnimation(L"Animation_RedKoopa_Hit", Koopa_Red_Hit_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_1->CreateAnimation(L"Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_2->CreateAnimation(L"Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_3->CreateAnimation(L"Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_4->CreateAnimation(L"Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_5->CreateAnimation(L"Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_6->CreateAnimation(L"Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_7->CreateAnimation(L"Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_1_8->CreateAnimation(L"Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_2_1->CreateAnimation(L"Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
+		atRedKoopa_2_2->CreateAnimation(L"Animation_RedKoopa_Dead", Koopa_Red_Dead_Image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 1);
 		atCharginChuck_1->CreateAnimation(L"Monster_Animation_CharginChuck_Left", CharginChuck_Basic_Left_Image, Vector2(0.0f, 0.0f), Vector2(28.0f, 26.0f), 2, Vector2(0.0f, 0.0f), 0.1f);
 		atCharginChuck_2->CreateAnimation(L"Monster_Animation_CharginChuck_Left", CharginChuck_Basic_Left_Image, Vector2(0.0f, 0.0f), Vector2(28.0f, 26.0f), 2, Vector2(0.0f, 0.0f), 0.1f);
 		atCharginChuck_1->CreateAnimation(L"Monster_Animation_CharginChuck_Middle", CharginChuck_Basic_Middle_Image, Vector2(0.0f, 0.0f), Vector2(28.0f, 26.0f), 12, Vector2(0.0f, 0.0f), 0.2f);
@@ -1177,20 +1197,22 @@ namespace nto
 		atRedKoopa_1_6->SetScale(Vector2(4.0f, 4.0f));
 		atRedKoopa_1_7->SetScale(Vector2(4.0f, 4.0f));
 		atRedKoopa_1_8->SetScale(Vector2(4.0f, 4.0f));
+		atRedKoopa_2_1->SetScale(Vector2(4.0f, 4.0f));
+		atRedKoopa_2_2->SetScale(Vector2(4.0f, 4.0f));
 		atCharginChuck_1->SetScale(Vector2(4.0f, 4.0f));
 		atCharginChuck_2->SetScale(Vector2(4.0f, 4.0f));
 		atPiranha->SetScale(Vector2(4.0f, 4.0f));
 
-		atRedKoopa_1_1->PlayAnimation(L"Monster_Animation_RedKoopa_Left", true);
-		atRedKoopa_1_2->PlayAnimation(L"Monster_Animation_RedKoopa_Left", true);
-		atRedKoopa_1_3->PlayAnimation(L"Monster_Animation_RedKoopa_Left", true);
-		atRedKoopa_1_4->PlayAnimation(L"Monster_Animation_RedKoopa_Left", true);
-		atRedKoopa_1_5->PlayAnimation(L"Monster_Animation_RedKoopa_Left", true);
-		atRedKoopa_1_6->PlayAnimation(L"Monster_Animation_RedKoopa_Left", true);
-		atRedKoopa_1_7->PlayAnimation(L"Monster_Animation_RedKoopa_Left", true);
-		atRedKoopa_1_8->PlayAnimation(L"Monster_Animation_RedKoopa_Left", true);
-		//atCharginChuck_1->PlayAnimation(L"Monster_Animation_CharginChuck_Left", true);
-		//atCharginChuck_2->PlayAnimation(L"Monster_Animation_CharginChuck_Left", true);
+		atRedKoopa_1_1->PlayAnimation(L"Animation_RedKoopa_Left", true);
+		atRedKoopa_1_2->PlayAnimation(L"Animation_RedKoopa_Left", true);
+		atRedKoopa_1_3->PlayAnimation(L"Animation_RedKoopa_Left", true);
+		atRedKoopa_1_4->PlayAnimation(L"Animation_RedKoopa_Left", true);
+		atRedKoopa_1_5->PlayAnimation(L"Animation_RedKoopa_Left", true);
+		atRedKoopa_1_6->PlayAnimation(L"Animation_RedKoopa_Left", true);
+		atRedKoopa_1_7->PlayAnimation(L"Animation_RedKoopa_Left", true);
+		atRedKoopa_1_8->PlayAnimation(L"Animation_RedKoopa_Left", true);
+		atRedKoopa_2_1->PlayAnimation(L"Animation_RedKoopa_Left", true);
+		atRedKoopa_2_2->PlayAnimation(L"Animation_RedKoopa_Left", true);
 		atPiranha->PlayAnimation(L"Monster_Animation_Piranha", true);
 
 		Collider* colRedKoopa_1_1 = Stage1_Monster_RedKoopa_Entity_1_1->AddComponent<Collider>();
@@ -1201,6 +1223,8 @@ namespace nto
 		Collider* colRedKoopa_1_6 = Stage1_Monster_RedKoopa_Entity_1_6->AddComponent<Collider>();
 		Collider* colRedKoopa_1_7 = Stage1_Monster_RedKoopa_Entity_1_7->AddComponent<Collider>();
 		Collider* colRedKoopa_1_8 = Stage1_Monster_RedKoopa_Entity_1_8->AddComponent<Collider>();
+		Collider* colRedKoopa_2_1 = Stage1_Monster_RedKoopa_Entity_2_1->AddComponent<Collider>();
+		Collider* colRedKoopa_2_2 = Stage1_Monster_RedKoopa_Entity_2_2->AddComponent<Collider>();
 		Collider* colCharginChuck_1 = Stage1_Monster_CharginChuck_Entity1->AddComponent<Collider>();
 		Collider* colCharginChuck_2 = Stage1_Monster_CharginChuck_Entity2->AddComponent<Collider>();
 		Collider* colPiranha = Stage1_Monster_Piranha_Entity->AddComponent<Collider>();
@@ -1213,6 +1237,8 @@ namespace nto
 		colRedKoopa_1_6->SetSize(Vector2(64.0f, 108.0f));
 		colRedKoopa_1_7->SetSize(Vector2(64.0f, 108.0f));
 		colRedKoopa_1_8->SetSize(Vector2(64.0f, 108.0f));
+		colRedKoopa_2_1->SetSize(Vector2(64.0f, 108.0f));
+		colRedKoopa_2_2->SetSize(Vector2(64.0f, 108.0f));
 		colCharginChuck_1->SetSize(Vector2(112.0f, 104.0f));
 		colCharginChuck_2->SetSize(Vector2(112.0f, 104.0f));
 		colPiranha->SetSize(Vector2(64.0f, 84.0f));
@@ -1295,12 +1321,11 @@ namespace nto
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::HiddenItem, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::MonsterCover, true);
-		CollisionManager::CollisionLayerCheck(eLayerType::PlayerAttack, eLayerType::Floor, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::PlayerAttack, eLayerType::HiddenFloor, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::PlayerAttack, eLayerType::Monster, true);
-		CollisionManager::CollisionLayerCheck(eLayerType::PlayerAttack, eLayerType::Environment, true);
-		CollisionManager::CollisionLayerCheck(eLayerType::PlayerAttack, eLayerType::Foreground, true);
+		//CollisionManager::CollisionLayerCheck(eLayerType::PlayerAttack, eLayerType::Environment, true);
+		//CollisionManager::CollisionLayerCheck(eLayerType::PlayerAttack, eLayerType::Foreground, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Monster, true);
-		//CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Foreground, true);
 		#pragma endregion
 
 		#pragma region Sound

@@ -16,8 +16,11 @@ namespace nto
 {
 	RedPara::RedPara()
 		: mRotateTime(5.0f)
-		, mDeathTime(5.0f)
+		, mDeathTime(5.0f) // 5
 		, mAttacked(false)
+		, mTick(true)
+		, mState(1)
+		, mType(1)
 	{
 	}
 
@@ -36,22 +39,52 @@ namespace nto
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 
-		if (mAttacked)
+		if (mState == 1 && !mAttacked)
 		{
-			pos.y += 400.0f * Time::DeltaTime();
-			tr->SetPosition(pos);
-
-			mDeathTime -= Time::DeltaTime();
-			if (mDeathTime < 0.0f)
+			if (mTick)
 			{
-				Destroy(this);
+				pos.x -= 60.0f * Time::DeltaTime();
+				//pos.y += 60.0f * Time::DeltaTime();
+				mRotateTime -= Time::DeltaTime();
+				if (mRotateTime < 0.0f)
+				{
+					this->GetComponent<Animator>()->PlayAnimation(L"Animation_RedPara_Right", true);
+					mRotateTime = 5.0f;
+					mTick = false;
+				}
+			}
+			else
+			{
+				pos.x += 60.0f * Time::DeltaTime();
+				//pos.y -= 60.0f * Time::DeltaTime();
+				mRotateTime -= Time::DeltaTime();
+				if (mRotateTime < 0.0f)
+				{
+					this->GetComponent<Animator>()->PlayAnimation(L"Animation_RedPara_Left", true);
+					mRotateTime = 5.0f;
+					mTick = true;
+				}
 			}
 		}
-		else
+
+		if (mAttacked)
 		{
-			pos.x -= 30.0f * Time::DeltaTime();
-			tr->SetPosition(pos);
+			// ¹âÇûÀ» ¶§
+			if (mType == 1 && mState == 2)
+			{
+				pos.y += 64.0f * Time::DeltaTime(); //400
+				tr->SetPosition(pos);
+
+				mDeathTime -= Time::DeltaTime();
+				if (mDeathTime < 0.0f && mAttacked)
+				{
+					mAttacked = false; // remove
+				}
+			}
 		}
+
+
+		tr->SetPosition(pos);
 	}
 
 	void RedPara::Render(HDC hdc)
@@ -61,29 +94,69 @@ namespace nto
 
 	void RedPara::OnCollisionEnter(Collider* other)
 	{
-		RedShell* redShell = dynamic_cast<RedShell*>(other->GetOwner());
+		Player* player = dynamic_cast<Player*>(other->GetOwner());
 
-		if (redShell)
+		if (player)
 		{
-			Sound* sound = Resources::Load<Sound>(L"sfxNoDamage", L"..\\Assets\\Sound\\SFX\\WAV\\smw_stomp.wav");
-			sound->Play(false);
+			Transform* trPlayer = player->GetComponent<Transform>();
+			Transform* trBox = GetComponent<Transform>();
+			Collider* colPlayer = other;
+
+			float lenX = fabs(trPlayer->GetPosition().x - trBox->GetPosition().x);
+			//float scaleX = (colPlayer->GetSize().x / 2.0f) + (GetComponent<Collider>()->GetSize().x / 2.0f) + trBox->GetScale().x;
+			float scaleX = (colPlayer->GetSize().x / 2.0f) + (GetComponent<Collider>()->GetSize().x / 2.0f);
+
+			float lenY = fabs(trPlayer->GetPosition().y - trBox->GetPosition().y);
+			//float scaleY = (colPlayer->GetSize().y / 2.0f) + (GetComponent<Collider>()->GetSize().y / 2.0f) + trBox->GetScale().y;
+			float scaleY = (colPlayer->GetSize().y / 2.0f) + (GetComponent<Collider>()->GetSize().y / 2.0f);
+
+			if (lenX < scaleX && lenY < scaleY)
+			{
+				float overlapX = scaleX - lenX;
+				float overlapY = scaleY - lenY;
+
+				// Separate the player from the box in the direction of the smallest overlap
+				if (overlapX < overlapY)
+				{
+					Vector2 playerPos = trPlayer->GetPosition();
+					if (trPlayer->GetPosition().x < trBox->GetPosition().x)
+						playerPos.x -= overlapX;
+					else
+						playerPos.x += overlapX;
+					trPlayer->SetPosition(playerPos);
+				}
+				else
+				{
+					Vector2 playerPos = trPlayer->GetPosition();
+					if (trPlayer->GetPosition().y < trBox->GetPosition().y)
+					{
+						mAttacked = true;
+						mState = 2;
+						// Bump the player up
+						playerPos.y -= overlapY;
+						Rigidbody* rb = player->GetComponent<Rigidbody>();
+						rb->SetGround(false);
+						rb->SetVelocity(Vector2(0.0f, -800.0f));
+						this->GetComponent<Animator>()->PlayAnimation(L"Animation_RedKoopa_Hit", true);
+
+						Collider* cl = GetComponent<Collider>();
+						cl->SetSize(Vector2(64.0f, 64.0f));
+
+						Sound* sound = Resources::Load<Sound>(L"sfxStomp", L"..\\Assets\\Sound\\SFX\\WAV\\smw_stomp.wav");
+						sound->Play(false);
+					}
+					else
+					{
+					}
+
+					trPlayer->SetPosition(playerPos);
+				}
+			}
 		}
 	}
 
 	void RedPara::OnCollisionStay(Collider* other)
 	{
-		RedShell* redShell = dynamic_cast<RedShell*>(other->GetOwner());
-
-		if (redShell)
-		{
-			this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_RedKoopa_Dead", true);
-			this->mAttacked = true;
-
-			Transform* tr = GetComponent<Transform>();
-			Collider* cl = GetComponent<Collider>();
-
-			cl->SetActive(false);
-		}
 	}
 
 	void RedPara::OnCollisionExit(Collider* other)

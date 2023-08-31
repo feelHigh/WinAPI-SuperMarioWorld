@@ -17,9 +17,18 @@ namespace nto
 		virtual void OnCollisionStay(class Collider* other);
 		virtual void OnCollisionExit(class Collider* other);
 
+		void SetType(int type) { mType = type; }
+		int GetType() { return mType; }
+
+		void SetDeathTime(float time) { mDeathTime = time; }
+		float SetDeathTIme() { return mDeathTime; }
+
 	private:
 		float mRotateTime;
 		float mDeathTime;
 		bool mAttacked;
+		bool mTick;
+		int mState;
+		int mType;
 	};
 }

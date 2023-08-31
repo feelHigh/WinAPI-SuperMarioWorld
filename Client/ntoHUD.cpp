@@ -16,7 +16,6 @@ namespace nto
 	Vector2 HUD::hLookPosition = Vector2::Zero;
 	Vector2 HUD::hDistance = Vector2::Zero;
 	GameObject* HUD::hTarget = nullptr;
-	int HUD::coinCount = 0;
 
 	HUD::HUD()
 	{
@@ -49,9 +48,5 @@ namespace nto
 	void HUD::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
-	}
-
-	void HUD::DrawCoinCount(HDC hdc, int x, int y, int count)
-	{
 	}
 }

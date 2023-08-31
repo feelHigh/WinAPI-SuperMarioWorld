@@ -86,8 +86,8 @@ namespace nto
 				StageEnter = true;
 				if (Controller::GetKeyDown(eKeyCode::I))
 				{
-					//SceneManager::CreateScene<StageBoss>(L"StageBoss");
-					//SceneManager::LoadScene(L"StageBoss");
+					SceneManager::CreateScene<StageBoss>(L"StageBoss");
+					SceneManager::LoadScene(L"StageBoss");
 				}
 			}
         }
