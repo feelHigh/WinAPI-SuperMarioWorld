@@ -18,8 +18,9 @@ namespace nto
 		: mPlayerClass(eMarioClass::Fire)
 		, mDir(eMarioDirection::Right)
 		, mState(eState::Idle)
-		, mLife(10)
 		, onGround(false)
+		, mLives(3)
+		, mCoins(0)
 	{
 	}
 

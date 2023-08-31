@@ -77,12 +77,19 @@ namespace nto
 		void SetPlayerClass(eMarioClass playerClass) { mPlayerClass = playerClass; }
 		eMarioClass GetPlayerClass() const { return mPlayerClass; }
 
+		void SetLives(int lives) { mLives = lives; }
+		int GetLives() { return mLives; }
+
+		void SetCoins(int coins) { mCoins = coins; }
+		int GetCoins() { return mCoins; }
+
 	private:
 		eMarioClass mPlayerClass;
 		eMarioDirection mDir;
 		eState mState;
 		bool onGround;
 
-		int mLife;
+		int mLives;
+		int mCoins;
 	};
 }
