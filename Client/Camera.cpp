@@ -53,4 +53,12 @@ namespace nto
 		// Update the distance value after the movement
 		mDistance = mLookPosition - (mResolution / 2.0f);
 	}
+
+	void Camera::Reset()
+	{
+		mThresholdX = 50.0f; // Set to initial value
+		mThresholdY = 100.0f; // Set to initial value
+		mLookPosition = mResolution / 2.0f; // Set to initial value
+		mDistance = Vector2::Zero; // Set to initial value
+	}
 }

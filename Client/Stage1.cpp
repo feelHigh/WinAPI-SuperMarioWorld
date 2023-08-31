@@ -15,6 +15,7 @@ namespace nto
 {
 	Stage1::Stage1()
 		: pSwitchState(false)
+		, stageTimer(600.0f)
 	{
 	}
 
@@ -1297,20 +1298,66 @@ namespace nto
 		#pragma endregion
 
 		#pragma region UI Layer
-		Texture* Stage1_HUD_Base_Image = Resources::Load<Texture>(L"Stage1_HUD_Base"
+		Texture* HUD_Base_Image = Resources::Load<Texture>(L"StageBoss_HUD_Base"
 			, L"..\\Assets\\HUD\\HUD_Base.bmp");
+		Texture* HUD_NormalNum_Image = Resources::Load<Texture>(L"StageBoss_HUD_NormalNum"
+			, L"..\\Assets\\HUD\\NormalNum.bmp");
+		Texture* HUD_CountdownNum_Image = Resources::Load<Texture>(L"StageBoss_HUD_Coundown"
+			, L"..\\Assets\\HUD\\CountdownNum.bmp");
 
-		Stage1_HUD_Entity = object::Instantiate<HUD>(eLayerType::UI);
+		HUD_Base_Entity = object::Instantiate<HUD>(eLayerType::UI);
+		HUD_Life_Entity = object::Instantiate<HUDLife>(eLayerType::UI);
+		HUD_Timer_Entity_1 = object::Instantiate<HUDTimer>(eLayerType::UI);
+		HUD_Timer_Entity_2 = object::Instantiate<HUDTimer>(eLayerType::UI);
+		HUD_Timer_Entity_3 = object::Instantiate<HUDTimer>(eLayerType::UI);
+		HUD_Coins_Entity_1 = object::Instantiate<HUDCoins>(eLayerType::UI);
+		HUD_Coins_Entity_2 = object::Instantiate<HUDCoins>(eLayerType::UI);
 
-		trHUD_Base = Stage1_HUD_Entity->GetComponent<Transform>();
+		HUD_Timer_Entity_1->SetType(1);
+		HUD_Timer_Entity_2->SetType(2);
+		HUD_Timer_Entity_3->SetType(3);
+		HUD_Coins_Entity_1->SetType(1);
+		HUD_Coins_Entity_2->SetType(2);
 
-		//trHUD_Base->SetPosition(Vector2(600.0f, 100.0f));
+		trHUD_Base = HUD_Base_Entity->GetComponent<Transform>();
+		trHUD_Life = HUD_Life_Entity->GetComponent<Transform>();
+		trHUD_Timer_1 = HUD_Timer_Entity_1->GetComponent<Transform>();
+		trHUD_Timer_2 = HUD_Timer_Entity_2->GetComponent<Transform>();
+		trHUD_Timer_3 = HUD_Timer_Entity_3->GetComponent<Transform>();
+		trHUD_Coins_1 = HUD_Coins_Entity_1->GetComponent<Transform>();
+		trHUD_Coins_2 = HUD_Coins_Entity_2->GetComponent<Transform>();
 
-		SpriteRenderer* Stage1_HUD_Renderer = Stage1_HUD_Entity->AddComponent<SpriteRenderer>();
+		atHUD_Base = HUD_Base_Entity->AddComponent<Animator>();
+		atHUD_Life = HUD_Life_Entity->AddComponent<Animator>();
+		atHUD_Timer_1 = HUD_Timer_Entity_1->AddComponent<Animator>();
+		atHUD_Timer_2 = HUD_Timer_Entity_2->AddComponent<Animator>();
+		atHUD_Timer_3 = HUD_Timer_Entity_3->AddComponent<Animator>();
+		atHUD_Coins_1 = HUD_Coins_Entity_1->AddComponent<Animator>();
+		atHUD_Coins_2 = HUD_Coins_Entity_2->AddComponent<Animator>();
 
-		Stage1_HUD_Renderer->SetImage(Stage1_HUD_Base_Image);
+		atHUD_Base->CreateAnimation(L"Animation_HUD_Base", HUD_Base_Image, Vector2(0.0f, 0.0f), Vector2(256.0f, 47.0f), 1);
+		atHUD_Life->CreateAnimation(L"Animation_HUD_Life", HUD_NormalNum_Image, Vector2(0.0f, 0.0f), Vector2(8.0f, 8.0f), 10, Vector2(0.0f, 0.0f), 0.1f);
+		atHUD_Timer_1->CreateAnimation(L"Animation_HUD_Timer_1", HUD_CountdownNum_Image, Vector2(0.0f, 0.0f), Vector2(8.0f, 8.0f), 10, Vector2(0.0f, 0.0f), 0.1f);
+		atHUD_Timer_2->CreateAnimation(L"Animation_HUD_Timer_2", HUD_CountdownNum_Image, Vector2(0.0f, 0.0f), Vector2(8.0f, 8.0f), 10, Vector2(0.0f, 0.0f), 0.1f);
+		atHUD_Timer_3->CreateAnimation(L"Animation_HUD_Timer_3", HUD_CountdownNum_Image, Vector2(0.0f, 0.0f), Vector2(8.0f, 8.0f), 10, Vector2(0.0f, 0.0f), 0.1f);
+		atHUD_Coins_1->CreateAnimation(L"Animation_HUD_Coins_1", HUD_NormalNum_Image, Vector2(0.0f, 0.0f), Vector2(8.0f, 8.0f), 10, Vector2(0.0f, 0.0f), 0.1f);
+		atHUD_Coins_2->CreateAnimation(L"Animation_HUD_Coins_2", HUD_NormalNum_Image, Vector2(0.0f, 0.0f), Vector2(8.0f, 8.0f), 10, Vector2(0.0f, 0.0f), 0.1f);
 
-		Stage1_HUD_Renderer->SetScale(Vector2(4.0f, 4.0f));
+		atHUD_Base->SetScale(Vector2(4.0f, 4.0f));
+		atHUD_Life->SetScale(Vector2(4.0f, 4.0f));
+		atHUD_Timer_1->SetScale(Vector2(4.0f, 4.0f));
+		atHUD_Timer_2->SetScale(Vector2(4.0f, 4.0f));
+		atHUD_Timer_3->SetScale(Vector2(4.0f, 4.0f));
+		atHUD_Coins_1->SetScale(Vector2(4.0f, 4.0f));
+		atHUD_Coins_2->SetScale(Vector2(4.0f, 4.0f));
+
+		atHUD_Base->PlayAnimation(L"Animation_HUD_Base", false);
+		atHUD_Life->PlayAnimation(L"Animation_HUD_Life", true);
+		atHUD_Timer_1->PlayAnimation(L"Animation_HUD_Timer_1", true);
+		atHUD_Timer_2->PlayAnimation(L"Animation_HUD_Timer_2", true);
+		atHUD_Timer_3->PlayAnimation(L"Animation_HUD_Timer_3", true);
+		atHUD_Coins_1->PlayAnimation(L"Animation_HUD_Coins_1", true);
+		atHUD_Coins_2->PlayAnimation(L"Animation_HUD_Coins_2", true);
 		#pragma endregion
 
 		#pragma region Collision Manager
@@ -1388,6 +1435,22 @@ namespace nto
 		}
 		#pragma endregion
 
+		#pragma region HUD Update
+		stageTimer -= Time::DeltaTime();
+
+		int hundreds = (int)stageTimer / 100;
+		int tens = ((int)stageTimer % 100) / 10;
+		int ones = (int)stageTimer % 10;
+
+		atHUD_Timer_1->SetFrame(hundreds);
+		atHUD_Timer_2->SetFrame(tens);
+		atHUD_Timer_3->SetFrame(ones);
+
+		atHUD_Life->SetFrame(3);
+		atHUD_Coins_1->SetFrame(0);
+		atHUD_Coins_2->SetFrame(0);
+		#pragma endregion
+
 		#pragma region CoinToBlock Event
 		if (Stage1_Item_PSwitch_Entity && Stage1_Item_PSwitch_Entity->GetSwitchStatus()) 
 		{
@@ -1433,13 +1496,10 @@ namespace nto
 		}
 		#pragma endregion
 
-		#pragma region HUD Update
-
-		#pragma endregion
-
 		if (Controller::GetKeyDown(eKeyCode::P))
 		{
 			bgSound->Stop(true);
+			Camera::Reset();
 			SceneManager::LoadScene(L"StageWorldMap");
 		}
 	}

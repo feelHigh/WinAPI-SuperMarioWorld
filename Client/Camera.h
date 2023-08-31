@@ -21,6 +21,8 @@ namespace nto
 		static Vector2 GetDistance() { return mDistance; }
 		static Vector2 GetLookPosition() { return mLookPosition; }
 
+		static void Reset();
+
 	private:
 		static Vector2 mResolution;		// 화면 해상도
 		static Vector2 mLookPosition;	// 카메라가 바라보고 있는 위치

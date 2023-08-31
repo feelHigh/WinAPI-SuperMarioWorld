@@ -160,6 +160,9 @@
     <ClInclude Include="ntoForegroundFloorBox.h" />
     <ClInclude Include="ntoHiddenFloor.h" />
     <ClInclude Include="ntoHUD.h" />
+    <ClInclude Include="ntoHUDCoins.h" />
+    <ClInclude Include="ntoHUDLife.h" />
+    <ClInclude Include="ntoHUDTimer.h" />
     <ClInclude Include="ntoItemFireFlower.h" />
     <ClInclude Include="ntoItemPSwitch.h" />
     <ClInclude Include="ntoForegroundRandomBox.h" />
@@ -231,6 +234,9 @@
     <ClCompile Include="ntoForegroundFloorBox.cpp" />
     <ClCompile Include="ntoHiddenFloor.cpp" />
     <ClCompile Include="ntoHUD.cpp" />
+    <ClCompile Include="ntoHUDCoins.cpp" />
+    <ClCompile Include="ntoHUDLife.cpp" />
+    <ClCompile Include="ntoHUDTimer.cpp" />
     <ClCompile Include="ntoItemFireFlower.cpp" />
     <ClCompile Include="ntoItemPSwitch.cpp" />
     <ClCompile Include="ntoForegroundRandomBox.cpp" />

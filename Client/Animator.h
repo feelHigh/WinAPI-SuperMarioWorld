@@ -35,6 +35,8 @@ namespace nto
 		Vector2 GetScale() { return mScale; }
 		void SetScale(Vector2 scale) { mScale = scale; }
 
+		void SetFrame(int frameIndex);
+
 	private:
 		std::map<std::wstring, Animation*> mAnimations;
 
@@ -43,5 +45,6 @@ namespace nto
 		bool mbAffectedCamera;
 		float mAlpha;
 		Vector2 mScale;
+
 	};
 }

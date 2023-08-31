@@ -324,6 +324,15 @@
     <ClInclude Include="ntoEndingOutro.h">
       <Filter>Contents\GameObject\Background</Filter>
     </ClInclude>
+    <ClInclude Include="ntoHUDCoins.h">
+      <Filter>Contents\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoHUDLife.h">
+      <Filter>Contents\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoHUDTimer.h">
+      <Filter>Contents\GameObject\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
@@ -518,6 +527,15 @@
     </ClCompile>
     <ClCompile Include="ntoEndingOutro.cpp">
       <Filter>Contents\GameObject\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoHUDCoins.cpp">
+      <Filter>Contents\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoHUDLife.cpp">
+      <Filter>Contents\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoHUDTimer.cpp">
+      <Filter>Contents\GameObject\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

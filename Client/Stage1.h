@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "ntoLayerHeaders.h"
 #include "Transform.h"
+#include "Animator.h"
 #include "CustomTime.h"
 #include "ntoResources.h"
 #include "ntoSound.h"
@@ -41,8 +42,28 @@ namespace nto
 		float ffShowTime;
 		float eventTime;
 		// UI
-		HUD* Stage1_HUD_Entity;
+		HUD* HUD_Base_Entity;
+		HUDLife* HUD_Life_Entity;
+		HUDTimer* HUD_Timer_Entity_1;
+		HUDTimer* HUD_Timer_Entity_2;
+		HUDTimer* HUD_Timer_Entity_3;
+		HUDCoins* HUD_Coins_Entity_1;
+		HUDCoins* HUD_Coins_Entity_2;
 		Transform* trHUD_Base;
+		Transform* trHUD_Life;
+		Transform* trHUD_Timer_1;
+		Transform* trHUD_Timer_2;
+		Transform* trHUD_Timer_3;
+		Transform* trHUD_Coins_1;
+		Transform* trHUD_Coins_2;
+		Animator* atHUD_Base;
+		Animator* atHUD_Life;
+		Animator* atHUD_Timer_1;
+		Animator* atHUD_Timer_2;
+		Animator* atHUD_Timer_3;
+		Animator* atHUD_Coins_1;
+		Animator* atHUD_Coins_2;
+		float stageTimer;
 
 		// Changable Coins
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_1;

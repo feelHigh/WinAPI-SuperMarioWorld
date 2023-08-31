@@ -133,8 +133,6 @@ namespace nto
 
 		bgSound = Resources::Load<Sound>(L"bgmYoshiIsland", L"..\\Assets\\Sound\\BGM\\WAV\\02.Map_1(Yoshi's Island).wav");
 		bgSound->Play(true);
-
-		Camera::SetTarget(WorldMap_Border_Entity);
 	}
 
 	void StageWorldMap::Update()

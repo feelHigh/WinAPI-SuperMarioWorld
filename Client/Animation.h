@@ -44,6 +44,7 @@ namespace nto
 		bool IsComplete() { return mbComplete; }
 		void SetAnimator(Animator* animator) { mAnimator = animator; }
 
+		void SetCurrentFrame(int frameIndex);
 
 	private:
 		Animator* mAnimator;

@@ -128,4 +128,12 @@ namespace nto
 		mActiveAnimation->Reset();
 		mbLoop = loop;
 	}
+
+	void Animator::SetFrame(int frameIndex)
+	{
+		if (mActiveAnimation)
+		{
+			mActiveAnimation->SetCurrentFrame(frameIndex);
+		}
+	}
 }

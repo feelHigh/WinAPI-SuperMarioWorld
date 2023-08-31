@@ -93,4 +93,14 @@ namespace nto
 		mIndex = 0;
 		mbComplete = false;
 	}
+
+	void Animation::SetCurrentFrame(int frameIndex)
+	{
+		if (frameIndex >= 0 && frameIndex < mSpriteSheet.size())
+		{
+			mIndex = frameIndex;
+			mTime = 0.0f; // Reset the time to start the frame duration from zero
+			mbComplete = false; // Reset the completion status
+		}
+	}
 }
