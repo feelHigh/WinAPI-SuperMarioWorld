@@ -23,7 +23,9 @@ namespace nto
 		, ePatternSpeedX(eMaxWidth / eTimer)
 		, ePatternSpeedY(eMaxHeight / eTimer)
 		, ePatternTimer(hitTimer)
-		, eFallTimer(2.0f)
+		, eAttackNumber(1)
+		, eDistanceTimer(2.0f)
+		, eFallTimer(0.5f)
 	{
 	}
 
@@ -73,18 +75,49 @@ namespace nto
 			}
 			else if (ePhase == 3)
 			{
-
-				pos.x += ePatternSpeedX * Time::DeltaTime();
 				eTimer -= Time::DeltaTime();
-				if (eTimer < 0.0f)
+
+				if (eAttackNumber % 2 == 1) // Odd number, boss will drop
 				{
-					this->GetComponent<Animator>()->PlayAnimation(L"Animation_Morton_Right_Wall", true);
-					col->SetSize(Vector2(120.0f, 96.0f));
-					col->SetOffset(Vector2(8.0f, 0.0f));
-					eTimer = ePatternTimer;
-					ePhase++;
+					if (eTimer >= 0.4f)
+					{
+						pos.x += ePatternSpeedX * Time::DeltaTime(); // Keep moving right
+					}
+					else if (eTimer < 0.4f)
+					{
+						this->GetComponent<Animator>()->PlayAnimation(L"Animation_Morton_Fall", true);
+						col->SetSize(Vector2(120.0f, 120.0f));
+						col->SetOffset(Vector2(0.0f, 0.0f));
+						pos.y += 768.0f * Time::DeltaTime(); // Start moving down
+						eFallTimer -= Time::DeltaTime();
+						if (eFallTimer < 0.0f)
+						{
+							this->GetComponent<Animator>()->PlayAnimation(L"Animation_Morton_Ground", true);
+							col->SetSize(Vector2(96.0f, 120.0f));
+							col->SetOffset(Vector2(0.0f, 8.0f));
+							eFallTimer = 0.5f;
+							eTimer = 1.6f;
+							eAttackNumber++;
+							ePhase = 1;
+						}
+					}
+				}
+				else // Even number, boss will not drop
+				{
+					pos.x += ePatternSpeedX * Time::DeltaTime(); // Keep moving right
+
+					if (eTimer < 0.0f)
+					{
+						this->GetComponent<Animator>()->PlayAnimation(L"Animation_Morton_Right_Wall", true);
+						col->SetSize(Vector2(120.0f, 96.0f));
+						col->SetOffset(Vector2(8.0f, 0.0f));
+						eTimer = ePatternTimer;
+						eAttackNumber++;
+						ePhase++;
+					}
 				}
 			}
+
 			else if (ePhase == 4)
 			{
 				pos.y += ePatternSpeedY * Time::DeltaTime();
@@ -101,9 +134,18 @@ namespace nto
 		}
 		else
 		{
+			this->GetComponent<Animator>()->PlayAnimation(L"Animation_Morton_Fall", false);
 			hitTimer -= Time::DeltaTime();
 			if (hitTimer < 0.0f)
 			{
+				if(ePhase == 1)
+					this->GetComponent<Animator>()->PlayAnimation(L"Animation_Morton_Ground", true);
+				else if(ePhase == 2)
+					this->GetComponent<Animator>()->PlayAnimation(L"Animation_Morton_Left_Wall", true);
+				else if(ePhase == 3)
+					this->GetComponent<Animator>()->PlayAnimation(L"Animation_Morton_Ceiling", true);
+				else if (ePhase == 4)
+					this->GetComponent<Animator>()->PlayAnimation(L"Animation_Morton_Right_Wall", true);
 				ePhase = tmpPhase;
 				eTimer = tmpTimer;
 				eAttacked = false;
@@ -154,7 +196,7 @@ namespace nto
 					Vector2 playerPos = trPlayer->GetPosition();
 					if (trPlayer->GetPosition().y < trBox->GetPosition().y)
 					{
-						Sound* sound = Resources::Load<Sound>(L"sfxNoDamage", L"..\\Assets\\Sound\\SFX\\WAV\\smw_stomp_no_damage.wav");
+						Sound* sound = Resources::Load<Sound>(L"sfxStun", L"..\\Assets\\Sound\\SFX\\WAV\\stun.wav");
 						sound->Play(false);
 						// Bump the player Up
 						playerPos.y += overlapY;
@@ -162,10 +204,11 @@ namespace nto
 						rb->SetGround(false);
 						rb->SetVelocity(Vector2(0.0f, -1000.0f));
 
-						this->GetComponent<Animator>()->PlayAnimation(L"Monster_Animation_CharginChuck_Hit", true);
+						this->GetComponent<Animator>()->PlayAnimation(L"Animation_Morton_Fall", false);
 						hitTimer = 2.0f;
 						tmpPhase = ePhase;
 						tmpTimer = eTimer;
+						eHitCount++;
 						eAttacked = true;
 					}
 					else

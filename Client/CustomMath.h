@@ -179,4 +179,11 @@ namespace nto::math
     {
         return v1.x * v2.y - v1.y * v2.x;
     }
+
+    inline float Clamp(float value, float min, float max)
+    {
+        if (value < min) return min;
+        if (value > max) return max;
+        return value;
+    }
 }

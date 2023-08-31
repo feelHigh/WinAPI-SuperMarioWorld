@@ -66,6 +66,9 @@ namespace nto
 			, L"..\\Assets\\Mario\\Mario_Right.bmp");
 
 		player = object::Instantiate<Player>(eLayerType::Player);
+
+		player->SetPlayerClass(Player::eMarioClass::Super);
+
 		trPlayer = player->GetComponent<Transform>();
 
 		trPlayer->SetPosition(Vector2(512.0f, 320.0f));
@@ -164,8 +167,10 @@ namespace nto
 			, L"..\\Assets\\Image\\Enemies\\Morton_4.bmp");
 		Texture* Morton_Fall_Image = Resources::Load<Texture>(L"Morton_Fall"
 			, L"..\\Assets\\Image\\Enemies\\Morton_Fall.bmp");
+		Texture* Morton_Hit_Image = Resources::Load<Texture>(L"Morton_Hit"
+			, L"..\\Assets\\Image\\Enemies\\Morton_Hit.bmp");
 
-		Morton* Morton_Entity = object::Instantiate<Morton>(eLayerType::Monster);
+		Morton_Entity = object::Instantiate<Morton>(eLayerType::Monster);
 
 		Transform* trMorton = Morton_Entity->GetComponent<Transform>();
 
@@ -177,7 +182,8 @@ namespace nto
 		atMorton->CreateAnimation(L"Animation_Morton_Ceiling", Morton_Ceiling_Image, Vector2(0.0f, 0.0f), Vector2(24.0f, 32.0f), 3, Vector2(0.0f, 0.0f), 0.1f);
 		atMorton->CreateAnimation(L"Animation_Morton_Left_Wall", Morton_Left_Wall_Image, Vector2(0.0f, 0.0f), Vector2(32.0f, 24.0f), 3, Vector2(0.0f, 0.0f), 0.1f);
 		atMorton->CreateAnimation(L"Animation_Morton_Right_Wall", Morton_Right_Wall_Image, Vector2(0.0f, 0.0f), Vector2(32.0f, 24.0f), 3, Vector2(0.0f, 0.0f), 0.1f);
-		atMorton->CreateAnimation(L"Animation_Morton_Fall", Morton_Fall_Image, Vector2(0.0f, 0.0f), Vector2(24.0f, 32.0f), 3, Vector2(0.0f, 0.0f), 0.1f);
+		atMorton->CreateAnimation(L"Animation_Morton_Fall", Morton_Fall_Image, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), 1, Vector2(0.0f, 0.0f), 0.1f);
+		//atMorton->CreateAnimation(L"Animation_Morton_Hit", Morton_Hit_Image, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), 1, Vector2(0.0f, 0.0f), 0.1f);
 
 		atMorton->SetScale(Vector2(4.0f, 4.0f));
 
@@ -306,12 +312,14 @@ namespace nto
 		atHUD_Coins_2->SetFrame(0);
 		#pragma endregion
 
+		killCount = Morton_Entity->GetHitCount();
+
 		if (Controller::GetKeyDown(eKeyCode::P))
 		{
 			bgSound->Stop(true);
 			SceneManager::LoadScene(L"StageWorldMap");
 		}
-		if (Controller::GetKeyDown(eKeyCode::L))
+		if (Controller::GetKeyDown(eKeyCode::L) || killCount == 3)
 		{
 			bgSound->Stop(true);
 			SceneManager::CreateScene<EndingScene>(L"EndingScene");

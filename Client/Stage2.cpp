@@ -2136,6 +2136,9 @@ namespace nto
 			, L"..\\Assets\\Mario\\Mario_Right.bmp");
 
 		player = object::Instantiate<Player>(eLayerType::Player);
+
+		player->SetPlayerClass(Player::eMarioClass::Super);
+
 		trPlayer = player->GetComponent<Transform>();
 
 		trPlayer->SetPosition(Vector2(500.0f, 600.0f)); // 500,1920
@@ -2496,6 +2499,7 @@ namespace nto
 		if (Foreground_Checkpoint_Finish_Flag_Entity->GetHit())
 		{
 			bgSound->Stop(true);
+			Camera::Reset();
 			SceneManager::LoadScene(L"StageWorldMap");
 		}
 		#pragma endregion
@@ -2503,6 +2507,7 @@ namespace nto
 		if (Controller::GetKeyDown(eKeyCode::P))
 		{
 			bgSound->Stop(true);
+			Camera::Reset();
 			SceneManager::LoadScene(L"StageWorldMap");
 		}
 	}

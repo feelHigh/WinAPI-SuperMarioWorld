@@ -64,6 +64,7 @@ namespace nto
 		Animator* atHUD_Coins_1;
 		Animator* atHUD_Coins_2;
 		float stageTimer;
+		int stageCoins;
 
 		// Changable Coins
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_1;

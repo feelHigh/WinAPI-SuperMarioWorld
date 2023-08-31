@@ -1447,8 +1447,12 @@ namespace nto
 		atHUD_Timer_3->SetFrame(ones);
 
 		atHUD_Life->SetFrame(3);
-		atHUD_Coins_1->SetFrame(0);
-		atHUD_Coins_2->SetFrame(0);
+
+		stageCoins = 1;
+		int cTens = (stageCoins % 100) / 10;
+		int cOnes = stageCoins % 10;
+		atHUD_Coins_1->SetFrame(cTens);
+		atHUD_Coins_2->SetFrame(cOnes);
 		#pragma endregion
 
 		#pragma region CoinToBlock Event
@@ -1492,6 +1496,7 @@ namespace nto
 		if (Stage1_Foreground_Checkpoint_Finish_Flag_Entity->GetHit())
 		{
 			bgSound->Stop(true);
+			Camera::Reset();
 			SceneManager::LoadScene(L"StageWorldMap");
 		}
 		#pragma endregion

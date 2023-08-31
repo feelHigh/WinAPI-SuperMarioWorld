@@ -15,7 +15,7 @@
 namespace nto
 {
 	Player::Player()
-		: mPlayerClass(eMarioClass::Fire)
+		: mPlayerClass(eMarioClass::Small)
 		, mDir(eMarioDirection::Right)
 		, mState(eState::Idle)
 		, onGround(false)
@@ -151,6 +151,43 @@ namespace nto
 
 	void Player::OnCollisionStay(Collider* other)
 	{
+		RedPara* redpara = dynamic_cast<RedPara*>(other->GetOwner());
+		if (redpara)
+		{
+			if (mPlayerClass == eMarioClass::Super || mPlayerClass == eMarioClass::Fire)
+			{
+				Sound* mSound = Resources::Load<Sound>(L"playerDowngrade", L"..\\Assets\\Sound\\SFX\\WAV\\smw_jump.wav");
+				mSound->Play(false);
+				mPlayerClass = eMarioClass::Small;
+			}
+		}
+
+		Piranha* piranha = dynamic_cast<Piranha*>(other->GetOwner());
+		if (piranha)
+		{
+			if (mPlayerClass == eMarioClass::Super || mPlayerClass == eMarioClass::Fire)
+			{
+				mPlayerClass = eMarioClass::Small;
+			}
+		}
+
+		RedKoopa* redkoopa = dynamic_cast<RedKoopa*>(other->GetOwner());
+		if (redkoopa)
+		{
+			if (mPlayerClass == eMarioClass::Super || mPlayerClass == eMarioClass::Fire)
+			{
+				mPlayerClass = eMarioClass::Small;
+			}
+		}
+
+		Morton* morton = dynamic_cast<Morton*>(other->GetOwner());
+		if (morton)
+		{
+			if (mPlayerClass == eMarioClass::Super || mPlayerClass == eMarioClass::Fire)
+			{
+				mPlayerClass = eMarioClass::Small;
+			}
+		}
 	}
 
 	void Player::OnCollisionExit(Collider* other)
@@ -493,6 +530,8 @@ namespace nto
 		}
 		if (Controller::GetKeyDown(eKeyCode::Z))
 		{
+			Sound* mSound = Resources::Load<Sound>(L"playerkick", L"..\\Assets\\Sound\\SFX\\WAV\\kick.wav");
+			mSound->Play(false);
 			animator->PlayAnimation(L"Animation_Super_Kick_Right", true);
 			mState = eState::Kick;
 		}
@@ -768,6 +807,8 @@ namespace nto
 		}
 		if (Controller::GetKeyDown(eKeyCode::Z))
 		{
+			Sound* mSound = Resources::Load<Sound>(L"playerkick", L"..\\Assets\\Sound\\SFX\\WAV\\kick.wav");
+			mSound->Play(false);
 			animator->PlayAnimation(L"Animation_Fire_Kick_Right", true);
 			mState = eState::Kick;
 		}

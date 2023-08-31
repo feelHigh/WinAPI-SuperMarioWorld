@@ -25,7 +25,8 @@ namespace nto
 		Transform* trPlayer;
 		Collider* colPlayer;
 		// Foreground
-		// 
+		// Enemy
+		Morton* Morton_Entity;
 		// UI
 		HUD* HUD_Base_Entity;
 		HUDLife* HUD_Life_Entity;
@@ -51,5 +52,7 @@ namespace nto
 		float stageTimer;
 		// Sound
 		Sound* bgSound;
+		// Boss Value
+		int killCount;
 	};
 }

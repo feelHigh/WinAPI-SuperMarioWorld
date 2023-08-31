@@ -17,6 +17,9 @@ namespace nto
 		virtual void OnCollisionStay(class Collider* other);
 		virtual void OnCollisionExit(class Collider* other);
 
+		void SetHitCount(int hit) { eHitCount = hit; }
+		int GetHitCount() { return eHitCount; }
+
 	private:
 		bool eAttacked;
 		int ePhase;
@@ -32,6 +35,9 @@ namespace nto
 		float ePatternSpeedX;
 		float ePatternSpeedY;
 		float ePatternTimer;
+
+		int eAttackNumber;
+		float eDistanceTimer;
 		float eFallTimer;
 	};
 }

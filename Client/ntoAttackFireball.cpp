@@ -61,6 +61,8 @@ namespace nto
 		RedKoopa* koopa = dynamic_cast<RedKoopa*>(other->GetOwner());
 		if (koopa)
 		{
+			Sound* sound = Resources::Load<Sound>(L"sfxfirehit", L"..\\Assets\\Sound\\SFX\\WAV\\fireball2.wav");
+			sound->Play(false);
 			Destroy(koopa);
 			Destroy(this);
 		}
