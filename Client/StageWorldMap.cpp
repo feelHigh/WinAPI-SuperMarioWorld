@@ -157,6 +157,10 @@ namespace nto
 		{
 			bgSound->Stop(true);
 		}
+		if (Controller::GetKeyDown(eKeyCode::O))
+		{
+			bgSound->Play(true);
+		}
 	}
 
 	void StageWorldMap::Render(HDC hdc)
