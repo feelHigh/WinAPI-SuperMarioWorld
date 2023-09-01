@@ -14,6 +14,7 @@ namespace nto
 	ForegroundCoin::ForegroundCoin()
 		: cType(1)
         , cStatus(false)
+        , cHandled(false)
 	{
 	}
 
@@ -114,6 +115,7 @@ namespace nto
             {
                 Sound* sound = Resources::Load<Sound>(L"sfxCoin", L"..\\Assets\\Sound\\SFX\\WAV\\smw_coin.wav");
                 sound->Play(false);
+                cHandled = true;
                 Destroy(this);
             }
         }

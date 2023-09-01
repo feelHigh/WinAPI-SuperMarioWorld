@@ -10,6 +10,9 @@
 #include "Stage1.h"
 #include "Stage2.h"
 #include "Stage3.h"
+#include "ntoStage1Enter.h"
+#include "ntoStage2Enter.h"
+#include "ntoStageBossEnter.h"
 #include "StageBoss.h"
 #include "Controller.h"
 #include "ntoSound.h"
@@ -59,8 +62,10 @@ namespace nto
 				StageEnter = true;
 				if (Controller::GetKeyDown(eKeyCode::I))
 				{
-					SceneManager::CreateScene<Stage1>(L"Stage1");
-					SceneManager::LoadScene(L"Stage1");
+					//SceneManager::CreateScene<Stage1>(L"Stage1");
+					//SceneManager::LoadScene(L"Stage1");
+					SceneManager::CreateScene<Stage1Enter>(L"Stage1Enter");
+					SceneManager::LoadScene(L"Stage1Enter");
 				}
 			}
 			if (StageNum == 2)
@@ -68,8 +73,10 @@ namespace nto
 				StageEnter = true;
 				if (Controller::GetKeyDown(eKeyCode::I))
 				{
-					SceneManager::CreateScene<Stage2>(L"Stage2");
-					SceneManager::LoadScene(L"Stage2");
+					//SceneManager::CreateScene<Stage2>(L"Stage2");
+					//SceneManager::LoadScene(L"Stage2");
+					SceneManager::CreateScene<Stage2Enter>(L"Stage2Enter");
+					SceneManager::LoadScene(L"Stage2Enter");
 				}
 			}
 			if (StageNum == 3)
@@ -86,8 +93,10 @@ namespace nto
 				StageEnter = true;
 				if (Controller::GetKeyDown(eKeyCode::I))
 				{
-					SceneManager::CreateScene<StageBoss>(L"StageBoss");
-					SceneManager::LoadScene(L"StageBoss");
+					//SceneManager::CreateScene<StageBoss>(L"StageBoss");
+					//SceneManager::LoadScene(L"StageBoss");
+					SceneManager::CreateScene<StageBossEnter>(L"StageBossEnter");
+					SceneManager::LoadScene(L"StageBossEnter");
 				}
 			}
         }

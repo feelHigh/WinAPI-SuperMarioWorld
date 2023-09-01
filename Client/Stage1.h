@@ -31,6 +31,7 @@ namespace nto
 		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity1;
 		ForegroundUpgradeBox* Stage1_Foreground_UpgradeBox_Entity2;
 		ForegroundFinishFlag* Stage1_Foreground_Checkpoint_Finish_Flag_Entity;
+		int coinCointer;
 		// Items
 		ItemSuperMushroom* Stage1_Item_SuperMushroom_Entity;
 		ItemFireFlower* Stage1_Item_FireFlower_Entity;
@@ -65,6 +66,21 @@ namespace nto
 		Animator* atHUD_Coins_2;
 		float stageTimer;
 		int stageCoins;
+		// Countable Coins
+		ForegroundCoin* Stage1_Foreground_Coin_Entity_1_1;
+		ForegroundCoin* Stage1_Foreground_Coin_Entity_1_2;
+		ForegroundCoin* Stage1_Foreground_Coin_Entity_1_3;
+		ForegroundCoin* Stage1_Foreground_Coin_Entity_1_4;
+		ForegroundCoin* Stage1_Foreground_Coin_Entity_2_1;
+		ForegroundCoin* Stage1_Foreground_Coin_Entity_2_2;
+		ForegroundCoin* Stage1_Foreground_Coin_Entity_2_3;
+		ForegroundCoin* Stage1_Foreground_Coin_Entity_3_1;
+		ForegroundCoin* Stage1_Foreground_Coin_Entity_3_2;
+		ForegroundCoin* Stage1_Foreground_Coin_Entity_3_3;
+		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity1;
+		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity2;
+		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity3;
+		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity4;
 
 		// Changable Coins
 		ForegroundCoin* Stage1_Foreground_Coin_Entity_4_1;

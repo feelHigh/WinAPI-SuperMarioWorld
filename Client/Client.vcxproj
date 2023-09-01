@@ -183,7 +183,11 @@
     <ClInclude Include="ntoRigidbody.h" />
     <ClInclude Include="ntoSound.h" />
     <ClInclude Include="ntoSoundManager.h" />
+    <ClInclude Include="ntoStage1Enter.h" />
+    <ClInclude Include="ntoStage2Enter.h" />
+    <ClInclude Include="ntoStageBossEnter.h" />
     <ClInclude Include="ntoStageDirector.h" />
+    <ClInclude Include="ntoStageEnter.h" />
     <ClInclude Include="ntoStagePlate.h" />
     <ClInclude Include="ntoTitleIntro.h" />
     <ClInclude Include="ntoWall.h" />
@@ -256,7 +260,11 @@
     <ClCompile Include="ntoRigidbody.cpp" />
     <ClCompile Include="ntoSound.cpp" />
     <ClCompile Include="ntoSoundManager.cpp" />
+    <ClCompile Include="ntoStage1Enter.cpp" />
+    <ClCompile Include="ntoStage2Enter.cpp" />
+    <ClCompile Include="ntoStageBossEnter.cpp" />
     <ClCompile Include="ntoStageDirector.cpp" />
+    <ClCompile Include="ntoStageEnter.cpp" />
     <ClCompile Include="ntoStagePlate.cpp" />
     <ClCompile Include="ntoTitleIntro.cpp" />
     <ClCompile Include="ntoWall.cpp" />

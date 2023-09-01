@@ -333,6 +333,18 @@
     <ClInclude Include="ntoHUDTimer.h">
       <Filter>Contents\GameObject\UI</Filter>
     </ClInclude>
+    <ClInclude Include="ntoStageBossEnter.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoStage1Enter.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoStage2Enter.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ntoStageEnter.h">
+      <Filter>Contents\GameObject\Background</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
@@ -536,6 +548,18 @@
     </ClCompile>
     <ClCompile Include="ntoHUDTimer.cpp">
       <Filter>Contents\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoStage1Enter.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoStage2Enter.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoStageBossEnter.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ntoStageEnter.cpp">
+      <Filter>Contents\GameObject\Background</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,7 @@
 namespace nto
 {
 	ForegroundYoshiCoin::ForegroundYoshiCoin()
+		: cHandled(false)
 	{
 	}
 
@@ -50,6 +51,7 @@ namespace nto
 		{
 			Sound* sound = Resources::Load<Sound>(L"sfxYoshiCoin", L"..\\Assets\\Sound\\SFX\\WAV\\coin-special.wav");
 			sound->Play(false);
+			cHandled = true;
 			Destroy(this);
 		}
 	}

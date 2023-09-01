@@ -17,7 +17,10 @@ namespace nto
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
 
-	private:
+		void SetHandledStatus(bool handled) { cHandled = handled; }
+		bool GetHandledStatus() { return cHandled; }
 
+	private:
+		bool cHandled;
 	};
 }

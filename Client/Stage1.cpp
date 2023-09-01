@@ -16,6 +16,7 @@ namespace nto
 	Stage1::Stage1()
 		: pSwitchState(false)
 		, stageTimer(600.0f)
+		, stageCoins(0)
 	{
 	}
 
@@ -454,16 +455,16 @@ namespace nto
 		ForegroundSpinBox* Stage1_Foreground_SpinBox_Entity8 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
 		Stage1_Foreground_SpinBox_Entity9 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
 		ForegroundSpinBox* Stage1_Foreground_SpinBox_Entity10 = object::Instantiate<ForegroundSpinBox>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_1_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_1_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_1_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_1_4 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_2_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_2_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_2_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_3_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_3_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundCoin* Stage1_Foreground_Coin_Entity_3_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		Stage1_Foreground_Coin_Entity_1_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		Stage1_Foreground_Coin_Entity_1_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		Stage1_Foreground_Coin_Entity_1_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		Stage1_Foreground_Coin_Entity_1_4 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		Stage1_Foreground_Coin_Entity_2_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		Stage1_Foreground_Coin_Entity_2_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		Stage1_Foreground_Coin_Entity_2_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		Stage1_Foreground_Coin_Entity_3_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		Stage1_Foreground_Coin_Entity_3_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
+		Stage1_Foreground_Coin_Entity_3_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		Stage1_Foreground_Coin_Entity_4_1 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		Stage1_Foreground_Coin_Entity_4_2 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		Stage1_Foreground_Coin_Entity_4_3 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
@@ -477,10 +478,10 @@ namespace nto
 		Stage1_Foreground_Coin_Entity_4_11 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		Stage1_Foreground_Coin_Entity_4_12 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
 		Stage1_Foreground_Coin_Entity_4_13 = object::Instantiate<ForegroundCoin>(eLayerType::Foreground);
-		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity1 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
-		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity2 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
-		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity3 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
-		ForegroundYoshiCoin* Stage1_Foreground_YoshiCoin_Entity4 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
+		Stage1_Foreground_YoshiCoin_Entity1 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
+		Stage1_Foreground_YoshiCoin_Entity2 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
+		Stage1_Foreground_YoshiCoin_Entity3 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
+		Stage1_Foreground_YoshiCoin_Entity4 = object::Instantiate<ForegroundYoshiCoin>(eLayerType::Foreground);
 		ForegroundRedApple* Stage1_Foreground_RedApple_Entity = object::Instantiate<ForegroundRedApple>(eLayerType::Foreground);
 		Stage1_Foreground_UpgradeBox_Entity1 = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
 		Stage1_Foreground_UpgradeBox_Entity2 = object::Instantiate<ForegroundUpgradeBox>(eLayerType::Foreground);
@@ -1448,7 +1449,77 @@ namespace nto
 
 		atHUD_Life->SetFrame(3);
 
-		stageCoins = 1;
+		if (Stage1_Foreground_Coin_Entity_1_1->GetHandledStatus())
+		{
+			stageCoins++;
+			Stage1_Foreground_Coin_Entity_1_1->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_Coin_Entity_1_2->GetHandledStatus())
+		{
+			stageCoins++;
+			Stage1_Foreground_Coin_Entity_1_2->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_Coin_Entity_1_3->GetHandledStatus())
+		{
+			stageCoins++;
+			Stage1_Foreground_Coin_Entity_1_3->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_Coin_Entity_1_4->GetHandledStatus())
+		{
+			stageCoins++;
+			Stage1_Foreground_Coin_Entity_1_4->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_Coin_Entity_2_1->GetHandledStatus())
+		{
+			stageCoins++;
+			Stage1_Foreground_Coin_Entity_2_1->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_Coin_Entity_2_2->GetHandledStatus())
+		{
+			stageCoins++;
+			Stage1_Foreground_Coin_Entity_2_2->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_Coin_Entity_2_3->GetHandledStatus())
+		{
+			stageCoins++;
+			Stage1_Foreground_Coin_Entity_2_3->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_Coin_Entity_3_1->GetHandledStatus())
+		{
+			stageCoins++;
+			Stage1_Foreground_Coin_Entity_3_1->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_Coin_Entity_3_2->GetHandledStatus())
+		{
+			stageCoins++;
+			Stage1_Foreground_Coin_Entity_3_2->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_Coin_Entity_3_3->GetHandledStatus())
+		{
+			stageCoins++;
+			Stage1_Foreground_Coin_Entity_3_3->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_YoshiCoin_Entity1->GetHandledStatus())
+		{
+			stageCoins += 10;
+			Stage1_Foreground_YoshiCoin_Entity1->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_YoshiCoin_Entity2->GetHandledStatus())
+		{
+			stageCoins += 10;
+			Stage1_Foreground_YoshiCoin_Entity2->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_YoshiCoin_Entity3->GetHandledStatus())
+		{
+			stageCoins += 10;
+			Stage1_Foreground_YoshiCoin_Entity3->SetHandledStatus(false);
+		}
+		if (Stage1_Foreground_YoshiCoin_Entity4->GetHandledStatus())
+		{
+			stageCoins += 10;
+			Stage1_Foreground_YoshiCoin_Entity4->SetHandledStatus(false);
+		}
+
 		int cTens = (stageCoins % 100) / 10;
 		int cOnes = stageCoins % 10;
 		atHUD_Coins_1->SetFrame(cTens);

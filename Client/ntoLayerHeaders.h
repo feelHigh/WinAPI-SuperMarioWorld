@@ -2,6 +2,7 @@
 #include "Background.h"
 #include "ntoTitleIntro.h"
 #include "ntoEndingOutro.h"
+#include "ntoStageEnter.h"
 #include "ntoEnvironment.h"
 #include "ntoEnvironmentWoodBall.h"
 #include "ntoEnvironmentWoodPlank.h"

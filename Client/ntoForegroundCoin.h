@@ -23,8 +23,12 @@ namespace nto
 		void SetSwitchStatus(bool status) { cStatus = status; }
 		bool GetSwitchStatus() { return cStatus; }
 
+		void SetHandledStatus(bool handled) { cHandled = handled; }
+		bool GetHandledStatus() { return cHandled; }
+
 	private:
 		int cType;
 		bool cStatus;
+		bool cHandled;
 	};
 }

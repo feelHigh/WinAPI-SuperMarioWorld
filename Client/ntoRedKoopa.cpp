@@ -162,7 +162,7 @@ namespace nto
 
 						Collider* cl = GetComponent<Collider>();
 						cl->SetSize(Vector2(64.0f, 64.0f));
-
+						cl->SetActive(false);
 						Sound* sound = Resources::Load<Sound>(L"sfxStomp", L"..\\Assets\\Sound\\SFX\\WAV\\smw_stomp.wav");
 						sound->Play(false);
 					}
